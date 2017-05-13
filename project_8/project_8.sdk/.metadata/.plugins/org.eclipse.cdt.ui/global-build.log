@@ -1,0 +1,242 @@
+"Running Make libs in ps7_cortexa9_0/libsrc/ttcps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling ttcps"
+"Running Make libs in ps7_cortexa9_0/libsrc/uartps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling uartps"
+"Running Make libs in ps7_cortexa9_0/libsrc/usbps_v2_2/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_2/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling usbps"
+"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_2/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_2/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling xadcps"
+'Finished building libraries'
+23:42:09 **** Incremental Build of project test_co_run_bsp ****
+make -k all 
+"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/dateport_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/dateport_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_3/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_3/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/emacps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/emacps_v3_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/gpiops_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/qspips_v3_2/src"
+make -C ps7_cortexa9_0/libsrc/qspips_v3_2/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/scugic_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/scugic_v3_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/sdps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/sdps_v2_4/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/standalone_v5_1/src"
+make -C ps7_cortexa9_0/libsrc/standalone_v5_1/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/ttcps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/uartps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_0/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/usbps_v2_2/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_2/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_2/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_2/src -s include  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling coresightps_dcc"
+"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling cpu_cortexa9"
+"Running Make libs in ps7_cortexa9_0/libsrc/dateport_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/dateport_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling dateport"
+"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_3/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_3/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling devcfg"
+"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling dmaps"
+"Running Make libs in ps7_cortexa9_0/libsrc/emacps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/emacps_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling emacps"
+"Running Make libs in ps7_cortexa9_0/libsrc/gpiops_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/gpiops_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling gpiops"
+"Running Make libs in ps7_cortexa9_0/libsrc/qspips_v3_2/src"
+make -C ps7_cortexa9_0/libsrc/qspips_v3_2/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling qspips"
+"Running Make libs in ps7_cortexa9_0/libsrc/scugic_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/scugic_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling scugic"
+"Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling scutimer"
+"Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling scuwdt"
+"Running Make libs in ps7_cortexa9_0/libsrc/sdps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/sdps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling sdps"
+"Running Make libs in ps7_cortexa9_0/libsrc/standalone_v5_1/src"
+make -C ps7_cortexa9_0/libsrc/standalone_v5_1/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling standalone"
+"Running Make libs in ps7_cortexa9_0/libsrc/ttcps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/ttcps_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling ttcps"
+"Running Make libs in ps7_cortexa9_0/libsrc/uartps_v3_0/src"
+make -C ps7_cortexa9_0/libsrc/uartps_v3_0/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling uartps"
+"Running Make libs in ps7_cortexa9_0/libsrc/usbps_v2_2/src"
+make -C ps7_cortexa9_0/libsrc/usbps_v2_2/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling usbps"
+"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_2/src"
+make -C ps7_cortexa9_0/libsrc/xadcps_v2_2/src -s libs  "SHELL=CMD" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
+"Compiling xadcps"
+'Finished building libraries'
+23:42:54 **** Incremental Build of configuration Debug for project test_co_run_bsp_xusbps_intr_example_1 ****
+make all 
+Building file: ../src/xusbps_ch9.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_ch9.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_ch9.d" -MT"src/xusbps_ch9.d" -o "src/xusbps_ch9.o" "../src/xusbps_ch9.c"
+Finished building: ../src/xusbps_ch9.c
+ 
+Building file: ../src/xusbps_ch9_storage.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_ch9_storage.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_ch9_storage.d" -MT"src/xusbps_ch9_storage.d" -o "src/xusbps_ch9_storage.o" "../src/xusbps_ch9_storage.c"
+Finished building: ../src/xusbps_ch9_storage.c
+ 
+Building file: ../src/xusbps_class_storage.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_class_storage.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_class_storage.d" -MT"src/xusbps_class_storage.d" -o "src/xusbps_class_storage.o" "../src/xusbps_class_storage.c"
+Finished building: ../src/xusbps_class_storage.c
+ 
+Building file: ../src/xusbps_intr_example.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_intr_example.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_intr_example.d" -MT"src/xusbps_intr_example.d" -o "src/xusbps_intr_example.o" "../src/xusbps_intr_example.c"
+Finished building: ../src/xusbps_intr_example.c
+ 
+Building target: test_co_run_bsp_xusbps_intr_example_1.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run_bsp_xusbps_intr_example_1.elf"  ./src/xusbps_ch9.o ./src/xusbps_ch9_storage.o ./src/xusbps_class_storage.o ./src/xusbps_intr_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run_bsp_xusbps_intr_example_1.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run_bsp_xusbps_intr_example_1.elf  |tee "test_co_run_bsp_xusbps_intr_example_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83540	   3124	268526064	268612728	1002b478	test_co_run_bsp_xusbps_intr_example_1.elf
+Finished building: test_co_run_bsp_xusbps_intr_example_1.elf.size
+ 
+23:43:02 **** Incremental Build of configuration Debug for project test_co_run_bsp_xusbps_intr_example_1 ****
+make all 
+make: Nothing to be done for `all'.
+23:43:03 **** Auto Build of configuration Debug for project hhhh ****
+make all 
+Building file: ../src/platform.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../hhhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+make: *** 没有规则可以创建“hhhh.elf”需要的目标“../src/lscript.ld”。 停止。
+23:43:03 **** Auto Build of configuration Debug for project test_co_run ****
+make all 
+Building file: ../src/cnn_run.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/cnn_run.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/cnn_run.d" -MT"src/cnn_run.d" -o "src/cnn_run.o" "../src/cnn_run.c"
+../src/cnn_run.c: In function 'main':
+../src/cnn_run.c:58:9: warning: variable 'date_2' set but not used [-Wunused-but-set-variable]
+  float *date_2;
+         ^
+Finished building: ../src/cnn_run.c
+ 
+Building target: test_co_run.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run.elf"  ./src/cnn_run.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run.elf  |tee "test_co_run.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  24008	   1152	  22660	  47820	   bacc	test_co_run.elf
+Finished building: test_co_run.elf.size
+ 
+23:43:04 **** Auto Build of configuration Debug for project test_co_run_bsp_xuartps_low_echo_example_1 ****
+make all 
+Building file: ../src/xuartps_low_echo_example.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xuartps_low_echo_example.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xuartps_low_echo_example.d" -MT"src/xuartps_low_echo_example.d" -o "src/xuartps_low_echo_example.o" "../src/xuartps_low_echo_example.c"
+Finished building: ../src/xuartps_low_echo_example.c
+ 
+Building target: test_co_run_bsp_xuartps_low_echo_example_1.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run_bsp_xuartps_low_echo_example_1.elf"  ./src/xuartps_low_echo_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run_bsp_xuartps_low_echo_example_1.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run_bsp_xuartps_low_echo_example_1.elf  |tee "test_co_run_bsp_xuartps_low_echo_example_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19896	   1152	  22580	  43628	   aa6c	test_co_run_bsp_xuartps_low_echo_example_1.elf
+Finished building: test_co_run_bsp_xuartps_low_echo_example_1.elf.size
+ 
+23:43:06 **** Auto Build of configuration Debug for project test_co_run_bsp_xuartps_polled_example_1 ****
+make all 
+Building file: ../src/xuartps_polled_example.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xuartps_polled_example.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xuartps_polled_example.d" -MT"src/xuartps_polled_example.d" -o "src/xuartps_polled_example.o" "../src/xuartps_polled_example.c"
+Finished building: ../src/xuartps_polled_example.c
+ 
+Building target: test_co_run_bsp_xuartps_polled_example_1.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run_bsp_xuartps_polled_example_1.elf"  ./src/xuartps_polled_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run_bsp_xuartps_polled_example_1.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run_bsp_xuartps_polled_example_1.elf  |tee "test_co_run_bsp_xuartps_polled_example_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  27672	   1200	  22740	  51612	   c99c	test_co_run_bsp_xuartps_polled_example_1.elf
+Finished building: test_co_run_bsp_xuartps_polled_example_1.elf.size
+ 
+23:43:07 **** Auto Build of configuration Debug for project test_co_run_bsp_xusbps_intr_example_2 ****
+make all 
+Building file: ../src/xusbps_ch9.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_ch9.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_ch9.d" -MT"src/xusbps_ch9.d" -o "src/xusbps_ch9.o" "../src/xusbps_ch9.c"
+Finished building: ../src/xusbps_ch9.c
+ 
+Building file: ../src/xusbps_ch9_storage.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_ch9_storage.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_ch9_storage.d" -MT"src/xusbps_ch9_storage.d" -o "src/xusbps_ch9_storage.o" "../src/xusbps_ch9_storage.c"
+Finished building: ../src/xusbps_ch9_storage.c
+ 
+Building file: ../src/xusbps_class_storage.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_class_storage.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_class_storage.d" -MT"src/xusbps_class_storage.d" -o "src/xusbps_class_storage.o" "../src/xusbps_class_storage.c"
+Finished building: ../src/xusbps_class_storage.c
+ 
+Building file: ../src/xusbps_intr_example.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_intr_example.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_intr_example.d" -MT"src/xusbps_intr_example.d" -o "src/xusbps_intr_example.o" "../src/xusbps_intr_example.c"
+Finished building: ../src/xusbps_intr_example.c
+ 
+Building target: test_co_run_bsp_xusbps_intr_example_2.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run_bsp_xusbps_intr_example_2.elf"  ./src/xusbps_ch9.o ./src/xusbps_ch9_storage.o ./src/xusbps_class_storage.o ./src/xusbps_intr_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run_bsp_xusbps_intr_example_2.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run_bsp_xusbps_intr_example_2.elf  |tee "test_co_run_bsp_xusbps_intr_example_2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  45408	   3000	1139056	1187464	 121e88	test_co_run_bsp_xusbps_intr_example_2.elf
+Finished building: test_co_run_bsp_xusbps_intr_example_2.elf.size
+ 
+23:45:24 **** Incremental Build of configuration Debug for project test_co_run_bsp_xusbps_intr_example_1 ****
+make all 
+make: Nothing to be done for `all'.
+23:53:02 **** Incremental Build of configuration Debug for project test_co_run_bsp_xusbps_intr_example_1 ****
+make all 
+make: Nothing to be done for `all'.

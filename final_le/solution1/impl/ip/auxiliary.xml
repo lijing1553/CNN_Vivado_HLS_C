@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="dateport" xd:componentRef="dateport" xd:initiationInterval="5617001" xd:clockPeriod="10.000000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_AXILiteS" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="date" xd:originalName="date" xd:direction="in" xd:interfaceRef="s_axi_AXILiteS" xd:busTypeRef="axilite" xd:offset="0x10" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="signal" xd:originalName="signal" xd:direction="in" xd:interfaceRef="s_axi_AXILiteS" xd:busTypeRef="axilite" xd:offset="0x18" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="*(led)" xd:originalName="led" xd:direction="out" xd:interfaceRef="s_axi_AXILiteS" xd:busTypeRef="axilite" xd:offset="0x20" xd:statusOffset="0x24" xd:handshakeRef="ap_vld" xd:dataWidth="16"/>
+  <xd:arg xd:name="*(signal_out)" xd:originalName="signal_out" xd:direction="out" xd:interfaceRef="s_axi_AXILiteS" xd:busTypeRef="axilite" xd:offset="0x28" xd:statusOffset="0x2C" xd:handshakeRef="ap_vld" xd:dataWidth="8"/>
+  <xd:latencyEstimates xd:best-case="3" xd:worst-case="5617000" xd:average-case="923977"/>
+  <xd:resourceEstimates xd:LUT="34083" xd:FF="22247" xd:BRAM="177" xd:DSP="102"/>
+</xd:acceleratorMap>

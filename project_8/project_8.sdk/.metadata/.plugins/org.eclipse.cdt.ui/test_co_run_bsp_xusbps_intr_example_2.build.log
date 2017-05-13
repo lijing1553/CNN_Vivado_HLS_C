@@ -1,0 +1,36 @@
+23:43:07 **** Auto Build of configuration Debug for project test_co_run_bsp_xusbps_intr_example_2 ****
+make all 
+Building file: ../src/xusbps_ch9.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_ch9.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_ch9.d" -MT"src/xusbps_ch9.d" -o "src/xusbps_ch9.o" "../src/xusbps_ch9.c"
+Finished building: ../src/xusbps_ch9.c
+ 
+Building file: ../src/xusbps_ch9_storage.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_ch9_storage.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_ch9_storage.d" -MT"src/xusbps_ch9_storage.d" -o "src/xusbps_ch9_storage.o" "../src/xusbps_ch9_storage.c"
+Finished building: ../src/xusbps_ch9_storage.c
+ 
+Building file: ../src/xusbps_class_storage.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_class_storage.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_class_storage.d" -MT"src/xusbps_class_storage.d" -o "src/xusbps_class_storage.o" "../src/xusbps_class_storage.c"
+Finished building: ../src/xusbps_class_storage.c
+ 
+Building file: ../src/xusbps_intr_example.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xusbps_intr_example.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/xusbps_intr_example.d" -MT"src/xusbps_intr_example.d" -o "src/xusbps_intr_example.o" "../src/xusbps_intr_example.c"
+Finished building: ../src/xusbps_intr_example.c
+ 
+Building target: test_co_run_bsp_xusbps_intr_example_2.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run_bsp_xusbps_intr_example_2.elf"  ./src/xusbps_ch9.o ./src/xusbps_ch9_storage.o ./src/xusbps_class_storage.o ./src/xusbps_intr_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run_bsp_xusbps_intr_example_2.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run_bsp_xusbps_intr_example_2.elf  |tee "test_co_run_bsp_xusbps_intr_example_2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  45408	   3000	1139056	1187464	 121e88	test_co_run_bsp_xusbps_intr_example_2.elf
+Finished building: test_co_run_bsp_xusbps_intr_example_2.elf.size
+ 
+
+23:43:09 Build Finished (took 2s.303ms)
+

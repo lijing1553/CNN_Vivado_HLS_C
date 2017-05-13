@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  83540	   3124	268526064	268612728	1002b478	test_co_run_bsp_xusbps_intr_example_1.elf

@@ -1,0 +1,25 @@
+09:48:33 **** Build of configuration Debug for project test_ddr ****
+make all 
+Building file: ../src/helloworld.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -I../../test_ddr_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c:52:24: warning: extra tokens at end of #include directive
+ #include "xil_printf.h";
+                        ^
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:54:22: error: 'XPAR_DDR_MEM_DASEADDR' undeclared (first use in this function)
+ #define DDR_BASEADDR XPAR_DDR_MEM_DASEADDR+0x10000000
+                      ^
+../src/helloworld.c:65:14: note: in expansion of macro 'DDR_BASEADDR'
+    Xil_Out32(DDR_BASEADDR+i*4,i);
+              ^
+../src/helloworld.c:54:22: note: each undeclared identifier is reported only once for each function it appears in
+ #define DDR_BASEADDR XPAR_DDR_MEM_DASEADDR+0x10000000
+                      ^
+../src/helloworld.c:65:14: note: in expansion of macro 'DDR_BASEADDR'
+    Xil_Out32(DDR_BASEADDR+i*4,i);
+              ^
+make: *** [src/helloworld.o] ´íÎó 1
+
+09:48:33 Build Finished (took 508ms)
+

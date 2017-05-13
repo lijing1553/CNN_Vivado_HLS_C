@@ -1,0 +1,889 @@
+
+
+================================================================
+== Vivado HLS Report for 'dateport'
+================================================================
+* Date:           Tue May 09 23:13:34 2017
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        Le_7
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     14.51|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+---------+-----+---------+---------+
+    |    Latency    |    Interval   | Pipeline|
+    | min |   max   | min |   max   |   Type  |
+    +-----+---------+-----+---------+---------+
+    |    2|  5647602|    3|  5647603|   none  |
+    +-----+---------+-----+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |  140|  140|        14|          -|          -|    10|    no    |
+        |- Loop 2  |   40|   40|         4|          -|          -|    10|    no    |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       -|      -|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|      -|
+|Register         |        -|      -|       -|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+---------+--------------+---------+
+|        RTL Ports       | Dir | Bits| Protocol| Source Object|  C Type |
++------------------------+-----+-----+---------+--------------+---------+
+|s_axi_AXILiteS_AWVALID  |  in |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_AWREADY  | out |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_AWADDR   |  in |    6|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_WVALID   |  in |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_WREADY   | out |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_WDATA    |  in |   32|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_WSTRB    |  in |    4|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_ARVALID  |  in |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_ARREADY  | out |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_ARADDR   |  in |    6|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_RVALID   | out |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_RREADY   |  in |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_RDATA    | out |   32|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_RRESP    | out |    2|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_BVALID   | out |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_BREADY   |  in |    1|  s_axi  |   AXILiteS   | pointer |
+|s_axi_AXILiteS_BRESP    | out |    2|  s_axi  |   AXILiteS   | pointer |
++------------------------+-----+-----+---------+--------------+---------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 48
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	48  / (tmp_1)
+	47  / (!tmp_1 & tmp_9)
+	3  / (!tmp_1 & !tmp_9 & tmp_s)
+	46  / (!tmp_1 & !tmp_9 & !tmp_s)
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / (!exitcond_i_i)
+	28  / (exitcond_i_i)
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	14  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / true
+32 --> 
+	33  / true
+33 --> 
+	34  / true
+34 --> 
+	35  / true
+35 --> 
+	36  / true
+36 --> 
+	37  / true
+37 --> 
+	38  / true
+38 --> 
+	39  / (tmp_i)
+	40  / (!tmp_i)
+39 --> 
+	40  / true
+40 --> 
+	41  / true
+41 --> 
+	42  / (!exitcond_i)
+	45  / (exitcond_i)
+42 --> 
+	43  / true
+43 --> 
+	44  / true
+44 --> 
+	41  / true
+45 --> 
+	46  / true
+46 --> 
+	47  / true
+47 --> 
+48 --> 
+	47  / true
+* FSM state operations: 
+
+ <State 1>: 1.00ns
+ST_1: signal_read [2/2] 1.00ns
+:5  %signal_read = call i8 @_ssdm_op_Read.s_axilite.i8(i8 %signal_r) nounwind
+
+ST_1: date_read [2/2] 1.00ns
+:6  %date_read = call i32 @_ssdm_op_Read.s_axilite.i32(i32 %date) nounwind
+
+
+ <State 2>: 3.00ns
+ST_2: stg_51 [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i32 %date) nounwind, !map !0
+
+ST_2: stg_52 [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap(i8 %signal_r) nounwind, !map !6
+
+ST_2: stg_53 [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i16* %led) nounwind, !map !10
+
+ST_2: stg_54 [1/1] 0.00ns
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i8* %signal_out) nounwind, !map !16
+
+ST_2: stg_55 [1/1] 0.00ns
+:4  call void (...)* @_ssdm_op_SpecTopModule([9 x i8]* @dateport_str) nounwind
+
+ST_2: signal_read [1/2] 1.00ns
+:5  %signal_read = call i8 @_ssdm_op_Read.s_axilite.i8(i8 %signal_r) nounwind
+
+ST_2: date_read [1/2] 1.00ns
+:6  %date_read = call i32 @_ssdm_op_Read.s_axilite.i32(i32 %date) nounwind
+
+ST_2: stg_58 [1/1] 0.00ns
+:7  call void (...)* @_ssdm_op_SpecInterface(i16* %led, [10 x i8]* @p_str, i32 1, i32 1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind
+
+ST_2: stg_59 [1/1] 0.00ns
+:8  call void (...)* @_ssdm_op_SpecInterface(i8* %signal_out, [10 x i8]* @p_str, i32 1, i32 1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind
+
+ST_2: stg_60 [1/1] 0.00ns
+:9  call void (...)* @_ssdm_op_SpecInterface(i32 0, [10 x i8]* @p_str, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind
+
+ST_2: stg_61 [1/1] 0.00ns
+:10  call void (...)* @_ssdm_op_SpecInterface(i8 %signal_r, [10 x i8]* @p_str, i32 1, i32 1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind
+
+ST_2: stg_62 [1/1] 0.00ns
+:11  call void (...)* @_ssdm_op_SpecInterface(i32 %date, [10 x i8]* @p_str, i32 1, i32 1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind
+
+ST_2: tmp_1 [1/1] 2.00ns
+:12  %tmp_1 = icmp eq i8 %signal_read, 3
+
+ST_2: stg_64 [1/1] 0.00ns
+:13  br i1 %tmp_1, label %._crit_edge, label %1
+
+ST_2: tmp_9 [1/1] 2.00ns
+:0  %tmp_9 = icmp eq i8 %signal_read, 2
+
+ST_2: stg_66 [1/1] 0.00ns
+:1  br i1 %tmp_9, label %._crit_edge1, label %2
+
+ST_2: tmp_s [1/1] 2.00ns
+:0  %tmp_s = icmp eq i8 %signal_read, 1
+
+ST_2: stg_68 [1/1] 0.00ns
+:1  br i1 %tmp_s, label %3, label %11
+
+ST_2: tmp_3 [1/1] 2.00ns
+:0  %tmp_3 = icmp eq i8 %signal_read, 0
+
+ST_2: stg_70 [1/1] 0.00ns
+:1  br i1 %tmp_3, label %12, label %._crit_edge2
+
+ST_2: stg_71 [1/1] 1.57ns
+:0  store i16 0, i16* @righht_i, align 2
+
+ST_2: stg_72 [1/1] 0.00ns
+:1  br label %._crit_edge2
+
+ST_2: stg_73 [1/1] 0.00ns
+._crit_edge2:0  br label %13
+
+ST_2: stg_74 [2/2] 0.00ns
+:0  call fastcc void @dateport_C1_conv([1024 x float]* nocapture @input_img) nounwind
+
+ST_2: stg_75 [2/2] 1.00ns
+._crit_edge:6  call void @_ssdm_op_Write.s_axilite.i8P(i8* %signal_out, i8 2) nounwind
+
+
+ <State 3>: 0.00ns
+ST_3: stg_76 [1/2] 0.00ns
+:0  call fastcc void @dateport_C1_conv([1024 x float]* nocapture @input_img) nounwind
+
+
+ <State 4>: 0.00ns
+ST_4: stg_77 [2/2] 0.00ns
+:1  call fastcc void @dateport_S2_pool() nounwind
+
+
+ <State 5>: 0.00ns
+ST_5: stg_78 [1/2] 0.00ns
+:1  call fastcc void @dateport_S2_pool() nounwind
+
+
+ <State 6>: 0.00ns
+ST_6: stg_79 [2/2] 0.00ns
+:2  call fastcc void @dateport_C3_conv() nounwind
+
+
+ <State 7>: 0.00ns
+ST_7: stg_80 [1/2] 0.00ns
+:2  call fastcc void @dateport_C3_conv() nounwind
+
+
+ <State 8>: 0.00ns
+ST_8: stg_81 [2/2] 0.00ns
+:3  call fastcc void @dateport_S4_pool() nounwind
+
+
+ <State 9>: 0.00ns
+ST_9: stg_82 [1/2] 0.00ns
+:3  call fastcc void @dateport_S4_pool() nounwind
+
+
+ <State 10>: 0.00ns
+ST_10: stg_83 [2/2] 0.00ns
+:4  call fastcc void @dateport_C5_conv() nounwind
+
+
+ <State 11>: 0.00ns
+ST_11: stg_84 [1/2] 0.00ns
+:4  call fastcc void @dateport_C5_conv() nounwind
+
+
+ <State 12>: 0.00ns
+ST_12: stg_85 [2/2] 0.00ns
+:5  call fastcc void @dateport_O_layer() nounwind
+
+
+ <State 13>: 2.44ns
+ST_13: stg_86 [1/2] 0.00ns
+:5  call fastcc void @dateport_O_layer() nounwind
+
+ST_13: tmp_5 [1/1] 0.00ns
+:6  %tmp_5 = shl i32 %date_read, 3
+
+ST_13: tmp_6 [1/1] 0.00ns
+:7  %tmp_6 = shl i32 %date_read, 1
+
+ST_13: resid_addr3 [1/1] 2.44ns
+:8  %resid_addr3 = add i32 %tmp_6, %tmp_5
+
+ST_13: stg_90 [1/1] 1.57ns
+:9  br label %4
+
+
+ <State 14>: 4.83ns
+ST_14: i_i_i [1/1] 0.00ns
+:0  %i_i_i = phi i4 [ 0, %3 ], [ %i, %5 ]
+
+ST_14: exitcond_i_i [1/1] 1.88ns
+:1  %exitcond_i_i = icmp eq i4 %i_i_i, -6
+
+ST_14: empty [1/1] 0.00ns
+:2  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_14: i [1/1] 0.80ns
+:3  %i = add i4 %i_i_i, 1
+
+ST_14: stg_95 [1/1] 0.00ns
+:4  br i1 %exitcond_i_i, label %DO_layer.exit.i, label %5
+
+ST_14: tmp_i_i_trn [1/1] 0.00ns
+:3  %tmp_i_i_trn = zext i4 %i_i_i to i32
+
+ST_14: resid_addr4 [1/1] 2.44ns
+:4  %resid_addr4 = add i32 %resid_addr3, %tmp_i_i_trn
+
+ST_14: tmp_18 [1/1] 0.00ns
+:5  %tmp_18 = sext i32 %resid_addr4 to i64
+
+ST_14: resid_addr [1/1] 0.00ns
+:6  %resid_addr = getelementptr [100 x i1]* @resid, i64 0, i64 %tmp_18
+
+ST_14: resid_load [2/2] 2.39ns
+:7  %resid_load = load i1* %resid_addr, align 1
+
+ST_14: stg_101 [2/2] 0.00ns
+DO_layer.exit.i:0  call fastcc void @dateport_DC5_layer() nounwind
+
+
+ <State 15>: 2.39ns
+ST_15: resid_load [1/2] 2.39ns
+:7  %resid_load = load i1* %resid_addr, align 1
+
+
+ <State 16>: 6.41ns
+ST_16: tmp_80_i_i4 [1/1] 0.00ns
+:8  %tmp_80_i_i4 = zext i1 %resid_load to i32
+
+ST_16: tmp_80_i_i [6/6] 6.41ns
+:9  %tmp_80_i_i = sitofp i32 %tmp_80_i_i4 to float
+
+
+ <State 17>: 6.41ns
+ST_17: tmp_80_i_i [5/6] 6.41ns
+:9  %tmp_80_i_i = sitofp i32 %tmp_80_i_i4 to float
+
+
+ <State 18>: 6.41ns
+ST_18: tmp_80_i_i [4/6] 6.41ns
+:9  %tmp_80_i_i = sitofp i32 %tmp_80_i_i4 to float
+
+
+ <State 19>: 6.41ns
+ST_19: tmp_80_i_i [3/6] 6.41ns
+:9  %tmp_80_i_i = sitofp i32 %tmp_80_i_i4 to float
+
+
+ <State 20>: 6.41ns
+ST_20: tmp_i_i [1/1] 0.00ns
+:0  %tmp_i_i = zext i4 %i_i_i to i64
+
+ST_20: output_y_addr [1/1] 0.00ns
+:1  %output_y_addr = getelementptr [10 x float]* @output_y, i64 0, i64 %tmp_i_i
+
+ST_20: output_y_load [2/2] 2.39ns
+:2  %output_y_load = load float* %output_y_addr, align 4
+
+ST_20: tmp_80_i_i [2/6] 6.41ns
+:9  %tmp_80_i_i = sitofp i32 %tmp_80_i_i4 to float
+
+
+ <State 21>: 6.41ns
+ST_21: output_y_load [1/2] 2.39ns
+:2  %output_y_load = load float* %output_y_addr, align 4
+
+ST_21: tmp_80_i_i [1/6] 6.41ns
+:9  %tmp_80_i_i = sitofp i32 %tmp_80_i_i4 to float
+
+
+ <State 22>: 7.26ns
+ST_22: tmp_81_i_i [5/5] 7.26ns
+:10  %tmp_81_i_i = fsub float %output_y_load, %tmp_80_i_i
+
+
+ <State 23>: 7.26ns
+ST_23: tmp_81_i_i [4/5] 7.26ns
+:10  %tmp_81_i_i = fsub float %output_y_load, %tmp_80_i_i
+
+
+ <State 24>: 7.26ns
+ST_24: tmp_81_i_i [3/5] 7.26ns
+:10  %tmp_81_i_i = fsub float %output_y_load, %tmp_80_i_i
+
+
+ <State 25>: 7.26ns
+ST_25: tmp_81_i_i [2/5] 7.26ns
+:10  %tmp_81_i_i = fsub float %output_y_load, %tmp_80_i_i
+
+
+ <State 26>: 7.26ns
+ST_26: tmp_81_i_i [1/5] 7.26ns
+:10  %tmp_81_i_i = fsub float %output_y_load, %tmp_80_i_i
+
+
+ <State 27>: 2.39ns
+ST_27: output_d_addr [1/1] 0.00ns
+:11  %output_d_addr = getelementptr [10 x float]* @output_d, i64 0, i64 %tmp_i_i
+
+ST_27: stg_120 [1/1] 2.39ns
+:12  store float %tmp_81_i_i, float* %output_d_addr, align 4
+
+ST_27: stg_121 [1/1] 0.00ns
+:13  br label %4
+
+
+ <State 28>: 0.00ns
+ST_28: stg_122 [1/2] 0.00ns
+DO_layer.exit.i:0  call fastcc void @dateport_DC5_layer() nounwind
+
+
+ <State 29>: 0.00ns
+ST_29: stg_123 [2/2] 0.00ns
+DO_layer.exit.i:1  call fastcc void @dateport_DS4_layer() nounwind
+
+ST_29: stg_124 [2/2] 0.00ns
+DO_layer.exit.i:8  call fastcc void @dateport_update_OUT() nounwind
+
+
+ <State 30>: 0.00ns
+ST_30: stg_125 [1/2] 0.00ns
+DO_layer.exit.i:1  call fastcc void @dateport_DS4_layer() nounwind
+
+ST_30: stg_126 [1/2] 0.00ns
+DO_layer.exit.i:8  call fastcc void @dateport_update_OUT() nounwind
+
+
+ <State 31>: 0.00ns
+ST_31: stg_127 [2/2] 0.00ns
+DO_layer.exit.i:2  call fastcc void @dateport_DC3_layer() nounwind
+
+ST_31: stg_128 [2/2] 0.00ns
+DO_layer.exit.i:7  call fastcc void @dateport_update_C5() nounwind
+
+
+ <State 32>: 0.00ns
+ST_32: stg_129 [1/2] 0.00ns
+DO_layer.exit.i:2  call fastcc void @dateport_DC3_layer() nounwind
+
+ST_32: stg_130 [1/2] 0.00ns
+DO_layer.exit.i:7  call fastcc void @dateport_update_C5() nounwind
+
+
+ <State 33>: 0.00ns
+ST_33: stg_131 [2/2] 0.00ns
+DO_layer.exit.i:3  call fastcc void @dateport_DS2_layer() nounwind
+
+
+ <State 34>: 0.00ns
+ST_34: stg_132 [1/2] 0.00ns
+DO_layer.exit.i:3  call fastcc void @dateport_DS2_layer() nounwind
+
+
+ <State 35>: 0.00ns
+ST_35: stg_133 [2/2] 0.00ns
+DO_layer.exit.i:4  call fastcc void @dateport_DC1_layer() nounwind
+
+ST_35: stg_134 [2/2] 0.00ns
+DO_layer.exit.i:6  call fastcc void @dateport_update_C3() nounwind
+
+
+ <State 36>: 0.00ns
+ST_36: stg_135 [1/2] 0.00ns
+DO_layer.exit.i:4  call fastcc void @dateport_DC1_layer() nounwind
+
+ST_36: stg_136 [1/2] 0.00ns
+DO_layer.exit.i:6  call fastcc void @dateport_update_C3() nounwind
+
+
+ <State 37>: 0.00ns
+ST_37: stg_137 [2/2] 0.00ns
+DO_layer.exit.i:5  call fastcc void @dateport_update_C1([1024 x float]* @input_img) nounwind
+
+
+ <State 38>: 1.97ns
+ST_38: stg_138 [1/2] 0.00ns
+DO_layer.exit.i:5  call fastcc void @dateport_update_C1([1024 x float]* @input_img) nounwind
+
+ST_38: renew_load [1/1] 0.00ns
+DO_layer.exit.i:9  %renew_load = load i8* @renew, align 1
+
+ST_38: tmp_10 [1/1] 0.00ns
+DO_layer.exit.i:10  %tmp_10 = trunc i8 %renew_load to i6
+
+ST_38: tmp_12 [1/1] 0.00ns
+DO_layer.exit.i:11  %tmp_12 = trunc i8 %renew_load to i7
+
+ST_38: tmp_i [1/1] 1.97ns
+DO_layer.exit.i:12  %tmp_i = icmp eq i7 %tmp_12, 0
+
+ST_38: stg_143 [1/1] 0.00ns
+DO_layer.exit.i:13  br i1 %tmp_i, label %6, label %CNNs.exit
+
+
+ <State 39>: 0.00ns
+ST_39: stg_144 [2/2] 0.00ns
+:0  call fastcc void @dateport_upadteall() nounwind
+
+
+ <State 40>: 5.03ns
+ST_40: stg_145 [1/2] 0.00ns
+:0  call fastcc void @dateport_upadteall() nounwind
+
+ST_40: stg_146 [1/1] 0.00ns
+:1  br label %CNNs.exit
+
+ST_40: tmp_i_9 [1/1] 1.72ns
+CNNs.exit:0  %tmp_i_9 = add i6 %tmp_10, 1
+
+ST_40: tmp_19 [1/1] 1.94ns
+CNNs.exit:1  %tmp_19 = icmp ult i6 %tmp_i_9, -14
+
+ST_40: tmp_20 [1/1] 1.72ns
+CNNs.exit:2  %tmp_20 = add i6 %tmp_10, 15
+
+ST_40: tmp_11_i [1/1] 1.37ns
+CNNs.exit:3  %tmp_11_i = select i1 %tmp_19, i6 %tmp_i_9, i6 %tmp_20
+
+ST_40: tmp_11_i_cast [1/1] 0.00ns
+CNNs.exit:4  %tmp_11_i_cast = zext i6 %tmp_11_i to i8
+
+ST_40: stg_152 [1/1] 0.00ns
+CNNs.exit:5  store i8 %tmp_11_i_cast, i8* @renew, align 1
+
+ST_40: stg_153 [1/1] 1.57ns
+CNNs.exit:6  br label %7
+
+
+ <State 41>: 3.53ns
+ST_41: h_i [1/1] 0.00ns
+:0  %h_i = phi float [ -1.000000e+00, %CNNs.exit ], [ %h_1, %8 ]
+
+ST_41: offset [1/1] 0.00ns
+:1  %offset = phi i4 [ 0, %CNNs.exit ], [ %j, %8 ]
+
+ST_41: offset_i [1/1] 0.00ns
+:2  %offset_i = phi i32 [ 0, %CNNs.exit ], [ %offset_1, %8 ]
+
+ST_41: offset_cast1 [1/1] 0.00ns
+:3  %offset_cast1 = zext i4 %offset to i32
+
+ST_41: exitcond_i [1/1] 1.88ns
+:4  %exitcond_i = icmp eq i4 %offset, -6
+
+ST_41: empty_10 [1/1] 0.00ns
+:5  %empty_10 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_41: j [1/1] 0.80ns
+:6  %j = add i4 %offset, 1
+
+ST_41: stg_161 [1/1] 0.00ns
+:7  br i1 %exitcond_i, label %9, label %8
+
+ST_41: tmp_i1 [1/1] 0.00ns
+:0  %tmp_i1 = zext i4 %offset to i64
+
+ST_41: output_y_addr_1 [1/1] 0.00ns
+:1  %output_y_addr_1 = getelementptr [10 x float]* @output_y, i64 0, i64 %tmp_i1
+
+ST_41: m [2/2] 2.39ns
+:2  %m = load float* %output_y_addr_1, align 4
+
+ST_41: tmp_i3 [1/1] 2.52ns
+:0  %tmp_i3 = icmp eq i32 %offset_i, %date_read
+
+ST_41: stg_166 [1/1] 0.00ns
+:1  br i1 %tmp_i3, label %10, label %correct.exit
+
+ST_41: righht_i_load_1 [1/1] 0.00ns
+:0  %righht_i_load_1 = load i16* @righht_i, align 2
+
+ST_41: tmp_12_i [1/1] 1.96ns
+:1  %tmp_12_i = add i16 %righht_i_load_1, 1
+
+ST_41: stg_169 [1/1] 1.57ns
+:2  store i16 %tmp_12_i, i16* @righht_i, align 2
+
+ST_41: stg_170 [1/1] 0.00ns
+:3  br label %correct.exit
+
+
+ <State 42>: 2.39ns
+ST_42: m [1/2] 2.39ns
+:2  %m = load float* %output_y_addr_1, align 4
+
+
+ <State 43>: 6.79ns
+ST_43: tmp_16 [1/1] 6.79ns
+:16  %tmp_16 = fcmp ogt float %m, %h_i
+
+
+ <State 44>: 7.87ns
+ST_44: m_to_int [1/1] 0.00ns
+:3  %m_to_int = bitcast float %m to i32
+
+ST_44: tmp [1/1] 0.00ns
+:4  %tmp = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %m_to_int, i32 23, i32 30)
+
+ST_44: tmp_21 [1/1] 0.00ns
+:5  %tmp_21 = trunc i32 %m_to_int to i23
+
+ST_44: h_i_to_int [1/1] 0.00ns
+:6  %h_i_to_int = bitcast float %h_i to i32
+
+ST_44: tmp_11 [1/1] 0.00ns
+:7  %tmp_11 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %h_i_to_int, i32 23, i32 30)
+
+ST_44: tmp_22 [1/1] 0.00ns
+:8  %tmp_22 = trunc i32 %h_i_to_int to i23
+
+ST_44: notlhs [1/1] 2.00ns
+:9  %notlhs = icmp ne i8 %tmp, -1
+
+ST_44: notrhs [1/1] 2.39ns
+:10  %notrhs = icmp eq i23 %tmp_21, 0
+
+ST_44: tmp_13 [1/1] 1.37ns
+:11  %tmp_13 = or i1 %notrhs, %notlhs
+
+ST_44: notlhs5 [1/1] 2.00ns
+:12  %notlhs5 = icmp ne i8 %tmp_11, -1
+
+ST_44: notrhs6 [1/1] 2.39ns
+:13  %notrhs6 = icmp eq i23 %tmp_22, 0
+
+ST_44: tmp_14 [1/1] 1.37ns
+:14  %tmp_14 = or i1 %notrhs6, %notlhs5
+
+ST_44: tmp_15 [1/1] 1.37ns
+:15  %tmp_15 = and i1 %tmp_13, %tmp_14
+
+ST_44: tmp_17 [1/1] 1.37ns
+:17  %tmp_17 = and i1 %tmp_15, %tmp_16
+
+ST_44: h_1 [1/1] 1.37ns
+:18  %h_1 = select i1 %tmp_17, float %m, float %h_i
+
+ST_44: offset_1 [1/1] 1.37ns
+:19  %offset_1 = select i1 %tmp_17, i32 %offset_cast1, i32 %offset_i
+
+ST_44: stg_189 [1/1] 0.00ns
+:20  br label %7
+
+
+ <State 45>: 1.00ns
+ST_45: righht_i_load [1/1] 0.00ns
+correct.exit:0  %righht_i_load = load i16* @righht_i, align 2
+
+ST_45: stg_191 [2/2] 1.00ns
+correct.exit:1  call void @_ssdm_op_Write.s_axilite.i16P(i16* %led, i16 %righht_i_load) nounwind
+
+
+ <State 46>: 1.00ns
+ST_46: stg_192 [1/2] 1.00ns
+correct.exit:1  call void @_ssdm_op_Write.s_axilite.i16P(i16* %led, i16 %righht_i_load) nounwind
+
+ST_46: stg_193 [1/1] 0.00ns
+correct.exit:2  br label %13
+
+ST_46: stg_194 [2/2] 1.00ns
+:0  call void @_ssdm_op_Write.s_axilite.i8P(i8* %signal_out, i8 2) nounwind
+
+
+ <State 47>: 1.00ns
+ST_47: stg_195 [1/2] 1.00ns
+:0  call void @_ssdm_op_Write.s_axilite.i8P(i8* %signal_out, i8 2) nounwind
+
+ST_47: stg_196 [1/1] 0.00ns
+:1  br label %._crit_edge1
+
+ST_47: stg_197 [1/1] 0.00ns
+._crit_edge1:0  ret void
+
+
+ <State 48>: 6.33ns
+ST_48: tmp_2 [1/1] 0.00ns
+._crit_edge:0  %tmp_2 = bitcast i32 %date_read to float
+
+ST_48: input_i_load [1/1] 0.00ns
+._crit_edge:1  %input_i_load = load i32* @input_i, align 4
+
+ST_48: tmp_4 [1/1] 0.00ns
+._crit_edge:2  %tmp_4 = sext i32 %input_i_load to i64
+
+ST_48: input_img_addr [1/1] 0.00ns
+._crit_edge:3  %input_img_addr = getelementptr [1024 x float]* @input_img, i64 0, i64 %tmp_4
+
+ST_48: stg_202 [1/1] 2.71ns
+._crit_edge:4  store float %tmp_2, float* %input_img_addr, align 4
+
+ST_48: tmp_7 [1/1] 2.44ns
+._crit_edge:5  %tmp_7 = add i32 %input_i_load, 1
+
+ST_48: stg_204 [1/2] 1.00ns
+._crit_edge:6  call void @_ssdm_op_Write.s_axilite.i8P(i8* %signal_out, i8 2) nounwind
+
+ST_48: tmp_8 [1/1] 2.52ns
+._crit_edge:7  %tmp_8 = icmp eq i32 %tmp_7, 1024
+
+ST_48: p_tmp_7 [1/1] 1.37ns
+._crit_edge:8  %p_tmp_7 = select i1 %tmp_8, i32 0, i32 %tmp_7
+
+ST_48: stg_207 [1/1] 0.00ns
+._crit_edge:9  store i32 %p_tmp_7, i32* @input_i, align 4
+
+ST_48: stg_208 [1/1] 0.00ns
+._crit_edge:10  br label %._crit_edge1
+
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+	State 38
+	State 39
+	State 40
+	State 41
+	State 42
+	State 43
+	State 44
+	State 45
+	State 46
+	State 47
+	State 48
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

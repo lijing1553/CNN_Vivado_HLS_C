@@ -1,0 +1,512 @@
+
+
+================================================================
+== Vivado HLS Report for 'dateport_DC5_layer'
+================================================================
+* Date:           Tue May 09 23:54:54 2017
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        final_le
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      8.41|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  3722|  3722|  3722|  3722|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |             |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |- Loop 1     |    30|    30|         1|          -|          -|    30|    no    |
+        |- Loop 2     |  3690|  3690|       123|          -|          -|    30|    no    |
+        | + Loop 2.1  |   110|   110|        11|          -|          -|    10|    no    |
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       -|      -|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|      -|
+|Register         |        -|      -|       -|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
+N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 25
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (exitcond2)
+	2  / (!exitcond2)
+3 --> 
+	4  / (!exitcond1)
+4 --> 
+	5  / (!exitcond)
+	15  / (exitcond)
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	4  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	3  / true
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: stg_26 [1/1] 1.57ns
+:0  br label %1
+
+
+ <State 2>: 3.48ns
+ST_2: i [1/1] 0.00ns
+:0  %i = phi i5 [ 0, %0 ], [ %i_11, %2 ]
+
+ST_2: exitcond2 [1/1] 1.91ns
+:1  %exitcond2 = icmp eq i5 %i, -2
+
+ST_2: empty [1/1] 0.00ns
+:2  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 30, i64 30, i64 30) nounwind
+
+ST_2: i_11 [1/1] 1.72ns
+:3  %i_11 = add i5 %i, 1
+
+ST_2: stg_31 [1/1] 1.57ns
+:4  br i1 %exitcond2, label %.preheader3, label %2
+
+ST_2: tmp [1/1] 0.00ns
+:0  %tmp = zext i5 %i to i64
+
+ST_2: C5_d_addr [1/1] 0.00ns
+:1  %C5_d_addr = getelementptr [30 x float]* @C5_d, i64 0, i64 %tmp
+
+ST_2: stg_34 [1/1] 2.39ns
+:2  store float 0.000000e+00, float* %C5_d_addr, align 4
+
+ST_2: stg_35 [1/1] 0.00ns
+:3  br label %1
+
+
+ <State 3>: 1.91ns
+ST_3: i_1 [1/1] 0.00ns
+.preheader3:0  %i_1 = phi i5 [ %i_2, %4 ], [ 0, %1 ]
+
+ST_3: exitcond1 [1/1] 1.91ns
+.preheader3:1  %exitcond1 = icmp eq i5 %i_1, -2
+
+ST_3: empty_29 [1/1] 0.00ns
+.preheader3:2  %empty_29 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 30, i64 30, i64 30) nounwind
+
+ST_3: i_2 [1/1] 1.72ns
+.preheader3:3  %i_2 = add i5 %i_1, 1
+
+ST_3: stg_40 [1/1] 0.00ns
+.preheader3:4  br i1 %exitcond1, label %5, label %.preheader.preheader
+
+ST_3: tmp_s [1/1] 0.00ns
+.preheader.preheader:0  %tmp_s = zext i5 %i_1 to i64
+
+ST_3: C5_d_addr_1 [1/1] 0.00ns
+.preheader.preheader:1  %C5_d_addr_1 = getelementptr [30 x float]* @C5_d, i64 0, i64 %tmp_s
+
+ST_3: tmp_91 [1/1] 0.00ns
+.preheader.preheader:2  %tmp_91 = call i8 @_ssdm_op_BitConcatenate.i8.i5.i3(i5 %i_1, i3 0)
+
+ST_3: p_shl_cast [1/1] 0.00ns
+.preheader.preheader:3  %p_shl_cast = zext i8 %tmp_91 to i9
+
+ST_3: tmp_92 [1/1] 0.00ns
+.preheader.preheader:4  %tmp_92 = call i6 @_ssdm_op_BitConcatenate.i6.i5.i1(i5 %i_1, i1 false)
+
+ST_3: p_shl3_cast [1/1] 0.00ns
+.preheader.preheader:5  %p_shl3_cast = zext i6 %tmp_92 to i9
+
+ST_3: output_wei_addr1 [1/1] 1.72ns
+.preheader.preheader:6  %output_wei_addr1 = add i9 %p_shl3_cast, %p_shl_cast
+
+ST_3: stg_48 [1/1] 1.57ns
+.preheader.preheader:7  br label %.preheader
+
+ST_3: stg_49 [1/1] 0.00ns
+:0  ret void
+
+
+ <State 4>: 4.55ns
+ST_4: j [1/1] 0.00ns
+.preheader:0  %j = phi i4 [ %j_8, %3 ], [ 0, %.preheader.preheader ]
+
+ST_4: exitcond [1/1] 1.88ns
+.preheader:1  %exitcond = icmp eq i4 %j, -6
+
+ST_4: empty_30 [1/1] 0.00ns
+.preheader:2  %empty_30 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_4: j_8 [1/1] 0.80ns
+.preheader:3  %j_8 = add i4 %j, 1
+
+ST_4: stg_54 [1/1] 0.00ns
+.preheader:4  br i1 %exitcond, label %4, label %3
+
+ST_4: tmp_45 [1/1] 0.00ns
+:1  %tmp_45 = zext i4 %j to i64
+
+ST_4: output_d_addr [1/1] 0.00ns
+:2  %output_d_addr = getelementptr [10 x float]* @output_d, i64 0, i64 %tmp_45
+
+ST_4: output_d_load [2/2] 2.39ns
+:3  %output_d_load = load float* %output_d_addr, align 4
+
+ST_4: tmp_66_trn_cast [1/1] 0.00ns
+:4  %tmp_66_trn_cast = zext i4 %j to i9
+
+ST_4: output_wei_addr2 [1/1] 1.84ns
+:5  %output_wei_addr2 = add i9 %tmp_66_trn_cast, %output_wei_addr1
+
+ST_4: tmp_93 [1/1] 0.00ns
+:6  %tmp_93 = zext i9 %output_wei_addr2 to i64
+
+ST_4: output_wei_addr [1/1] 0.00ns
+:7  %output_wei_addr = getelementptr [300 x float]* @output_wei, i64 0, i64 %tmp_93
+
+ST_4: output_wei_load [2/2] 2.71ns
+:8  %output_wei_load = load float* %output_wei_addr, align 4
+
+ST_4: C5_v_addr [1/1] 0.00ns
+:1  %C5_v_addr = getelementptr [30 x float]* @C5_v, i64 0, i64 %tmp_s
+
+ST_4: C5_v_load [2/2] 2.39ns
+:2  %C5_v_load = load float* %C5_v_addr, align 4
+
+ST_4: C5_bias_addr [1/1] 0.00ns
+:3  %C5_bias_addr = getelementptr [30 x float]* @C5_bias, i64 0, i64 %tmp_s
+
+ST_4: C5_bias_load [2/2] 2.39ns
+:4  %C5_bias_load = load float* %C5_bias_addr, align 4
+
+
+ <State 5>: 8.41ns
+ST_5: output_d_load [1/2] 2.39ns
+:3  %output_d_load = load float* %output_d_addr, align 4
+
+ST_5: output_wei_load [1/2] 2.71ns
+:8  %output_wei_load = load float* %output_wei_addr, align 4
+
+ST_5: tmp_46 [4/4] 5.70ns
+:9  %tmp_46 = fmul float %output_d_load, %output_wei_load
+
+
+ <State 6>: 5.70ns
+ST_6: tmp_46 [3/4] 5.70ns
+:9  %tmp_46 = fmul float %output_d_load, %output_wei_load
+
+
+ <State 7>: 5.70ns
+ST_7: C5_d_load_1 [2/2] 2.39ns
+:0  %C5_d_load_1 = load float* %C5_d_addr_1, align 4
+
+ST_7: tmp_46 [2/4] 5.70ns
+:9  %tmp_46 = fmul float %output_d_load, %output_wei_load
+
+
+ <State 8>: 5.70ns
+ST_8: C5_d_load_1 [1/2] 2.39ns
+:0  %C5_d_load_1 = load float* %C5_d_addr_1, align 4
+
+ST_8: tmp_46 [1/4] 5.70ns
+:9  %tmp_46 = fmul float %output_d_load, %output_wei_load
+
+
+ <State 9>: 7.26ns
+ST_9: tmp_47 [5/5] 7.26ns
+:10  %tmp_47 = fadd float %C5_d_load_1, %tmp_46
+
+
+ <State 10>: 7.26ns
+ST_10: tmp_47 [4/5] 7.26ns
+:10  %tmp_47 = fadd float %C5_d_load_1, %tmp_46
+
+
+ <State 11>: 7.26ns
+ST_11: tmp_47 [3/5] 7.26ns
+:10  %tmp_47 = fadd float %C5_d_load_1, %tmp_46
+
+
+ <State 12>: 7.26ns
+ST_12: tmp_47 [2/5] 7.26ns
+:10  %tmp_47 = fadd float %C5_d_load_1, %tmp_46
+
+
+ <State 13>: 7.26ns
+ST_13: tmp_47 [1/5] 7.26ns
+:10  %tmp_47 = fadd float %C5_d_load_1, %tmp_46
+
+
+ <State 14>: 2.39ns
+ST_14: stg_80 [1/1] 2.39ns
+:11  store float %tmp_47, float* %C5_d_addr_1, align 4
+
+ST_14: stg_81 [1/1] 0.00ns
+:12  br label %.preheader
+
+
+ <State 15>: 2.39ns
+ST_15: C5_v_load [1/2] 2.39ns
+:2  %C5_v_load = load float* %C5_v_addr, align 4
+
+ST_15: C5_bias_load [1/2] 2.39ns
+:4  %C5_bias_load = load float* %C5_bias_addr, align 4
+
+
+ <State 16>: 7.26ns
+ST_16: temp [5/5] 7.26ns
+:5  %temp = fadd float %C5_v_load, %C5_bias_load
+
+
+ <State 17>: 7.26ns
+ST_17: temp [4/5] 7.26ns
+:5  %temp = fadd float %C5_v_load, %C5_bias_load
+
+
+ <State 18>: 7.26ns
+ST_18: temp [3/5] 7.26ns
+:5  %temp = fadd float %C5_v_load, %C5_bias_load
+
+
+ <State 19>: 7.26ns
+ST_19: temp [2/5] 7.26ns
+:5  %temp = fadd float %C5_v_load, %C5_bias_load
+
+
+ <State 20>: 7.26ns
+ST_20: temp [1/5] 7.26ns
+:5  %temp = fadd float %C5_v_load, %C5_bias_load
+
+
+ <State 21>: 8.16ns
+ST_21: C5_d_load [2/2] 2.39ns
+:0  %C5_d_load = load float* %C5_d_addr_1, align 4
+
+ST_21: temp_to_int [1/1] 0.00ns
+:6  %temp_to_int = bitcast float %temp to i32
+
+ST_21: tmp_35 [1/1] 0.00ns
+:7  %tmp_35 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %temp_to_int, i32 23, i32 30)
+
+ST_21: tmp_82 [1/1] 0.00ns
+:8  %tmp_82 = trunc i32 %temp_to_int to i23
+
+ST_21: notlhs [1/1] 2.00ns
+:9  %notlhs = icmp ne i8 %tmp_35, -1
+
+ST_21: notrhs [1/1] 2.39ns
+:10  %notrhs = icmp eq i23 %tmp_82, 0
+
+ST_21: tmp_37 [1/1] 1.37ns
+:11  %tmp_37 = or i1 %notrhs, %notlhs
+
+ST_21: tmp_38 [1/1] 6.79ns
+:12  %tmp_38 = fcmp ogt float %temp, 0.000000e+00
+
+ST_21: tmp_39 [1/1] 1.37ns
+:13  %tmp_39 = and i1 %tmp_37, %tmp_38
+
+
+ <State 22>: 8.09ns
+ST_22: C5_d_load [1/2] 2.39ns
+:0  %C5_d_load = load float* %C5_d_addr_1, align 4
+
+ST_22: p_0_i [1/1] 1.37ns
+:14  %p_0_i = select i1 %tmp_39, float 1.000000e+00, float 0.000000e+00
+
+ST_22: tmp_44 [4/4] 5.70ns
+:15  %tmp_44 = fmul float %C5_d_load, %p_0_i
+
+
+ <State 23>: 5.70ns
+ST_23: tmp_44 [3/4] 5.70ns
+:15  %tmp_44 = fmul float %C5_d_load, %p_0_i
+
+
+ <State 24>: 5.70ns
+ST_24: tmp_44 [2/4] 5.70ns
+:15  %tmp_44 = fmul float %C5_d_load, %p_0_i
+
+
+ <State 25>: 8.09ns
+ST_25: tmp_44 [1/4] 5.70ns
+:15  %tmp_44 = fmul float %C5_d_load, %p_0_i
+
+ST_25: stg_104 [1/1] 2.39ns
+:16  store float %tmp_44, float* %C5_d_addr_1, align 4
+
+ST_25: stg_105 [1/1] 0.00ns
+:17  br label %.preheader3
+
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

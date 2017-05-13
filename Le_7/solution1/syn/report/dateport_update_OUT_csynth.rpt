@@ -1,0 +1,178 @@
+
+
+================================================================
+== Vivado HLS Report for 'dateport_update_OUT'
+================================================================
+* Date:           Tue May 09 23:13:44 2017
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        Le_7
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      8.09|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  3412|  3412|  3412|  3412|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |             |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |- Loop 1     |  3330|  3330|       333|          -|          -|    10|    no    |
+        | + Loop 1.1  |   330|   330|        11|          -|          -|    30|    no    |
+        |- Loop 2     |    80|    80|         8|          -|          -|    10|    no    |
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       0|     28|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      5|     348|    711|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|    112|
+|Register         |        -|      -|     234|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      5|     582|    851|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      2|   ~0   |      1|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+    |                  Instance                 |                 Module                | BRAM_18K| DSP48E|  FF | LUT |
+    +-------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+    |dateport_fadd_32ns_32ns_32_5_full_dsp_U99  |dateport_fadd_32ns_32ns_32_5_full_dsp  |        0|      2|  205|  390|
+    |dateport_fmul_32ns_32ns_32_4_max_dsp_U100  |dateport_fmul_32ns_32ns_32_4_max_dsp   |        0|      3|  143|  321|
+    +-------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+    |Total                                      |                                       |        0|      5|  348|  711|
+    +-------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------------+----------+-------+---+----+------------+------------+
+    |        Variable Name        | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------------+----------+-------+---+----+------------+------------+
+    |i_20_fu_153_p2               |     +    |      0|  0|   4|           4|           1|
+    |i_21_fu_230_p2               |     +    |      0|  0|   4|           4|           1|
+    |j_17_fu_174_p2               |     +    |      0|  0|   5|           5|           1|
+    |output_dwei_addr1_fu_209_p2  |     +    |      0|  0|   4|           9|           9|
+    |output_dwei_addr2_fu_215_p2  |     +    |      0|  0|   4|           9|           9|
+    |exitcond1_fu_168_p2          |   icmp   |      0|  0|   2|           5|           3|
+    |exitcond2_fu_147_p2          |   icmp   |      0|  0|   2|           4|           4|
+    |exitcond_fu_224_p2           |   icmp   |      0|  0|   2|           4|           4|
+    +-----------------------------+----------+-------+---+----+------------+------------+
+    |Total                        |          |      0|  0|  28|          44|          32|
+    +-----------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------+----+-----------+-----+-----------+
+    |          Name         | LUT| Input Size| Bits| Total Bits|
+    +-----------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm              |  18|         23|    1|         23|
+    |grp_fu_126_p0          |  32|          3|   32|         96|
+    |grp_fu_126_p1          |  32|          3|   32|         96|
+    |i_1_reg_115            |   4|          2|    4|          8|
+    |i_reg_92               |   4|          2|    4|          8|
+    |j_reg_104              |   5|          2|    5|         10|
+    |output_d_address0      |   4|          3|    4|         12|
+    |output_dbias_address0  |   4|          3|    4|         12|
+    |output_dwei_address0   |   9|          3|    9|         27|
+    +-----------------------+----+-----------+-----+-----------+
+    |Total                  | 112|         44|   95|        292|
+    +-----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------+----+----+-----+-----------+
+    |            Name           | FF | LUT| Bits| Const Bits|
+    +---------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                  |  22|   0|   22|          0|
+    |i_1_reg_115                |   4|   0|    4|          0|
+    |i_20_reg_245               |   4|   0|    4|          0|
+    |i_21_reg_301               |   4|   0|    4|          0|
+    |i_reg_92                   |   4|   0|    4|          0|
+    |j_17_reg_263               |   5|   0|    5|          0|
+    |j_reg_104                  |   5|   0|    5|          0|
+    |output_dbias_addr_reg_306  |   4|   0|    4|          0|
+    |output_dbias_load_reg_316  |  32|   0|   32|          0|
+    |output_dwei_addr2_reg_268  |   9|   0|    9|          0|
+    |output_dwei_addr_reg_283   |   9|   0|    9|          0|
+    |output_dwei_load_reg_288   |  32|   0|   32|          0|
+    |reg_135                    |  32|   0|   32|          0|
+    |reg_141                    |  32|   0|   32|          0|
+    |tmp_106_reg_293            |  32|   0|   32|          0|
+    |tmp_trn_cast_reg_255       |   4|   0|    9|          5|
+    +---------------------------+----+----+-----+-----------+
+    |Total                      | 234|   0|  239|          5|
+    +---------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+---------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |    Source Object    |    C Type    |
++-----------------------+-----+-----+------------+---------------------+--------------+
+|ap_clk                 |  in |    1| ap_ctrl_hs | dateport_update_OUT | return value |
+|ap_rst                 |  in |    1| ap_ctrl_hs | dateport_update_OUT | return value |
+|ap_start               |  in |    1| ap_ctrl_hs | dateport_update_OUT | return value |
+|ap_done                | out |    1| ap_ctrl_hs | dateport_update_OUT | return value |
+|ap_idle                | out |    1| ap_ctrl_hs | dateport_update_OUT | return value |
+|ap_ready               | out |    1| ap_ctrl_hs | dateport_update_OUT | return value |
+|output_d_address0      | out |    4|  ap_memory |       output_d      |     array    |
+|output_d_ce0           | out |    1|  ap_memory |       output_d      |     array    |
+|output_d_q0            |  in |   32|  ap_memory |       output_d      |     array    |
+|output_dwei_address0   | out |    9|  ap_memory |     output_dwei     |     array    |
+|output_dwei_ce0        | out |    1|  ap_memory |     output_dwei     |     array    |
+|output_dwei_we0        | out |    1|  ap_memory |     output_dwei     |     array    |
+|output_dwei_d0         | out |   32|  ap_memory |     output_dwei     |     array    |
+|output_dwei_q0         |  in |   32|  ap_memory |     output_dwei     |     array    |
+|C5_y_address0          | out |    5|  ap_memory |         C5_y        |     array    |
+|C5_y_ce0               | out |    1|  ap_memory |         C5_y        |     array    |
+|C5_y_q0                |  in |   32|  ap_memory |         C5_y        |     array    |
+|output_dbias_address0  | out |    4|  ap_memory |     output_dbias    |     array    |
+|output_dbias_ce0       | out |    1|  ap_memory |     output_dbias    |     array    |
+|output_dbias_we0       | out |    1|  ap_memory |     output_dbias    |     array    |
+|output_dbias_d0        | out |   32|  ap_memory |     output_dbias    |     array    |
+|output_dbias_q0        |  in |   32|  ap_memory |     output_dbias    |     array    |
++-----------------------+-----+-----+------------+---------------------+--------------+
+

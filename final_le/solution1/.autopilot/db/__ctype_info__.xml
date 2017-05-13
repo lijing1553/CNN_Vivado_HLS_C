@@ -1,0 +1,43 @@
+<InterfaceSummary>
+<RtlPorts>
+<name>date</name>
+<CType>
+<TypeName>unsigned int</TypeName>
+<TypeWidth>32</TypeWidth>
+<PhysicalWidth>32</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>signal_r</name>
+<CType>
+<TypeName>unsigned char</TypeName>
+<TypeWidth>8</TypeWidth>
+<PhysicalWidth>8</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>led</name>
+<CType>
+<TypeName>unsigned short</TypeName>
+<TypeWidth>16</TypeWidth>
+<PhysicalWidth>16</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>signal_out</name>
+<CType>
+<TypeName>unsigned char</TypeName>
+<TypeWidth>8</TypeWidth>
+<PhysicalWidth>8</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+</InterfaceSummary>
+

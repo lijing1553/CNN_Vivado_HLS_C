@@ -1,0 +1,246 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'dateport_DS4_layer'" level="0">
+<item name = "Date">Tue May 09 23:55:08 2017
+</item>
+<item name = "Version">2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)</item>
+<item name = "Project">final_le</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00, 9.58, 1.25</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">12605, 12605, 12605, 12605, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">592, 592, 37, -, -, 16, no</column>
+<column name=" + Loop 1.1">35, 35, 7, -, -, 5, no</column>
+<column name="  ++ Loop 1.1.1">5, 5, 1, -, -, 5, no</column>
+<column name="- L_L_DS4_layer_label3">12010, 12010, 16, 5, 1, 2400, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="Expression">-, -, 0, 519</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">-, 5, 348, 711</column>
+<column name="Memory">-, -, -, -</column>
+<column name="Multiplexer">-, -, -, 288</column>
+<column name="Register">-, -, 815, 37</column>
+<specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
+<specialColumn name="Utilization (%)">0, 2, 1, 2</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="dateport_fadd_32ns_32ns_32_5_full_dsp_U49">dateport_fadd_32ns_32ns_32_5_full_dsp, 0, 2, 205, 390</column>
+<column name="dateport_fmul_32ns_32ns_32_4_max_dsp_U50">dateport_fmul_32ns_32ns_32_4_max_dsp, 0, 3, 143, 321</column>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="C5_mapData_addr1_fu_557_p2">+, 0, 0, 4, 32, 32</column>
+<column name="C5_mapData_addr2_fu_569_p2">+, 0, 0, 32, 32, 32</column>
+<column name="C5_mapData_addr3_fu_635_p2">+, 0, 0, 32, 1, 32</column>
+<column name="C5_mapData_addr4_fu_655_p2">+, 0, 0, 32, 2, 32</column>
+<column name="C5_mapData_addr5_fu_695_p2">+, 0, 0, 32, 2, 32</column>
+<column name="C5_mapData_addr6_fu_705_p2">+, 0, 0, 32, 3, 32</column>
+<column name="C5_mapData_addr8_fu_504_p2">+, 0, 0, 10, 10, 10</column>
+<column name="C5_mapData_addr9_fu_551_p2">+, 0, 0, 4, 32, 32</column>
+<column name="S4_d_addr10_fu_370_p2">+, 0, 0, 32, 32, 32</column>
+<column name="S4_d_addr11_fu_392_p2">+, 0, 0, 32, 32, 32</column>
+<column name="S4_d_addr1_fu_327_p2">+, 0, 0, 8, 8, 8</column>
+<column name="S4_d_addr2_fu_591_p2">+, 0, 0, 4, 8, 8</column>
+<column name="S4_d_addr3_fu_597_p2">+, 0, 0, 4, 8, 8</column>
+<column name="S4_d_addr4_fu_619_p2">+, 0, 0, 32, 32, 32</column>
+<column name="S4_d_addr5_fu_645_p2">+, 0, 0, 32, 1, 32</column>
+<column name="S4_d_addr6_fu_665_p2">+, 0, 0, 32, 2, 32</column>
+<column name="S4_d_addr7_fu_675_p2">+, 0, 0, 32, 2, 32</column>
+<column name="S4_d_addr8_fu_685_p2">+, 0, 0, 32, 3, 32</column>
+<column name="S4_d_addr9_fu_349_p2">+, 0, 0, 8, 8, 8</column>
+<column name="i_12_fu_305_p2">+, 0, 0, 5, 5, 1</column>
+<column name="i_s_fu_446_p2">+, 0, 0, 5, 1, 5</column>
+<column name="indvar_flatten_next5_fu_408_p2">+, 0, 0, 12, 12, 1</column>
+<column name="indvar_flatten_op_fu_510_p2">+, 0, 0, 8, 1, 8</column>
+<column name="j_9_fu_460_p2">+, 0, 0, 5, 1, 5</column>
+<column name="k_8_fu_630_p2">+, 0, 0, 3, 1, 3</column>
+<column name="p_1_fu_339_p2">+, 0, 0, 3, 3, 1</column>
+<column name="q_1_fu_382_p2">+, 0, 0, 3, 3, 1</column>
+<column name="i_1_mid2_fu_452_p3">Select, 0, 0, 5, 1, 5</column>
+<column name="indvar_flatten_next_fu_516_p3">Select, 0, 0, 8, 1, 1</column>
+<column name="j_mid2_fu_480_p3">Select, 0, 0, 5, 1, 5</column>
+<column name="j_mid_fu_420_p3">Select, 0, 0, 5, 1, 1</column>
+<column name="k_mid2_fu_472_p3">Select, 0, 0, 3, 1, 1</column>
+<column name="exitcond1_mid_fu_440_p2">and, 0, 0, 1, 1, 1</column>
+<column name="exitcond4_fu_376_p2">icmp, 0, 0, 2, 3, 3</column>
+<column name="exitcond5_fu_333_p2">icmp, 0, 0, 2, 3, 3</column>
+<column name="exitcond6_fu_299_p2">icmp, 0, 0, 3, 5, 6</column>
+<column name="exitcond_flatten5_fu_402_p2">icmp, 0, 0, 5, 12, 12</column>
+<column name="exitcond_flatten_fu_414_p2">icmp, 0, 0, 3, 8, 8</column>
+<column name="exitcond_fu_434_p2">icmp, 0, 0, 2, 3, 3</column>
+<column name="tmp_94_fu_466_p2">or, 0, 0, 1, 1, 1</column>
+<column name="not_exitcond_flatten_fu_428_p2">xor, 0, 0, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="C5_mapData_address0">14, 4, 14, 56</column>
+<column name="C5_mapData_address1">14, 3, 14, 42</column>
+<column name="S4_d_address0">9, 7, 9, 63</column>
+<column name="S4_d_address1">9, 6, 9, 54</column>
+<column name="S4_d_d0">32, 5, 32, 160</column>
+<column name="ap_NS_fsm">4, 11, 1, 11</column>
+<column name="ap_reg_ppiten_pp0_it3">1, 2, 1, 2</column>
+<column name="grp_fu_283_p0">32, 6, 32, 192</column>
+<column name="grp_fu_283_p1">32, 6, 32, 192</column>
+<column name="grp_fu_287_p0">32, 3, 32, 96</column>
+<column name="grp_fu_287_p1">32, 5, 32, 160</column>
+<column name="i_1_phi_fu_243_p4">5, 2, 5, 10</column>
+<column name="i_1_reg_239">5, 2, 5, 10</column>
+<column name="i_reg_195">5, 2, 5, 10</column>
+<column name="indvar_flatten5_phi_fu_232_p4">12, 2, 12, 24</column>
+<column name="indvar_flatten5_reg_228">12, 2, 12, 24</column>
+<column name="indvar_flatten_phi_fu_254_p4">8, 2, 8, 16</column>
+<column name="indvar_flatten_reg_250">8, 2, 8, 16</column>
+<column name="j_phi_fu_265_p4">5, 2, 5, 10</column>
+<column name="j_reg_261">5, 2, 5, 10</column>
+<column name="k_phi_fu_276_p4">3, 2, 3, 6</column>
+<column name="k_reg_272">3, 2, 3, 6</column>
+<column name="p_reg_206">3, 2, 3, 6</column>
+<column name="q_reg_217">3, 2, 3, 6</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="C5_d_load_reg_827">32, 0, 32, 0</column>
+<column name="C5_mapData_addr2_reg_795">32, 0, 32, 0</column>
+<column name="C5_mapData_addr8_reg_779">10, 0, 10, 0</column>
+<column name="C5_mapData_load_2_reg_884">32, 0, 32, 0</column>
+<column name="C5_mapData_load_3_reg_904">32, 0, 32, 0</column>
+<column name="C5_mapData_load_4_reg_914">32, 0, 32, 0</column>
+<column name="S4_d_addr10_reg_737">32, 0, 32, 0</column>
+<column name="S4_d_addr1_reg_724">8, 0, 8, 0</column>
+<column name="S4_d_addr4_reg_808">32, 0, 32, 0</column>
+<column name="S4_d_addr_1_reg_816">9, 0, 9, 0</column>
+<column name="S4_d_addr_2_reg_847">9, 0, 9, 0</column>
+<column name="S4_d_addr_3_reg_857">9, 0, 9, 0</column>
+<column name="S4_d_addr_4_reg_862">9, 0, 9, 0</column>
+<column name="S4_d_addr_5_reg_868">9, 0, 9, 0</column>
+<column name="S4_d_load_1_reg_879">32, 0, 32, 0</column>
+<column name="S4_d_load_2_reg_889">32, 0, 32, 0</column>
+<column name="S4_d_load_3_reg_909">32, 0, 32, 0</column>
+<column name="S4_d_load_4_reg_944">32, 0, 32, 0</column>
+<column name="S4_d_load_reg_837">32, 0, 32, 0</column>
+<column name="ap_CS_fsm">10, 0, 10, 0</column>
+<column name="ap_reg_ppiten_pp0_it0">1, 0, 1, 0</column>
+<column name="ap_reg_ppiten_pp0_it1">1, 0, 1, 0</column>
+<column name="ap_reg_ppiten_pp0_it2">1, 0, 1, 0</column>
+<column name="ap_reg_ppiten_pp0_it3">1, 0, 1, 0</column>
+<column name="ap_reg_ppstg_S4_d_addr_1_reg_816_pp0_it1">9, 0, 9, 0</column>
+<column name="exitcond_flatten5_reg_750">1, 0, 1, 0</column>
+<column name="i_12_reg_719">5, 0, 5, 0</column>
+<column name="i_1_mid2_reg_759">5, 0, 5, 0</column>
+<column name="i_1_reg_239">5, 0, 5, 0</column>
+<column name="i_reg_195">5, 0, 5, 0</column>
+<column name="indvar_flatten5_reg_228">12, 0, 12, 0</column>
+<column name="indvar_flatten_next5_reg_754">12, 0, 12, 0</column>
+<column name="indvar_flatten_next_reg_785">8, 0, 8, 0</column>
+<column name="indvar_flatten_reg_250">8, 0, 8, 0</column>
+<column name="j_mid2_reg_773">5, 0, 5, 0</column>
+<column name="j_reg_261">5, 0, 5, 0</column>
+<column name="k_8_reg_822">3, 0, 3, 0</column>
+<column name="k_mid2_reg_766">3, 0, 3, 0</column>
+<column name="k_reg_272">3, 0, 3, 0</column>
+<column name="p_1_reg_732">3, 0, 3, 0</column>
+<column name="p_reg_206">3, 0, 3, 0</column>
+<column name="q_reg_217">3, 0, 3, 0</column>
+<column name="reg_293">32, 0, 32, 0</column>
+<column name="tmp_119_1_reg_924">32, 0, 32, 0</column>
+<column name="tmp_119_2_reg_929">32, 0, 32, 0</column>
+<column name="tmp_119_3_reg_934">32, 0, 32, 0</column>
+<column name="tmp_119_4_reg_939">32, 0, 32, 0</column>
+<column name="tmp_120_2_reg_949">32, 0, 32, 0</column>
+<column name="tmp_120_3_reg_954">32, 0, 32, 0</column>
+<column name="tmp_48_reg_919">32, 0, 32, 0</column>
+<column name="S4_d_addr_2_reg_847">0, 9, 9, 0</column>
+<column name="S4_d_addr_3_reg_857">0, 9, 9, 0</column>
+<column name="S4_d_addr_4_reg_862">0, 9, 9, 0</column>
+<column name="S4_d_addr_5_reg_868">0, 9, 9, 0</column>
+<column name="exitcond_flatten5_reg_750">0, 1, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, dateport_DS4_layer, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, dateport_DS4_layer, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, dateport_DS4_layer, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, dateport_DS4_layer, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, dateport_DS4_layer, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, dateport_DS4_layer, return value</column>
+<column name="S4_d_address0">out, 9, ap_memory, S4_d, array</column>
+<column name="S4_d_ce0">out, 1, ap_memory, S4_d, array</column>
+<column name="S4_d_we0">out, 1, ap_memory, S4_d, array</column>
+<column name="S4_d_d0">out, 32, ap_memory, S4_d, array</column>
+<column name="S4_d_q0">in, 32, ap_memory, S4_d, array</column>
+<column name="S4_d_address1">out, 9, ap_memory, S4_d, array</column>
+<column name="S4_d_ce1">out, 1, ap_memory, S4_d, array</column>
+<column name="S4_d_we1">out, 1, ap_memory, S4_d, array</column>
+<column name="S4_d_d1">out, 32, ap_memory, S4_d, array</column>
+<column name="S4_d_q1">in, 32, ap_memory, S4_d, array</column>
+<column name="C5_d_address0">out, 5, ap_memory, C5_d, array</column>
+<column name="C5_d_ce0">out, 1, ap_memory, C5_d, array</column>
+<column name="C5_d_q0">in, 32, ap_memory, C5_d, array</column>
+<column name="C5_mapData_address0">out, 14, ap_memory, C5_mapData, array</column>
+<column name="C5_mapData_ce0">out, 1, ap_memory, C5_mapData, array</column>
+<column name="C5_mapData_q0">in, 32, ap_memory, C5_mapData, array</column>
+<column name="C5_mapData_address1">out, 14, ap_memory, C5_mapData, array</column>
+<column name="C5_mapData_ce1">out, 1, ap_memory, C5_mapData, array</column>
+<column name="C5_mapData_q1">in, 32, ap_memory, C5_mapData, array</column>
+</table>
+</item>
+</section>
+</profile>

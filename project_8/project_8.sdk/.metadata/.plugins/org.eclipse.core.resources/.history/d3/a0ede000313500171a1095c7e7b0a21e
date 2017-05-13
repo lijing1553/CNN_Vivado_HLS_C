@@ -1,0 +1,970 @@
+/******************************************************************************
+*
+* Copyright (C) 2010 - 2014 Xilinx, Inc.  All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal 
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* Use of the Software is limited solely to applications:
+* (a) running on a Xilinx device, or
+* (b) that interact with a Xilinx device through a bus or interconnect.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+* XILINX  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF 
+* OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+* Except as contained in this notice, the name of the Xilinx shall not be used
+* in advertising or otherwise to promote the sale, use or other dealings in
+* this Software without prior written authorization from Xilinx.
+*
+******************************************************************************/
+/*****************************************************************************/
+/**
+* @file xusbps_intr_example.c
+*
+* This file contains an example of how to use the USB driver with the USB
+* controller in DEVICE mode.
+*
+*
+*<pre>
+* MODIFICATION HISTORY:
+*
+* Ver   Who     Date     Changes
+* ----- ------  -------- ----------------------------------------------------
+* 1.00a wgr/nm  10/09/10 First release
+* 1.01a nm      03/05/10 Included xpseudo_asm.h instead of xpseudo_asm_gcc.h
+* 1.04a nm      02/05/13 Fixed CR# 696550.
+*		         Added template code for Vendor request.
+* 1.06a kpc		11/11/13 Fixed CR#759458, cacheInvalidate size should be
+*				 ailgned to ccahe line size.
+* 2.1   kpc    04/28/14 Cleanup and removed unused functions
+*</pre>
+******************************************************************************/
+
+/***************************** Include Files *********************************/
+
+#include "xparameters.h"		/* XPAR parameters */
+#include "xusbps.h"			/* USB controller driver */
+#include "xscugic.h"
+#include "xusbps_ch9.h"		/* Generic Chapter 9 handling code */
+#include "xusbps_class_storage.h"	/* Storage class handling code */
+#include "xuartps.h"
+#include "xuartps_hw.h"
+#include "xil_exception.h"
+#include "xpseudo_asm.h"
+#include "xreg_cortexa9.h"
+#include "xil_cache.h"
+#include "xil_io.h"
+#include "Xdateport_hw.h"
+#include "Xdateport.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define XPORTADDR 0x43C00000
+#define UART_DEVICE_ID              XPAR_XUARTPS_0_DEVICE_ID
+#define UART_BASEADDR		XPAR_XUARTPS_0_BASEADDR
+#define UART_CLOCK_HZ		XPAR_XUARTPS_0_CLOCK_HZ
+#define DATEPORT_BASEADDR   XPAR_XDATEPORT_0_S_AXI_AXILITES_BASEADDR
+/************************** Constant Definitions *****************************/
+#define MEMORY_SIZE (64*1024)
+#ifdef __ICCARM__
+#pragma data_alignment = 32
+u8 Buffer[MEMORY_SIZE];
+#pragma data_alignment = 4
+#else
+u8 Buffer[MEMORY_SIZE] ALIGNMENT_CACHELINE;
+#endif
+
+/**************************** Type Definitions *******************************/
+
+/***************** Macros (Inline Functions) Definitions *********************/
+
+/************************** Function Prototypes ******************************/
+
+static int UsbIntrExample(XScuGic *IntcInstancePtr, XUsbPs *UsbInstancePtr,
+			  u16 UsbDeviceId, u16 UsbIntrId);
+
+static void UsbIntrHandler(void *CallBackRef, u32 Mask);
+static void XUsbPs_Ep0EventHandler(void *CallBackRef, u8 EpNum,
+					u8 EventType, void *Data);
+static void XUsbPs_Ep1EventHandler(void *CallBackRef, u8 EpNum,
+					u8 EventType, void *Data);
+static int UsbSetupIntrSystem(XScuGic *IntcInstancePtr,
+			      XUsbPs *UsbInstancePtr, u16 UsbIntrId);
+static void UsbDisableIntrSystem(XScuGic *IntcInstancePtr, u16 UsbIntrId);
+
+static void Usbdatedfindfat32(volatile u8 *VirtFlash,u8 *require8,u16 *require16,u32 *require32);
+static u32 Usbdatedfindfile(volatile u8 *VirtFlash,u32 *nowaddr,const char* aimfilename);
+
+/************************** Variable Definitions *****************************/
+
+/* The instances to support the device drivers are global such that the
+ * are initialized to zero each time the program runs.
+ */
+static XScuGic IntcInstance;	/* The instance of the IRQ Controller */
+static XUsbPs UsbInstance;	/* The instance of the USB Controller */
+
+static volatile int NumIrqs = 0;
+static volatile int NumReceivedFrames = 0;
+static volatile u8 *VirtFlash;
+XUartPs Uart_PS;
+XDateport dateport;
+const static float avg[28][28] = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.00209999993, 0.00783333369, 0.00359999994, 0.000150000007, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0.00026666667, 0.000916666642, 0.00928333309, 0.0242833328, 0.0437166654, 0.0640999973, 0.120133333, 0.160733327, 0.174183339, 0.177433327, 0.18931666, 0.174150005, 0.186933339, 0.153650001, 0.10011667, 0.0712333322, 0.053816665, 0.021366667, 0.0100833336, 0.00353333331, 0, 0, 0, 0 }, { 0, 0, 0.00106666668, 0.000699999975, 0.00694999984, 0.00548333349, 0.0471000001, 0.138400003, 0.264183342, 0.506616652, 0.86680001, 1.29008329, 1.87035, 2.5299499, 3.20161676, 3.62555003, 3.72198343, 3.39254999, 2.80293322, 2.04438329, 1.20211661, 0.633449972, 0.296166658, 0.0939833298, 0.0352166668, 0.00863333326, 0, 0 }, { 0, 0, 0.00323333335, 0.00584999984, 0.0120166671, 0.069766663, 0.21208334, 0.54610002, 1.15441668, 2.21589994, 3.63963342, 5.4380002, 7.40705013, 9.69673347, 11.8830833, 13.2373667, 13.1246166, 11.8135166, 9.54366684, 6.86304998, 4.19364977, 2.27463341, 1.06103337, 0.413066655, 0.162083328, 0.0277666673, 0.0027999999, 0 }, { 0, 0.000633333344, 0.0052166665, 0.0143499998, 0.0808833316, 0.410216659, 1.04323328, 2.41928339, 4.77575016, 8.39441681, 13.3102665, 19.4773006, 27.036684, 35.2121658, 41.8408012, 45.2526016, 44.3388329, 39.141449, 31.3282166, 22.923933, 14.8310165, 8.66139984, 4.54796648, 2.13701677, 0.862900019, 0.207749993, 0.0296500009, 0.00203333329 }, { 0, 0, 0.0103166662, 0.0633499995, 0.395466655, 1.46340001, 3.58778334, 7.22781658, 13.0171165, 21.2179165, 31.5004005, 44.2063675, 58.9038506, 73.8041534, 85.1027298, 90.5997849, 88.9239349, 80.1812515, 65.9428177, 49.7938347, 34.3498344, 21.5100002, 12.390317, 6.63911676, 2.99271655, 0.843666673, 0.141633332, 0.00469999993 }, { 0, 0.000183333337, 0.0274999999, 0.221433327, 1.11951661, 3.28990006, 7.43646669, 14.2544336, 24.1377506, 37.288517, 53.1153984, 70.9128189, 89.2784653, 106.232964, 118.506119, 124.098152, 121.711334, 112.033333, 96.1081161, 75.1653671, 54.037117, 35.3124847, 20.9918995, 11.4424334, 5.38776684, 1.85558331, 0.372700006, 0.0303000007 }, { 0.000783333322, 0.019733334, 0.107666664, 0.595650017, 2.3124001, 5.92876673, 12.4360504, 22.4517994, 36.2947845, 53.8984184, 73.7647171, 94.1030807, 111.579483, 124.999916, 132.759109, 135.398697, 133.338654, 126.677536, 113.546669, 93.7442703, 69.7779312, 46.8328819, 28.1439171, 15.2010498, 7.03366661, 2.58303332, 0.513100028, 0.0318833329 }, { 0.00406666659, 0.0508166663, 0.329366654, 1.31735003, 3.74813342, 8.4834671, 16.8181839, 29.5974007, 46.9301491, 68.1070023, 90.2913818, 108.475716, 119.435417, 123.393852, 123.038048, 122.340652, 122.730049, 122.144096, 116.260933, 100.610603, 77.3180313, 52.8975983, 31.8106174, 16.357666, 7.18566656, 2.60661674, 0.481583327, 0.0271833334 }, { 0.00486666663, 0.0794666633, 0.512016654, 1.71938336, 4.44581652, 9.806633, 19.5264835, 34.504818, 54.700901, 78.138031, 99.0386963, 110.600464, 110.787552, 104.553619, 99.0472031, 99.388382, 104.333214, 110.882065, 111.07827, 99.1469193, 77.0405502, 52.7057648, 31.4484158, 15.3927164, 5.96113348, 1.89796662, 0.351833344, 0.0282166675 }, { 0.00666666683, 0.0985666662, 0.523033321, 1.67458332, 4.28908348, 9.87643337, 20.5393162, 37.1890335, 59.7151184, 83.398735, 100.225899, 103.168816, 93.8921356, 82.9528198, 79.4228363, 84.5250168, 93.8685837, 104.427536, 106.281181, 94.2218704, 71.8490677, 48.3172493, 28.4781837, 13.498167, 4.60050011, 1.15009999, 0.221833333, 0.0187333338 }, { 0.00593333319, 0.0763999969, 0.420883328, 1.28036666, 3.64608335, 9.55389977, 21.133234, 39.8545151, 64.0892181, 87.2096634, 98.7805862, 94.8668518, 81.6835327, 73.3427658, 76.1450653, 85.4255524, 97.2928009, 107.482582, 105.50943, 89.0295029, 64.9443512, 42.4968834, 25.3411007, 12.5802164, 3.98988342, 0.604533315, 0.124499999, 0.00816666707 }, { 0.00380000006, 0.0436833352, 0.242033333, 0.878816664, 3.06883335, 9.60744953, 22.7779827, 43.5750351, 68.9713364, 90.2566986, 97.8938141, 91.0827332, 79.706749, 79.3691177, 89.3386993, 101.714516, 113.037865, 117.5811, 107.42672, 84.5188828, 58.5871658, 38.2634506, 23.739233, 12.7121, 4.29471684, 0.44325, 0.0797833353, 0.0101666665 }, { 0.000533333339, 0.0182499997, 0.122616664, 0.607333362, 2.91783333, 10.6341667, 25.5538006, 47.5837173, 72.6322327, 91.6736526, 96.8884201, 91.0977325, 86.8673019, 96.9665527, 111.371834, 123.972069, 129.806549, 126.599548, 108.880333, 81.1576309, 55.2258682, 37.2046013, 23.9727993, 13.6437502, 5.10268354, 0.584699988, 0.0829833299, 0.0108666662 }, { 0.00188333332, 0.00824999996, 0.0541666672, 0.466183335, 3.06558323, 12.3512669, 28.5280666, 50.5083847, 73.750618, 90.3691864, 95.0769806, 93.2885361, 97.828949, 115.421318, 130.267242, 139.553604, 137.100632, 128.085754, 106.994514, 79.5539474, 56.0965652, 38.9430656, 25.537466, 14.61625, 5.72158337, 0.820299983, 0.0924500003, 0.0022166667 }, { 0.000733333349, 0.0038666667, 0.0450999998, 0.505583346, 3.56056666, 14.4081497, 30.9883175, 51.2096329, 71.4404297, 85.7322159, 91.3810349, 94.2424316, 105.047119, 123.204201, 135.689438, 139.110046, 131.804504, 121.436569, 101.340302, 78.3792648, 58.2829018, 41.2509346, 26.9801159, 14.8906002, 5.82828331, 1.07956672, 0.148216665, 0.0108333332 }, { 0.00066666666, 0.00396666676, 0.0743333325, 0.622966647, 4.46996689, 16.5289669, 32.5549164, 49.9447327, 66.3117142, 77.8862686, 83.7070465, 89.4484177, 101.136017, 115.857399, 126.473419, 127.426651, 121.056816, 111.218102, 95.3723297, 77.3547821, 59.6073341, 42.0403328, 26.7287674, 14.2431164, 5.61555004, 1.28709996, 0.191499993, 0.0122999996 }, { 0, 0.00728333322, 0.112199999, 0.953350008, 5.95223331, 18.5244007, 33.4511986, 48.1763496, 60.4605331, 69.2180328, 74.6814194, 80.736702, 89.5865479, 101.950417, 112.616501, 115.43692, 112.244835, 104.524147, 92.6265869, 77.2614822, 59.3285179, 40.8083, 24.9427509, 12.8347998, 5.15665007, 1.41666663, 0.210033327, 0.00888333376 }, { 0.00190000003, 0.00531666679, 0.180500001, 1.52014995, 7.62144995, 20.4178658, 34.9108315, 48.1825676, 58.2768517, 65.9944687, 71.7466354, 76.5832825, 83.1222, 95.1299362, 106.557198, 112.201385, 111.347931, 105.01828, 93.6185837, 76.6274338, 56.7010841, 37.7625656, 22.5467167, 11.3823338, 4.57905006, 1.29855001, 0.153933331, 0.0121833337 }, { 0.000250000012, 0.0121833337, 0.286316663, 2.04381657, 8.72351646, 21.7344666, 36.833168, 50.9790649, 62.3501511, 71.2715149, 77.8803024, 82.6346664, 89.9674301, 101.406319, 112.44548, 117.803452, 115.924614, 107.432503, 92.2773819, 71.8833008, 50.800251, 32.6939659, 18.7729664, 9.15635014, 3.64004993, 1.06850004, 0.146699995, 0.00683333352 }, { 0, 0.0152666671, 0.331999987, 2.25566673, 8.51305008, 20.6940842, 37.0852165, 53.7940331, 68.8694992, 81.1595993, 90.4059143, 97.8862991, 106.734566, 117.339516, 124.952415, 125.555748, 118.216248, 103.805832, 83.8763809, 61.2356491, 40.9524994, 24.9440327, 13.6286163, 6.5374999, 2.7138834, 0.749166667, 0.111683331, 0.00168333331 }, { 0.000533333339, 0.0126999998, 0.284233332, 1.83920002, 6.63258314, 16.9004841, 32.8094673, 51.5708847, 70.4237366, 87.2519989, 100.98513, 112.45575, 122.594002, 130.372299, 131.844894, 124.868034, 110.025803, 89.4660034, 66.5912704, 45.5973816, 28.5566673, 16.2958164, 8.51148319, 4.10908318, 1.70298338, 0.443816662, 0.0590500012, 0.000650000002 }, { 0.000516666682, 0.000983333332, 0.187083334, 1.08796668, 3.94443345, 10.8453665, 23.3906326, 40.6385345, 60.9691849, 81.0054016, 99.1114349, 113.100502, 122.524315, 125.302254, 120.613564, 107.185867, 87.7064133, 65.973053, 45.3337173, 28.7308159, 16.90345, 9.16145039, 4.70896673, 2.22501659, 0.835133314, 0.189116672, 0.0178333335, 0.00120000006 }, { 0, 0, 0.0641666651, 0.418766677, 1.73269999, 5.01473331, 12.0309162, 23.940134, 40.2565842, 58.8924828, 77.2688675, 92.0322037, 99.7043839, 99.1646652, 90.5921021, 75.5835037, 57.586132, 40.1938019, 25.4972324, 15.2398329, 8.52368355, 4.41923332, 2.20506668, 0.981649995, 0.31036666, 0.0579666682, 0.00961666647, 0 }, { 0, 0, 0.0158500001, 0.122199997, 0.543633342, 1.60084999, 4.20331669, 9.1435833, 16.8276157, 27.0768166, 38.1033821, 47.0437851, 51.6087494, 50.9622498, 45.4375839, 36.7445335, 27.4417839, 19.1085835, 12.11415, 7.21490002, 3.95933342, 1.99318337, 0.951233327, 0.399633348, 0.101816669, 0.0221833326, 0.00193333335, 0 }, { 0, 0, 0.00156666664, 0.0177833326, 0.127783328, 0.4745, 1.40550005, 3.18078327, 6.14340019, 9.82870007, 13.8693333, 16.7183342, 18.1000175, 17.7754002, 15.8076668, 13.1235504, 10.4980497, 7.79116678, 5.22193336, 3.16213322, 1.69133329, 0.825383306, 0.370583326, 0.139816672, 0.0312666669, 0.00356666674, 0.00173333334, 0 }, { 0, 0, 0, 0.000633333344, 0.0354500003, 0.16308333, 0.538283348, 1.19935, 2.31608343, 3.51143336, 4.85021687, 5.98023319, 6.44481659, 6.25923347, 5.57051659, 4.45076656, 3.53493333, 2.59181666, 1.70116663, 1.0086, 0.540283322, 0.238399997, 0.0752666667, 0.0161666665, 0.000516666682, 0.000983333332, 0, 0 }, { 0, 0, 0, 0, 0.00253333338, 0.0155833336, 0.041633334, 0.0891999975, 0.128216669, 0.196733341, 0.336016655, 0.429966658, 0.525983334, 0.590683341, 0.688033342, 0.592066646, 0.482733339, 0.343516678, 0.200433329, 0.088866666, 0.0456333347, 0.0192833338, 0.0151166664, 0.00200000009, 0, 0, 0, 0 } };
+u8 RecvChar;
+/*****************************************************************************/
+/**
+ *
+ * Main function to call the USB interrupt example.
+ *
+ * @param	None
+ *
+ * @return
+ * 		- XST_SUCCESS if successful
+ * 		- XST_FAILURE on error
+ *
+ ******************************************************************************/
+
+int main(void)
+{
+	int Status;
+
+	u32 CntrlRegister;
+	CntrlRegister = XUartPs_ReadReg(UART_BASEADDR, XUARTPS_CR_OFFSET);
+	XUartPs_WriteReg(UART_BASEADDR, XUARTPS_CR_OFFSET,
+			  ((CntrlRegister & ~XUARTPS_CR_EN_DIS_MASK) |
+			   XUARTPS_CR_TX_EN | XUARTPS_CR_RX_EN));
+	/* Run the USB Interrupt example.*/
+	Status = UsbIntrExample(&IntcInstance, &UsbInstance,
+				XPAR_XUSBPS_0_DEVICE_ID, XPAR_XUSBPS_0_INTR);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	//xil_scanf();
+	return XST_SUCCESS;
+}
+
+/*****************************************************************************/
+/**
+ *
+ * This function does a minimal DEVICE mode setup on the USB device and driver
+ * as a design example. The purpose of this function is to illustrate how to
+ * set up a USB flash disk emulation system.
+ *
+ *
+ * @param	IntcInstancePtr is a pointer to the instance of the INTC driver.
+ * @param	UsbInstancePtr is a pointer to the instance of USB driver.
+ * @param	UsbDeviceId is the Device ID of the USB Controller and is the
+ * 		XPAR_<USB_instance>_DEVICE_ID value from xparameters.h.
+ * @param	UsbIntrId is the Interrupt Id and is typically
+ * 		XPAR_<INTC_instance>_<USB_instance>_IP2INTC_IRPT_INTR value
+ * 		from xparameters.h.
+ *
+ * @return
+ * 		- XST_SUCCESS if successful
+ * 		- XST_FAILURE on error
+ *
+ ******************************************************************************/
+static int UsbIntrExample(XScuGic *IntcInstancePtr, XUsbPs *UsbInstancePtr,
+					u16 UsbDeviceId, u16 UsbIntrId)
+{
+	int	Status;
+	u32 i,bginaddr,j,img_num,RecvChar;
+	char *tmpp[10];
+	//unsigned char ch1, ch2, ch3, ch4;
+	int mgn,row,col;
+	//u8 bytesdate[4];
+	u32 *date,nextcluster,right=0,signal;
+	u8 require8[2];
+	u16 require16[3];
+	u32 require32[7];
+	u8	*MemPtr = NULL;
+	int	ReturnStatus = XST_FAILURE;
+	const char *f1="INPUTD";
+	const char *f2="INPUTD2";
+	float tmp;
+
+	/* For this example we only configure 2 endpoints:
+	 *   Endpoint 0 (default control endpoint)
+	 *   Endpoint 1 (BULK data endpoint)
+	 */
+	const u8 NumEndpoints = 2;
+
+	XUsbPs_Config		*UsbConfigPtr;
+	XUsbPs_DeviceConfig	DeviceConfig;
+
+	/* Initialize the USB driver so that it's ready to use,
+	 * specify the controller ID that is generated in xparameters.h
+	 */
+	UsbConfigPtr = XUsbPs_LookupConfig(UsbDeviceId);
+	if (NULL == UsbConfigPtr) {
+		goto out;
+	}
+
+
+	/* We are passing the physical base address as the third argument
+	 * because the physical and virtual base address are the same in our
+	 * example.  For systems that support virtual memory, the third
+	 * argument needs to be the virtual base address.
+	 */
+	Status = XUsbPs_CfgInitialize(UsbInstancePtr,
+				       UsbConfigPtr,
+				       UsbConfigPtr->BaseAddress);
+	if (XST_SUCCESS != Status) {
+		goto out;
+	}
+
+	/* Set up the interrupt subsystem.
+	 */
+	Status = UsbSetupIntrSystem(IntcInstancePtr,
+				    UsbInstancePtr,
+				    UsbIntrId);
+	if (XST_SUCCESS != Status)
+	{
+		goto out;
+	}
+
+	/* Configuration of the DEVICE side of the controller happens in
+	 * multiple stages.
+	 *
+	 * 1) The user configures the desired endpoint configuration using the
+	 * XUsbPs_DeviceConfig data structure. This includes the number of
+	 * endpoints, the number of Transfer Descriptors for each endpoint
+	 * (each endpoint can have a different number of Transfer Descriptors)
+	 * and the buffer size for the OUT (receive) endpoints.  Each endpoint
+	 * can have different buffer sizes.
+	 *
+	 * 2) Request the required size of DMAable memory from the driver using
+	 * the XUsbPs_DeviceMemRequired() call.
+	 *
+	 * 3) Allocate the DMAable memory and set up the DMAMemVirt and
+	 * DMAMemPhys members in the XUsbPs_DeviceConfig data structure.
+	 *
+	 * 4) Configure the DEVICE side of the controller by calling the
+	 * XUsbPs_ConfigureDevice() function.
+	 */
+
+	/*
+	 * For this example we only configure Endpoint 0 and Endpoint 1.
+	 *
+	 * Bufsize = 0 indicates that there is no buffer allocated for OUT
+	 * (receive) endpoint 0. Endpoint 0 is a control endpoint and we only
+	 * receive control packets on that endpoint. Control packets are 8
+	 * bytes in size and are received into the Queue Head's Setup Buffer.
+	 * Therefore, no additional buffer space is needed.
+	 */
+	DeviceConfig.EpCfg[0].Out.Type		= XUSBPS_EP_TYPE_CONTROL;
+	DeviceConfig.EpCfg[0].Out.NumBufs	= 2;
+	DeviceConfig.EpCfg[0].Out.BufSize	= 64;
+	DeviceConfig.EpCfg[0].Out.MaxPacketSize	= 64;
+	DeviceConfig.EpCfg[0].In.Type		= XUSBPS_EP_TYPE_CONTROL;
+	DeviceConfig.EpCfg[0].In.NumBufs	= 2;
+	DeviceConfig.EpCfg[0].In.MaxPacketSize	= 64;
+
+	DeviceConfig.EpCfg[1].Out.Type		= XUSBPS_EP_TYPE_BULK;
+	DeviceConfig.EpCfg[1].Out.NumBufs	= 16;
+	DeviceConfig.EpCfg[1].Out.BufSize	= 512;
+	DeviceConfig.EpCfg[1].Out.MaxPacketSize	= 512;
+	DeviceConfig.EpCfg[1].In.Type		= XUSBPS_EP_TYPE_BULK;
+	DeviceConfig.EpCfg[1].In.NumBufs	= 16;
+	DeviceConfig.EpCfg[1].In.MaxPacketSize	= 512;
+
+	DeviceConfig.NumEndpoints = NumEndpoints;
+
+	MemPtr = (u8 *)&Buffer[0];
+	memset(MemPtr,0,MEMORY_SIZE);
+	Xil_DCacheFlushRange((unsigned int)MemPtr, MEMORY_SIZE);
+
+	/* Finish the configuration of the DeviceConfig structure and configure
+	 * the DEVICE side of the controller.
+	 */
+	DeviceConfig.DMAMemPhys = (u32) MemPtr;
+
+	Status = XUsbPs_ConfigureDevice(UsbInstancePtr, &DeviceConfig);
+	if (XST_SUCCESS != Status) {
+		goto out;
+	}
+
+	/* Set the handler for receiving frames. */
+	Status = XUsbPs_IntrSetHandler(UsbInstancePtr, UsbIntrHandler, NULL,
+						XUSBPS_IXR_UE_MASK);
+	if (XST_SUCCESS != Status) {
+		goto out;
+	}
+
+	/* Set the handler for handling endpoint 0 events. This is where we
+	 * will receive and handle the Setup packet from the host.
+	 */
+	Status = XUsbPs_EpSetHandler(UsbInstancePtr, 0,
+				XUSBPS_EP_DIRECTION_OUT,
+				XUsbPs_Ep0EventHandler, UsbInstancePtr);
+
+	/* Set the handler for handling endpoint 1 events.
+	 *
+	 * Note that for this example we do not need to register a handler for
+	 * TX complete events as we only send data using static data buffers
+	 * that do not need to be free()d or returned to the OS after they have
+	 * been sent.
+	 */
+	Status = XUsbPs_EpSetHandler(UsbInstancePtr, 1,
+				XUSBPS_EP_DIRECTION_OUT,
+				XUsbPs_Ep1EventHandler, UsbInstancePtr);
+
+	/* Enable the interrupts. */
+	XUsbPs_IntrEnable(UsbInstancePtr, XUSBPS_IXR_UR_MASK |
+					   XUSBPS_IXR_UI_MASK);
+
+
+	/* Start the USB engine */
+	XUsbPs_Start(UsbInstancePtr);
+
+	/* At this point we wait for the user to plug in the usb plug. This
+	 * will cause the host to send USB packets. Once we received something,
+	 * we clean up and stop the controller.
+	 *
+	 * This will not really work if we want to use the USB storage
+	 * example. What can we do instead?
+	 */
+	int prompt=1;
+
+	while (NumReceivedFrames < 1) {
+		/* NOP */
+		if(XUartPs_IsReceiveData(UART_BASEADDR) && prompt)
+		{
+			RecvChar = XUartPs_ReadReg(UART_BASEADDR,
+								    XUARTPS_FIFO_OFFSET);
+			xil_printf("input 1 for train\r\ninput 2 for test\r\n");
+			VirtFlashDate(&VirtFlash);
+			Usbdatedfindfat32(VirtFlash,require8,require16,require32);
+
+			prompt=0;
+		}
+		if(XUartPs_IsReceiveData(UART_BASEADDR) && !prompt)
+		{
+			RecvChar = XUartPs_ReadReg(UART_BASEADDR,
+								    XUARTPS_FIFO_OFFSET);
+			xil_printf("%c\r\n",RecvChar);
+			require32[5]=require32[4];
+			if(RecvChar=='1')
+				require32[6]=Usbdatedfindfile(VirtFlash,&require32[5],f1);
+			else if(RecvChar=='2')
+				require32[6]=Usbdatedfindfile(VirtFlash,&require32[5],f2);
+			else
+				continue;
+			bginaddr=require32[4] + ((require32[6] - 2) * require8[1])*require16[0];
+			//bginaddr=bginaddr*require16[0];
+			nextcluster=require32[6]*4+require32[2];
+			//bytesdate[3]=VirtFlash[nextcluster];
+			//bytesdate[2]=VirtFlash[nextcluster + 1];
+			//bytesdate[1]=VirtFlash[nextcluster + 2];
+			//bytesdate[0]=VirtFlash[nextcluster + 3];
+			date=(u32*)(VirtFlash + nextcluster);
+			require32[6]=*date;
+			i=0;
+			//bytesdate[3]=VirtFlash[bginaddr + i];
+			//bytesdate[2]=VirtFlash[bginaddr + i + 1];
+			//bytesdate[1]=VirtFlash[bginaddr + i + 2];
+			//bytesdate[0]=VirtFlash[bginaddr + i + 3];
+			mgn=((int)*(VirtFlash + bginaddr + i) << 24) + ((int)*(VirtFlash + bginaddr + i + 1) << 16) + ((int)*(VirtFlash + bginaddr + i + 2) << 8) + *(VirtFlash + bginaddr + i + 3);
+			//date=(u32*)(VirtFlash + bginaddr + i);
+			//mgn=*date;
+			if(mgn==0x00000803 || mgn==0x00000801)
+				xil_printf("magic_number %d\r\n",mgn);
+			i=i + 4;
+			//bytesdate[3]=VirtFlash[bginaddr + i];
+			//bytesdate[2]=VirtFlash[bginaddr + i + 1];
+			//bytesdate[1]=VirtFlash[bginaddr + i + 2];
+			//bytesdate[0]=VirtFlash[bginaddr + i + 3];
+			mgn=((int)*(VirtFlash + bginaddr + i) << 24) + ((int)*(VirtFlash + bginaddr + i + 1) << 16) + ((int)*(VirtFlash + bginaddr + i + 2) << 8) + *(VirtFlash + bginaddr + i + 3);
+			xil_printf("img_number %d\r\n",mgn);
+			i=i+4;
+			//bytesdate[3]=VirtFlash[bginaddr + i];
+			//bytesdate[2]=VirtFlash[bginaddr + i + 1];
+			//bytesdate[1]=VirtFlash[bginaddr + i + 2];
+			//bytesdate[0]=VirtFlash[bginaddr + i + 3];
+			mgn=((int)*(VirtFlash + bginaddr + i) << 24) + ((int)*(VirtFlash + bginaddr + i + 1) << 16) + ((int)*(VirtFlash + bginaddr + i + 2) << 8) + *(VirtFlash + bginaddr + i + 3);
+			xil_printf("row_number %d\r\n",mgn);
+			i=i+4;
+			//bytesdate[3]=VirtFlash[bginaddr + i];
+			//bytesdate[2]=VirtFlash[bginaddr + i + 1];
+			//bytesdate[1]=VirtFlash[bginaddr + i + 2];
+			//bytesdate[0]=VirtFlash[bginaddr + i + 3];
+			mgn=((int)*(VirtFlash + bginaddr + i) << 24) + ((int)*(VirtFlash + bginaddr + i + 1) << 16) + ((int)*(VirtFlash + bginaddr + i + 2) << 8) + *(VirtFlash + bginaddr + i + 3);
+			xil_printf("col_number %d\r\n",mgn);
+			i=i+4;
+			dateport.Axilites_BaseAddress = DATEPORT_BASEADDR;
+			dateport.IsReady = XIL_COMPONENT_IS_READY;
+
+			while(!XDateport_IsIdle(&dateport));
+			XDateport_Set_signal_r(&dateport,0);
+			XDateport_Start(&dateport);
+			if(RecvChar=='1')
+			{
+				for(j=0,img_num=0;img_num<60000;)
+				{
+					while(!XDateport_IsIdle(&dateport));
+					while(!XDateport_Get_signal_out_vld(&dateport));
+					signal=XDateport_Get_signal_out(&dateport);
+					row=j/32;
+					col=j%32;
+					if(j<32*32)
+					{
+						if(signal==2)
+						{
+							if(row<2||31-row<2||col<2||31-col<2)
+							{
+								XDateport_Set_date(&dateport,0);
+								XDateport_Set_signal_r(&dateport,3);
+							}
+							else
+							{
+								tmp=(float)*(VirtFlash + bginaddr + i)-avg[row-2][col-2];
+								date=(u32*)&tmp;
+								XDateport_Set_date(&dateport,*date);
+								XDateport_Set_signal_r(&dateport,3);
+								i++;
+							}
+						}
+						//while(!XDateport_IsIdle(&dateport));
+						XDateport_Start(&dateport);
+						j++;
+					}
+					else
+					{
+						XDateport_Set_date(&dateport,(u32)*(VirtFlash + bginaddr + i));
+						XDateport_Set_signal_r(&dateport,1);
+						while(!XDateport_IsIdle(&dateport));
+						XDateport_Start(&dateport);
+						j=0;
+						img_num++;
+						i++;
+						if(!(img_num%1000))
+						{
+							while(!XDateport_IsIdle(&dateport));
+							while(!XDateport_Get_led_vld(&dateport));
+							right=XDateport_Get_led(&dateport);
+							sprintf(tmpp,"%.2lf",((float)right/(float)img_num));
+							xil_printf("right rate is %d to %d = %s\n\r",right,img_num,tmpp);
+						}
+						if(img_num==59999)
+							xil_printf("here\r\n");
+					}
+					if(i==require8[1]*require16[0]-1)
+					{
+
+						//bytesdate[3]=VirtFlash[nextcluster];
+						//bytesdate[2]=VirtFlash[nextcluster + 1];
+						//bytesdate[1]=VirtFlash[nextcluster + 2];
+						//bytesdate[0]=VirtFlash[nextcluster + 3];
+						bginaddr=require32[4] + ((require32[6] - 2) * require8[1]) * require16[0];
+						//bginaddr=bginaddr*require16[0];
+						nextcluster=require32[6] * 4 + require32[2];
+						date=(u32*)(VirtFlash + nextcluster);
+						require32[6]=*date;
+						i=0;
+					}
+					//else
+						//i++;
+					//xil_printf("magic_number %d\r\n",mgn);
+					//if(mgn==2051)
+					//{
+						//xil_printf("location:%d,%p\r\n",i,VirtFlash+i);
+					//}
+				}
+			}
+			else
+			{
+				for(j=0,img_num=0;img_num<10000;)
+				{
+					while(!XDateport_IsIdle(&dateport));
+					while(!XDateport_Get_signal_out_vld(&dateport));
+					signal=XDateport_Get_signal_out(&dateport);
+					row=j/32;
+					col=j%32;
+					if(j<32*32)
+					{
+						if(signal==2)
+						{
+							if(row<2||31-row<2||col<2||31-col<2)
+							{
+								XDateport_Set_date(&dateport,0);
+								XDateport_Set_signal_r(&dateport,3);
+							}
+							else
+							{
+								//tmp=(float)*(VirtFlash + bginaddr + i)-avg[row-2][col-2];
+								//date=(u32*)&tmp;
+								XDateport_Set_date(&dateport,(u32)*(VirtFlash + bginaddr + i));
+								XDateport_Set_signal_r(&dateport,3);
+								i++;
+							}
+						}
+						//while(!XDateport_IsIdle(&dateport));
+						XDateport_Start(&dateport);
+						j++;
+					}
+					else
+					{
+						XDateport_Set_date(&dateport,(u32)*(VirtFlash + bginaddr + i));
+						XDateport_Set_signal_r(&dateport,1);
+						while(!XDateport_IsIdle(&dateport));
+						XDateport_Start(&dateport);
+						j=0;
+						img_num++;
+						i++;
+						if(!(img_num%1000))
+						{
+							while(!XDateport_IsIdle(&dateport));
+							while(!XDateport_Get_led_vld(&dateport));
+							right=XDateport_Get_led(&dateport);
+							sprintf(tmpp,"%.2f",((float)right/(float)img_num));
+							xil_printf("right rate is %d to %d = %s\n\r",right,img_num,tmpp);
+						}
+					}
+					if(i==require8[1]*require16[0]-1)
+					{
+
+						//bytesdate[3]=VirtFlash[nextcluster];
+						//bytesdate[2]=VirtFlash[nextcluster + 1];
+						//bytesdate[1]=VirtFlash[nextcluster + 2];
+						//bytesdate[0]=VirtFlash[nextcluster + 3];
+						bginaddr=require32[4] + ((require32[6] - 2) * require8[1]) * require16[0];
+						//bginaddr=bginaddr*require16[0];
+						nextcluster=require32[6] * 4 + require32[2];
+						date=(u32*)(VirtFlash + nextcluster);
+						require32[6]=*date;
+						i=0;
+					}
+					//else
+						//i++;
+					//xil_printf("magic_number %d\r\n",mgn);
+					//if(mgn==2051)
+					//{
+						//xil_printf("location:%d,%p\r\n",i,VirtFlash+i);
+					//}
+				}
+			}
+		}
+	}
+
+
+	/* Set return code to indicate success and fall through to clean-up
+	 * code.
+	 */
+	ReturnStatus = XST_SUCCESS;
+
+out:
+	/* Clean up. It's always safe to disable interrupts and clear the
+	 * handlers, even if they have not been enabled/set. The same is true
+	 * for disabling the interrupt subsystem.
+	 */
+	XUsbPs_Stop(UsbInstancePtr);
+	XUsbPs_IntrDisable(UsbInstancePtr, XUSBPS_IXR_ALL);
+	(int) XUsbPs_IntrSetHandler(UsbInstancePtr, NULL, NULL, 0);
+
+	UsbDisableIntrSystem(IntcInstancePtr, UsbIntrId);
+
+	/* Free allocated memory.
+	 */
+	if (NULL != UsbInstancePtr->UserDataPtr) {
+		free(UsbInstancePtr->UserDataPtr);
+	}
+	return ReturnStatus;
+}
+
+/*****************************************************************************/
+/**
+ *
+ * This function is the handler which performs processing for the USB driver.
+ * It is called from an interrupt context such that the amount of processing
+ * performed should be minimized.
+ *
+ * This handler provides an example of how to handle USB interrupts and
+ * is application specific.
+ *
+ * @param	CallBackRef is the Upper layer callback reference passed back
+ *		when the callback function is invoked.
+ * @param 	Mask is the Interrupt Mask.
+ * @param	CallBackRef is the User data reference.
+ *
+ * @return
+ * 		- XST_SUCCESS if successful
+ * 		- XST_FAILURE on error
+ *
+ * @note	None.
+ *
+ ******************************************************************************/
+static void UsbIntrHandler(void *CallBackRef, u32 Mask)
+{
+	NumIrqs++;
+}
+
+
+/*****************************************************************************/
+/**
+* This funtion is registered to handle callbacks for endpoint 0 (Control).
+*
+* It is called from an interrupt context such that the amount of processing
+* performed should be minimized.
+*
+*
+* @param	CallBackRef is the reference passed in when the function
+*		was registered.
+* @param	EpNum is the Number of the endpoint on which the event occured.
+* @param	EventType is type of the event that occured.
+*
+* @return	None.
+*
+******************************************************************************/
+static void XUsbPs_Ep0EventHandler(void *CallBackRef, u8 EpNum,
+					u8 EventType, void *Data)
+{
+	XUsbPs			*InstancePtr;
+	int			Status;
+	XUsbPs_SetupData	SetupData;
+	u8	*BufferPtr;
+	u32	BufferLen;
+	u32	Handle;
+
+
+	Xil_AssertVoid(NULL != CallBackRef);
+
+	InstancePtr = (XUsbPs *) CallBackRef;
+
+	switch (EventType) {
+
+	/* Handle the Setup Packets received on Endpoint 0. */
+	case XUSBPS_EP_EVENT_SETUP_DATA_RECEIVED:
+		Status = XUsbPs_EpGetSetupData(InstancePtr, EpNum, &SetupData);
+		if (XST_SUCCESS == Status) {
+			/* Handle the setup packet. */
+			(int) XUsbPs_Ch9HandleSetupPacket(InstancePtr,
+							   &SetupData);
+		}
+		break;
+
+	/* We get data RX events for 0 length packets on endpoint 0. We receive
+	 * and immediately release them again here, but there's no action to be
+	 * taken.
+	 */
+	case XUSBPS_EP_EVENT_DATA_RX:
+		/* Get the data buffer. */
+		Status = XUsbPs_EpBufferReceive(InstancePtr, EpNum,
+					&BufferPtr, &BufferLen, &Handle);
+		if (XST_SUCCESS == Status) {
+			/* Return the buffer. */
+			XUsbPs_EpBufferRelease(Handle);
+		}
+		break;
+
+	default:
+		/* Unhandled event. Ignore. */
+		break;
+	}
+}
+
+
+/*****************************************************************************/
+/**
+* This funtion is registered to handle callbacks for endpoint 1 (Bulk data).
+*
+* It is called from an interrupt context such that the amount of processing
+* performed should be minimized.
+*
+*
+* @param	CallBackRef is the reference passed in when the function was
+*		registered.
+* @param	EpNum is the Number of the endpoint on which the event occured.
+* @param	EventType is type of the event that occured.
+*
+* @return	None.
+*
+* @note 	None.
+*
+******************************************************************************/
+static void XUsbPs_Ep1EventHandler(void *CallBackRef, u8 EpNum,
+					u8 EventType, void *Data)
+{
+	XUsbPs *InstancePtr;
+	int Status;
+	u8	*BufferPtr;
+	u32	BufferLen;
+	u32 InavalidateLen;
+	u32	Handle;
+
+
+	Xil_AssertVoid(NULL != CallBackRef);
+
+	InstancePtr = (XUsbPs *) CallBackRef;
+
+	switch (EventType) {
+	case XUSBPS_EP_EVENT_DATA_RX:
+		/* Get the data buffer.*/
+		Status = XUsbPs_EpBufferReceive(InstancePtr, EpNum,
+					&BufferPtr, &BufferLen, &Handle);
+		/* Invalidate the Buffer Pointer */
+		InavalidateLen =  BufferLen;
+		if (BufferLen % 32) {
+			InavalidateLen = (BufferLen/32) * 32 + 32;
+		}
+
+		Xil_DCacheInvalidateRange((unsigned int)BufferPtr,
+									InavalidateLen);
+		if (XST_SUCCESS == Status) {
+			/* Handle the storage class request. */
+			XUsbPs_HandleStorageReq(InstancePtr, EpNum,
+							BufferPtr, BufferLen);
+			/* Release the buffer. */
+			XUsbPs_EpBufferRelease(Handle);
+		}
+		break;
+
+	default:
+		/* Unhandled event. Ignore. */
+		break;
+	}
+}
+
+/*****************************************************************************/
+/**
+*
+* This function setups the interrupt system such that interrupts can occur for
+* the USB controller. This function is application specific since the actual
+* system may or may not have an interrupt controller. The USB controller could
+* be directly connected to a processor without an interrupt controller.  The
+* user should modify this function to fit the application.
+*
+* @param	IntcInstancePtr is a pointer to instance of the Intc controller.
+* @param	UsbInstancePtr is a pointer to instance of the USB controller.
+* @param	UsbIntrId is the Interrupt Id and is typically
+* 		XPAR_<INTC_instance>_<USB_instance>_VEC_ID value
+* 		from xparameters.h
+*
+* @return
+* 		- XST_SUCCESS if successful
+* 		- XST_FAILURE on error
+*
+******************************************************************************/
+static int UsbSetupIntrSystem(XScuGic *IntcInstancePtr,
+			      XUsbPs *UsbInstancePtr, u16 UsbIntrId)
+{
+	int Status;
+	XScuGic_Config *IntcConfig;
+
+	/*
+	 * Initialize the interrupt controller driver so that it is ready to
+	 * use.
+	 */
+	IntcConfig = XScuGic_LookupConfig(XPAR_SCUGIC_SINGLE_DEVICE_ID);
+	if (NULL == IntcConfig) {
+		return XST_FAILURE;
+	}
+	Status = XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig,
+					IntcConfig->CpuBaseAddress);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	Xil_ExceptionInit();
+	/*
+	 * Connect the interrupt controller interrupt handler to the hardware
+	 * interrupt handling logic in the processor.
+	 */
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT,
+				    (Xil_ExceptionHandler)XScuGic_InterruptHandler,
+				    IntcInstancePtr);
+	/*
+	 * Connect the device driver handler that will be called when an
+	 * interrupt for the device occurs, the handler defined above performs
+	 * the specific interrupt processing for the device.
+	 */
+	Status = XScuGic_Connect(IntcInstancePtr, UsbIntrId,
+				(Xil_ExceptionHandler)XUsbPs_IntrHandler,
+				(void *)UsbInstancePtr);
+	if (Status != XST_SUCCESS) {
+		return Status;
+	}
+	/*
+	 * Enable the interrupt for the device.
+	 */
+	XScuGic_Enable(IntcInstancePtr, UsbIntrId);
+
+	/*
+	 * Enable interrupts in the Processor.
+	 */
+	Xil_ExceptionEnableMask(XIL_EXCEPTION_IRQ);
+
+	return XST_SUCCESS;
+}
+
+/*****************************************************************************/
+/**
+*
+* This function disables the interrupts that occur for the USB controller.
+*
+* @param	IntcInstancePtr is a pointer to instance of the INTC driver.
+* @param	UsbIntrId is the Interrupt Id and is typically
+* 		XPAR_<INTC_instance>_<USB_instance>_VEC_ID value
+* 		from xparameters.h
+*
+* @return	None
+*
+* @note		None.
+*
+******************************************************************************/
+static void UsbDisableIntrSystem(XScuGic *IntcInstancePtr, u16 UsbIntrId)
+{
+	/* Disconnect and disable the interrupt for the USB controller. */
+	XScuGic_Disconnect(IntcInstancePtr, UsbIntrId);
+}
+
+static void Usbdatedfindfat32(volatile u8 *VirtFlash,u8 *require8,u16 *require16,u32 *require32)
+{
+	u8 readdate[4],fatnum,secperclus;
+	u16 *date=(u16*)readdate;
+	u16 persector,resector,filesyssec;
+	u32 *date32=(u32*)readdate;
+	u32 fatsec,rootclu;
+	u32 fat1addr,fat2addr,rootaddr;
+	//int i;
+	//char filename[8];
+	date=(u16*)(VirtFlash + 0xb);
+	//readdate[1]=VirtFlash[0xb];
+	//readdate[0]=VirtFlash[0xb + 0x1];
+	persector=*date;
+	//readdate[1]=VirtFlash[0xe];
+	//readdate[0]=VirtFlash[0xe + 0x1];
+	date=(u16*)(VirtFlash + 0xe);
+	resector=*date;
+	//readdate[1]=VirtFlash[0x30];
+	//readdate[0]=VirtFlash[0x30 + 0x1];
+	date=(u16*)(VirtFlash + 0x30);
+	filesyssec=*date;
+	//readdate[3]=VirtFlash[0x24];
+	//readdate[2]=VirtFlash[0x24 + 0x1];
+	//readdate[1]=VirtFlash[0x24 + 0x2];
+	//readdate[0]=VirtFlash[0x24 + 0x3];
+	date32=(u32*)(VirtFlash + 0x24);
+	fatsec=*date32;
+	//readdate[3]=VirtFlash[0x2c];
+	//readdate[2]=VirtFlash[0x2c + 0x1];
+	//readdate[1]=VirtFlash[0x2c + 0x2];
+	//readdate[0]=VirtFlash[0x2c + 0x3];
+	date32=(u32*)(VirtFlash + 0x2c);
+	rootclu=*date32;
+	secperclus=VirtFlash[0xd];
+	fatnum=VirtFlash[0x10];
+	fat1addr=resector * persector;
+	fat2addr=fat1addr + fatsec * persector;
+	rootaddr=resector + fatsec * 2 + (rootclu - 2) * secperclus;
+	rootaddr=rootaddr * persector;
+	require8[0]=fatnum;require8[1]=secperclus;
+	require16[0]=persector;require16[1]=resector;require16[2]=filesyssec;
+	require32[0]=fatsec;require32[1]=rootclu;require32[2]=fat1addr;require32[3]=fat2addr;
+	require32[4]=rootaddr;
+	/*nowaddr=rootaddr;
+	readdate[0]=VirtFlash[nowaddr + 0x1a];
+	readdate[1]=VirtFlash[nowaddr + 0x1b];
+	readdate[2]=VirtFlash[nowaddr + 0x14];
+	readdate[3]=VirtFlash[nowaddr + 0x15];
+	date32=(u32*)readdate;
+	require32[5]=nowaddr;
+	require32[6]=*date32;
+	while(1)
+	{
+		for(i=0;i<8;i++)
+		{
+			if(VirtFlash[nowaddr + i]==' ')
+			{
+				filename[i]='\0';
+				break;
+			}
+			filename[i]=VirtFlash[nowaddr + i];
+		}
+		//char *aimname="INPUTD";
+		int t=strcmp(filename,"INPUTD");
+		if(i==6)
+		{
+			for(i=0,t=0;filename[i] && aimname[i];i++)
+				t=filename[i]-aimname[i];
+		}
+		else
+			t=-1;
+		if(!t)
+		{
+			readdate[0]=VirtFlash[nowaddr + 0x1a];
+			readdate[1]=VirtFlash[nowaddr + 0x1b];
+			readdate[2]=VirtFlash[nowaddr + 0x14];
+			readdate[3]=VirtFlash[nowaddr + 0x15];
+			date32=(u32*)readdate;
+			require32[5]=nowaddr;
+			require32[6]=*date32;
+			return ;
+		}
+		else
+		{
+			nowaddr=nowaddr+32;
+		}
+
+	}*/
+	//return 0xffff;
+	//VirtFlash[]
+}
+
+static u32 Usbdatedfindfile(volatile u8 *VirtFlash,u32 *nowaddr,const char* aimfilename)
+{
+	u8 readdate[4];
+	u32 *date=(u32*)readdate;
+	int i;
+	char filename[8];
+	//u32 nowaddr=rootaddr;
+	while(1)
+	{
+		for(i=0;i<8;i++)
+		{
+			if(VirtFlash[*nowaddr + i]==' ')
+			{
+				filename[i]='\0';
+				break;
+			}
+			filename[i]=VirtFlash[*nowaddr + i];
+		}
+		//char *aimname="INPUTD";
+		int t=strcmp(filename,aimfilename);
+		/*if(i==6)
+		{
+			for(i=0,t=0;filename[i] && aimname[i];i++)
+				t=filename[i]-aimname[i];
+		}
+		else
+			t=-1;*/
+		if(!t)
+		{
+			readdate[0]=VirtFlash[*nowaddr + 0x1a];
+			readdate[1]=VirtFlash[*nowaddr + 0x1b];
+			readdate[2]=VirtFlash[*nowaddr + 0x14];
+			readdate[3]=VirtFlash[*nowaddr + 0x15];
+			date=(u32*)readdate;
+			//require32[5]=*nowaddr;
+			return *date;
+			//return *nowaddr;
+		}
+		else
+		{
+			*nowaddr = *nowaddr + 32;
+		}
+	}
+	return 0xffffffff;
+}

@@ -1,0 +1,25 @@
+23:43:03 **** Auto Build of configuration Debug for project test_co_run ****
+make all 
+Building file: ../src/cnn_run.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/cnn_run.o" -I../../test_co_run_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/cnn_run.d" -MT"src/cnn_run.d" -o "src/cnn_run.o" "../src/cnn_run.c"
+../src/cnn_run.c: In function 'main':
+../src/cnn_run.c:58:9: warning: variable 'date_2' set but not used [-Wunused-but-set-variable]
+  float *date_2;
+         ^
+Finished building: ../src/cnn_run.c
+ 
+Building target: test_co_run.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../test_co_run_bsp/ps7_cortexa9_0/lib -o "test_co_run.elf"  ./src/cnn_run.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: test_co_run.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size test_co_run.elf  |tee "test_co_run.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  24008	   1152	  22660	  47820	   bacc	test_co_run.elf
+Finished building: test_co_run.elf.size
+ 
+
+23:43:04 Build Finished (took 1s.208ms)
+

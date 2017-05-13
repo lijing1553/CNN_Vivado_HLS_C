@@ -1,0 +1,1805 @@
+
+
+================================================================
+== Vivado HLS Report for 'dateport_update_C3'
+================================================================
+* Date:           Tue May 09 23:54:59 2017
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        final_le
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     14.51|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +---------+---------+---------+---------+---------+
+    |      Latency      |      Interval     | Pipeline|
+    |   min   |   max   |   min   |   max   |   Type  |
+    +---------+---------+---------+---------+---------+
+    |  1044050|  1044050|  1044050|  1044050|   none  |
+    +---------+---------+---------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                         |      Latency      | Iteration|  Initiation Interval  | Trip |          |
+        |        Loop Name        |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1                 |  1032384|  1032384|     10754|          -|          -|    96|    no    |
+        | + Loop 1.1              |       35|       35|         7|          -|          -|     5|    no    |
+        |  ++ Loop 1.1.1          |        5|        5|         1|          -|          -|     5|    no    |
+        | + L_L_update_C3_label6  |    10504|    10504|        47|         42|          1|   250|    yes   |
+        | + Loop 1.3              |      210|      210|        42|          -|          -|     5|    no    |
+        |  ++ Loop 1.3.1          |       40|       40|         8|          -|          -|     5|    no    |
+        |- Loop 2                 |    11664|    11664|       729|          -|          -|    16|    no    |
+        | + Loop 2.1              |      720|      720|        72|          -|          -|    10|    no    |
+        |  ++ Loop 2.1.1          |       70|       70|         7|          -|          -|    10|    no    |
+        +-------------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       -|      -|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|      -|
+|Register         |        -|      -|       -|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
+N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 42, depth = 47
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 77
+* Pipeline: 1
+  Pipeline-0: II = 42, D = 47, States = { 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	62  / (exitcond_flatten9)
+	3  / (!exitcond_flatten9)
+3 --> 
+	4  / (!exitcond10)
+	5  / (exitcond10)
+4 --> 
+	3  / (exitcond9)
+	4  / (!exitcond9)
+5 --> 
+	52  / (exitcond_flatten)
+	6  / (!exitcond_flatten)
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / true
+32 --> 
+	33  / true
+33 --> 
+	34  / true
+34 --> 
+	35  / true
+35 --> 
+	36  / true
+36 --> 
+	37  / true
+37 --> 
+	38  / true
+38 --> 
+	39  / true
+39 --> 
+	40  / true
+40 --> 
+	41  / true
+41 --> 
+	42  / true
+42 --> 
+	43  / true
+43 --> 
+	44  / true
+44 --> 
+	45  / true
+45 --> 
+	46  / true
+46 --> 
+	47  / true
+47 --> 
+	48  / true
+48 --> 
+	49  / true
+49 --> 
+	50  / true
+50 --> 
+	51  / true
+51 --> 
+	5  / true
+52 --> 
+	53  / true
+53 --> 
+	54  / (!exitcond4)
+	2  / (exitcond4)
+54 --> 
+	53  / (exitcond3)
+	55  / (!exitcond3)
+55 --> 
+	56  / true
+56 --> 
+	57  / true
+57 --> 
+	58  / true
+58 --> 
+	59  / true
+59 --> 
+	60  / true
+60 --> 
+	61  / true
+61 --> 
+	54  / true
+62 --> 
+	63  / (!exitcond2)
+63 --> 
+	71  / (exitcond1)
+	64  / (!exitcond1)
+64 --> 
+	63  / (exitcond)
+	65  / (!exitcond)
+65 --> 
+	66  / true
+66 --> 
+	67  / true
+67 --> 
+	68  / true
+68 --> 
+	69  / true
+69 --> 
+	70  / true
+70 --> 
+	64  / true
+71 --> 
+	72  / true
+72 --> 
+	73  / true
+73 --> 
+	74  / true
+74 --> 
+	75  / true
+75 --> 
+	76  / true
+76 --> 
+	77  / true
+77 --> 
+	62  / true
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: tmp [1/1] 0.00ns
+:0  %tmp = alloca [25 x float], align 4
+
+ST_1: stg_79 [1/1] 1.57ns
+:1  br label %.preheader22
+
+
+ <State 2>: 3.54ns
+ST_2: indvar_flatten9 [1/1] 0.00ns
+.preheader22:0  %indvar_flatten9 = phi i7 [ 0, %0 ], [ %indvar_flatten_next1, %3 ]
+
+ST_2: i [1/1] 0.00ns
+.preheader22:1  %i = phi i5 [ 0, %0 ], [ %i_mid2, %3 ]
+
+ST_2: j [1/1] 0.00ns
+.preheader22:2  %j = phi i3 [ 0, %0 ], [ %j_15, %3 ]
+
+ST_2: exitcond_flatten9 [1/1] 1.97ns
+.preheader22:3  %exitcond_flatten9 = icmp eq i7 %indvar_flatten9, -32
+
+ST_2: indvar_flatten_next1 [1/1] 1.72ns
+.preheader22:4  %indvar_flatten_next1 = add i7 %indvar_flatten9, 1
+
+ST_2: stg_85 [1/1] 1.57ns
+.preheader22:5  br i1 %exitcond_flatten9, label %.preheader14, label %.preheader22.preheader
+
+ST_2: empty_62 [1/1] 0.00ns
+.preheader22.preheader:0  %empty_62 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 96, i64 96, i64 96) nounwind
+
+ST_2: exitcond14 [1/1] 1.62ns
+.preheader22.preheader:1  %exitcond14 = icmp eq i3 %j, -2
+
+ST_2: j_mid2 [1/1] 1.37ns
+.preheader22.preheader:2  %j_mid2 = select i1 %exitcond14, i3 0, i3 %j
+
+ST_2: i_3 [1/1] 1.72ns
+.preheader22.preheader:3  %i_3 = add i5 %i, 1
+
+ST_2: i_mid2 [1/1] 1.37ns
+.preheader22.preheader:4  %i_mid2 = select i1 %exitcond14, i5 %i_3, i5 %i
+
+ST_2: stg_91 [1/1] 1.57ns
+.preheader22.preheader:5  br label %.preheader21
+
+
+ <State 3>: 1.72ns
+ST_3: k [1/1] 0.00ns
+.preheader21:0  %k = phi i3 [ 0, %.preheader22.preheader ], [ %k_13, %.preheader20 ]
+
+ST_3: exitcond10 [1/1] 1.62ns
+.preheader21:1  %exitcond10 = icmp eq i3 %k, -3
+
+ST_3: empty [1/1] 0.00ns
+.preheader21:2  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 5, i64 5, i64 5) nounwind
+
+ST_3: k_13 [1/1] 0.80ns
+.preheader21:3  %k_13 = add i3 %k, 1
+
+ST_3: stg_96 [1/1] 0.00ns
+.preheader21:4  br i1 %exitcond10, label %.preheader17.preheader, label %.preheader20.preheader
+
+ST_3: tmp_135_trn_cast [1/1] 0.00ns
+.preheader20.preheader:0  %tmp_135_trn_cast = zext i3 %k to i6
+
+ST_3: tmp_160 [1/1] 0.00ns
+.preheader20.preheader:1  %tmp_160 = call i5 @_ssdm_op_BitConcatenate.i5.i3.i2(i3 %k, i2 0)
+
+ST_3: p_shl_cast [1/1] 0.00ns
+.preheader20.preheader:2  %p_shl_cast = zext i5 %tmp_160 to i6
+
+ST_3: p_addr16 [1/1] 1.72ns
+.preheader20.preheader:3  %p_addr16 = add i6 %tmp_135_trn_cast, %p_shl_cast
+
+ST_3: stg_101 [1/1] 1.57ns
+.preheader20.preheader:4  br label %.preheader20
+
+ST_3: tmp_156 [1/1] 0.00ns
+.preheader17.preheader:0  %tmp_156 = call i7 @_ssdm_op_BitConcatenate.i7.i3.i4(i3 %j_mid2, i4 0)
+
+ST_3: p_shl77_cast [1/1] 0.00ns
+.preheader17.preheader:1  %p_shl77_cast = zext i7 %tmp_156 to i8
+
+ST_3: tmp_157 [1/1] 0.00ns
+.preheader17.preheader:2  %tmp_157 = call i4 @_ssdm_op_BitConcatenate.i4.i3.i1(i3 %j_mid2, i1 false)
+
+ST_3: p_shl78_cast [1/1] 0.00ns
+.preheader17.preheader:3  %p_shl78_cast = zext i4 %tmp_157 to i8
+
+ST_3: S2_y_addr5 [1/1] 1.72ns
+.preheader17.preheader:4  %S2_y_addr5 = sub i8 %p_shl77_cast, %p_shl78_cast
+
+ST_3: S2_y_addr13_cast [1/1] 0.00ns
+.preheader17.preheader:5  %S2_y_addr13_cast = sext i8 %S2_y_addr5 to i9
+
+ST_3: tmp_158 [1/1] 0.00ns
+.preheader17.preheader:6  %tmp_158 = call i8 @_ssdm_op_BitConcatenate.i8.i5.i3(i5 %i_mid2, i3 0)
+
+ST_3: p_shl79_cast [1/1] 0.00ns
+.preheader17.preheader:7  %p_shl79_cast = zext i8 %tmp_158 to i9
+
+ST_3: tmp_159 [1/1] 0.00ns
+.preheader17.preheader:8  %tmp_159 = call i6 @_ssdm_op_BitConcatenate.i6.i5.i1(i5 %i_mid2, i1 false)
+
+ST_3: p_shl80_cast [1/1] 0.00ns
+.preheader17.preheader:9  %p_shl80_cast = zext i6 %tmp_159 to i9
+
+ST_3: C3_d_addr9 [1/1] 1.72ns
+.preheader17.preheader:10  %C3_d_addr9 = add i9 %p_shl80_cast, %p_shl79_cast
+
+ST_3: stg_113 [1/1] 1.57ns
+.preheader17.preheader:11  br label %.preheader17
+
+
+ <State 4>: 4.11ns
+ST_4: m [1/1] 0.00ns
+.preheader20:0  %m = phi i3 [ %m_4, %1 ], [ 0, %.preheader20.preheader ]
+
+ST_4: exitcond9 [1/1] 1.62ns
+.preheader20:1  %exitcond9 = icmp eq i3 %m, -3
+
+ST_4: empty_55 [1/1] 0.00ns
+.preheader20:2  %empty_55 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 5, i64 5, i64 5) nounwind
+
+ST_4: m_4 [1/1] 0.80ns
+.preheader20:3  %m_4 = add i3 %m, 1
+
+ST_4: stg_118 [1/1] 0.00ns
+.preheader20:4  br i1 %exitcond9, label %.preheader21, label %1
+
+ST_4: tmp_138_trn_cast [1/1] 0.00ns
+:0  %tmp_138_trn_cast = zext i3 %m to i6
+
+ST_4: p_addr18 [1/1] 1.72ns
+:1  %p_addr18 = add i6 %tmp_138_trn_cast, %p_addr16
+
+ST_4: tmp_184 [1/1] 0.00ns
+:2  %tmp_184 = zext i6 %p_addr18 to i64
+
+ST_4: tmp_addr [1/1] 0.00ns
+:3  %tmp_addr = getelementptr [25 x float]* %tmp, i64 0, i64 %tmp_184
+
+ST_4: stg_123 [1/1] 2.39ns
+:4  store float 0.000000e+00, float* %tmp_addr, align 4
+
+ST_4: stg_124 [1/1] 0.00ns
+:5  br label %.preheader20
+
+
+ <State 5>: 8.25ns
+ST_5: indvar_flatten1 [1/1] 0.00ns
+.preheader17:0  %indvar_flatten1 = phi i8 [ %indvar_flatten_next9, %.preheader19 ], [ 0, %.preheader17.preheader ]
+
+ST_5: k_1 [1/1] 0.00ns
+.preheader17:1  %k_1 = phi i3 [ %k_1_mid2, %.preheader19 ], [ 0, %.preheader17.preheader ]
+
+ST_5: indvar_flatten [1/1] 0.00ns
+.preheader17:2  %indvar_flatten = phi i7 [ %indvar_flatten_next, %.preheader19 ], [ 0, %.preheader17.preheader ]
+
+ST_5: m_1 [1/1] 0.00ns
+.preheader17:3  %m_1 = phi i3 [ %m_1_mid2, %.preheader19 ], [ 0, %.preheader17.preheader ]
+
+ST_5: n [1/1] 0.00ns
+.preheader17:4  %n = phi i4 [ %n_2, %.preheader19 ], [ 0, %.preheader17.preheader ]
+
+ST_5: exitcond_flatten [1/1] 2.00ns
+.preheader17:5  %exitcond_flatten = icmp eq i8 %indvar_flatten1, -6
+
+ST_5: indvar_flatten_next9 [1/1] 1.72ns
+.preheader17:6  %indvar_flatten_next9 = add i8 %indvar_flatten1, 1
+
+ST_5: stg_132 [1/1] 0.00ns
+.preheader17:7  br i1 %exitcond_flatten, label %.preheader16.preheader, label %.preheader19
+
+ST_5: exitcond_flatten5 [1/1] 1.97ns
+.preheader19:2  %exitcond_flatten5 = icmp eq i7 %indvar_flatten, 50
+
+ST_5: m_1_mid [1/1] 1.37ns
+.preheader19:3  %m_1_mid = select i1 %exitcond_flatten5, i3 0, i3 %m_1
+
+ST_5: not_exitcond_flatten [1/1] 1.37ns
+.preheader19:4  %not_exitcond_flatten = xor i1 %exitcond_flatten5, true
+
+ST_5: exitcond15 [1/1] 1.88ns
+.preheader19:5  %exitcond15 = icmp eq i4 %n, -6
+
+ST_5: exitcond6_mid [1/1] 1.37ns
+.preheader19:6  %exitcond6_mid = and i1 %exitcond15, %not_exitcond_flatten
+
+ST_5: k_4 [1/1] 0.80ns
+.preheader19:7  %k_4 = add i3 %k_1, 1
+
+ST_5: k_1_mid2 [1/1] 1.37ns
+.preheader19:8  %k_1_mid2 = select i1 %exitcond_flatten5, i3 %k_4, i3 %k_1
+
+ST_5: k_1_cast [1/1] 0.00ns
+.preheader19:9  %k_1_cast = zext i3 %k_1_mid2 to i4
+
+ST_5: m_6 [1/1] 0.80ns
+.preheader19:10  %m_6 = add i3 %m_1_mid, 1
+
+ST_5: tmp_161 [1/1] 1.37ns
+.preheader19:12  %tmp_161 = or i1 %exitcond6_mid, %exitcond_flatten5
+
+ST_5: n_mid2 [1/1] 1.37ns
+.preheader19:13  %n_mid2 = select i1 %tmp_161, i4 0, i4 %n
+
+ST_5: m_1_mid2 [1/1] 1.37ns
+.preheader19:14  %m_1_mid2 = select i1 %exitcond6_mid, i3 %m_6, i3 %m_1_mid
+
+ST_5: tmp_92 [1/1] 0.80ns
+.preheader19:28  %tmp_92 = add i4 %n_mid2, %k_1_cast
+
+ST_5: indvar_flatten_op [1/1] 1.72ns
+.preheader19:164  %indvar_flatten_op = add i7 %indvar_flatten, 1
+
+ST_5: indvar_flatten_next [1/1] 1.37ns
+.preheader19:165  %indvar_flatten_next = select i1 %exitcond_flatten5, i7 1, i7 %indvar_flatten_op
+
+
+ <State 6>: 8.35ns
+ST_6: tmp_240_1 [1/1] 0.80ns
+.preheader19:16  %tmp_240_1 = add i3 %m_1_mid2, 1
+
+ST_6: tmp_148_trn_cast [1/1] 0.00ns
+.preheader19:29  %tmp_148_trn_cast = zext i4 %tmp_92 to i9
+
+ST_6: S2_y_addr6 [1/1] 1.72ns
+.preheader19:30  %S2_y_addr6 = add i9 %S2_y_addr13_cast, %tmp_148_trn_cast
+
+ST_6: tmp_142_trn [1/1] 0.00ns
+.preheader19:31  %tmp_142_trn = zext i3 %m_1_mid2 to i32
+
+ST_6: tmp_127 [1/1] 0.00ns
+.preheader19:33  %tmp_127 = call i13 @_ssdm_op_BitConcatenate.i13.i9.i4(i9 %S2_y_addr6, i4 0)
+
+ST_6: p_shl39 [1/1] 0.00ns
+.preheader19:34  %p_shl39 = sext i13 %tmp_127 to i32
+
+ST_6: tmp_128 [1/1] 0.00ns
+.preheader19:35  %tmp_128 = call i10 @_ssdm_op_BitConcatenate.i10.i9.i1(i9 %S2_y_addr6, i1 false)
+
+ST_6: p_shl40 [1/1] 0.00ns
+.preheader19:36  %p_shl40 = sext i10 %tmp_128 to i32
+
+ST_6: S2_y_addr7 [1/1] 1.96ns
+.preheader19:37  %S2_y_addr7 = sub i32 %p_shl39, %p_shl40
+
+ST_6: S2_y_addr8 [1/1] 1.96ns
+.preheader19:38  %S2_y_addr8 = add i32 %S2_y_addr7, %tmp_142_trn
+
+ST_6: tmp_162 [1/1] 0.00ns
+.preheader19:39  %tmp_162 = zext i32 %S2_y_addr8 to i64
+
+ST_6: S2_y_addr [1/1] 0.00ns
+.preheader19:40  %S2_y_addr = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_162
+
+ST_6: S2_y_load [2/2] 2.71ns
+.preheader19:41  %S2_y_load = load float* %S2_y_addr, align 4
+
+ST_6: tmp_149_trn_cast [1/1] 0.00ns
+.preheader19:42  %tmp_149_trn_cast = zext i4 %n_mid2 to i9
+
+ST_6: C3_d_addr6 [1/1] 1.84ns
+.preheader19:43  %C3_d_addr6 = add i9 %C3_d_addr9, %tmp_149_trn_cast
+
+ST_6: tmp_129 [1/1] 0.00ns
+.preheader19:44  %tmp_129 = call i12 @_ssdm_op_BitConcatenate.i12.i9.i3(i9 %C3_d_addr6, i3 0)
+
+ST_6: p_shl41 [1/1] 0.00ns
+.preheader19:45  %p_shl41 = zext i12 %tmp_129 to i32
+
+ST_6: tmp_130 [1/1] 0.00ns
+.preheader19:46  %tmp_130 = call i10 @_ssdm_op_BitConcatenate.i10.i9.i1(i9 %C3_d_addr6, i1 false)
+
+ST_6: p_shl42 [1/1] 0.00ns
+.preheader19:47  %p_shl42 = zext i10 %tmp_130 to i32
+
+ST_6: C3_d_addr7 [1/1] 1.84ns
+.preheader19:48  %C3_d_addr7 = add i32 %p_shl42, %p_shl41
+
+ST_6: tmp_163 [1/1] 0.00ns
+.preheader19:49  %tmp_163 = zext i32 %C3_d_addr7 to i64
+
+ST_6: C3_d_addr_4 [1/1] 0.00ns
+.preheader19:50  %C3_d_addr_4 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_163
+
+ST_6: C3_d_load_1 [2/2] 2.71ns
+.preheader19:51  %C3_d_load_1 = load float* %C3_d_addr_4, align 8
+
+ST_6: tmp_241_1_trn [1/1] 0.00ns
+.preheader19:62  %tmp_241_1_trn = zext i3 %tmp_240_1 to i32
+
+ST_6: S2_y_addr9 [1/1] 1.96ns
+.preheader19:63  %S2_y_addr9 = add i32 %S2_y_addr7, %tmp_241_1_trn
+
+ST_6: tmp_166 [1/1] 0.00ns
+.preheader19:64  %tmp_166 = zext i32 %S2_y_addr9 to i64
+
+ST_6: S2_y_addr_1 [1/1] 0.00ns
+.preheader19:65  %S2_y_addr_1 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_166
+
+ST_6: S2_y_load_1 [2/2] 2.71ns
+.preheader19:66  %S2_y_load_1 = load float* %S2_y_addr_1, align 4
+
+ST_6: C3_d_addr10 [1/1] 0.00ns
+.preheader19:67  %C3_d_addr10 = or i32 %C3_d_addr7, 1
+
+ST_6: tmp_167 [1/1] 0.00ns
+.preheader19:68  %tmp_167 = zext i32 %C3_d_addr10 to i64
+
+ST_6: C3_d_addr_5 [1/1] 0.00ns
+.preheader19:69  %C3_d_addr_5 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_167
+
+ST_6: C3_d_load_2 [2/2] 2.71ns
+.preheader19:70  %C3_d_load_2 = load float* %C3_d_addr_5, align 4
+
+ST_6: n_2 [1/1] 0.80ns
+.preheader19:163  %n_2 = add i4 %n_mid2, 1
+
+
+ <State 7>: 8.41ns
+ST_7: tmp_240_2 [1/1] 0.80ns
+.preheader19:17  %tmp_240_2 = add i3 %m_1_mid2, 2
+
+ST_7: tmp_240_3 [1/1] 0.80ns
+.preheader19:18  %tmp_240_3 = add i3 %m_1_mid2, 3
+
+ST_7: S2_y_load [1/2] 2.71ns
+.preheader19:41  %S2_y_load = load float* %S2_y_addr, align 4
+
+ST_7: C3_d_load_1 [1/2] 2.71ns
+.preheader19:51  %C3_d_load_1 = load float* %C3_d_addr_4, align 8
+
+ST_7: tmp_93 [4/4] 5.70ns
+.preheader19:52  %tmp_93 = fmul float %S2_y_load, %C3_d_load_1
+
+ST_7: S2_y_load_1 [1/2] 2.71ns
+.preheader19:66  %S2_y_load_1 = load float* %S2_y_addr_1, align 4
+
+ST_7: C3_d_load_2 [1/2] 2.71ns
+.preheader19:70  %C3_d_load_2 = load float* %C3_d_addr_5, align 4
+
+ST_7: tmp_241_2_trn [1/1] 0.00ns
+.preheader19:73  %tmp_241_2_trn = zext i3 %tmp_240_2 to i32
+
+ST_7: S2_y_addr10 [1/1] 1.96ns
+.preheader19:74  %S2_y_addr10 = add i32 %S2_y_addr7, %tmp_241_2_trn
+
+ST_7: tmp_168 [1/1] 0.00ns
+.preheader19:75  %tmp_168 = zext i32 %S2_y_addr10 to i64
+
+ST_7: S2_y_addr_2 [1/1] 0.00ns
+.preheader19:76  %S2_y_addr_2 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_168
+
+ST_7: S2_y_load_2 [2/2] 2.71ns
+.preheader19:77  %S2_y_load_2 = load float* %S2_y_addr_2, align 4
+
+ST_7: C3_d_addr11 [1/1] 1.96ns
+.preheader19:78  %C3_d_addr11 = add i32 %C3_d_addr7, 2
+
+ST_7: tmp_169 [1/1] 0.00ns
+.preheader19:79  %tmp_169 = zext i32 %C3_d_addr11 to i64
+
+ST_7: C3_d_addr_6 [1/1] 0.00ns
+.preheader19:80  %C3_d_addr_6 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_169
+
+ST_7: C3_d_load_3 [2/2] 2.71ns
+.preheader19:81  %C3_d_load_3 = load float* %C3_d_addr_6, align 8
+
+ST_7: tmp_241_3_trn [1/1] 0.00ns
+.preheader19:84  %tmp_241_3_trn = zext i3 %tmp_240_3 to i32
+
+ST_7: S2_y_addr11 [1/1] 1.96ns
+.preheader19:85  %S2_y_addr11 = add i32 %S2_y_addr7, %tmp_241_3_trn
+
+ST_7: tmp_170 [1/1] 0.00ns
+.preheader19:86  %tmp_170 = zext i32 %S2_y_addr11 to i64
+
+ST_7: S2_y_addr_3 [1/1] 0.00ns
+.preheader19:87  %S2_y_addr_3 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_170
+
+ST_7: S2_y_load_3 [2/2] 2.71ns
+.preheader19:88  %S2_y_load_3 = load float* %S2_y_addr_3, align 4
+
+ST_7: C3_d_addr12 [1/1] 1.96ns
+.preheader19:89  %C3_d_addr12 = add i32 %C3_d_addr7, 3
+
+ST_7: tmp_171 [1/1] 0.00ns
+.preheader19:90  %tmp_171 = zext i32 %C3_d_addr12 to i64
+
+ST_7: C3_d_addr_7 [1/1] 0.00ns
+.preheader19:91  %C3_d_addr_7 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_171
+
+ST_7: C3_d_load_4 [2/2] 2.71ns
+.preheader19:92  %C3_d_load_4 = load float* %C3_d_addr_7, align 4
+
+
+ <State 8>: 5.70ns
+ST_8: m_1_cast [1/1] 0.00ns
+.preheader19:15  %m_1_cast = zext i3 %m_1_mid2 to i4
+
+ST_8: tmp_240_4 [1/1] 0.80ns
+.preheader19:19  %tmp_240_4 = add i4 %m_1_cast, 4
+
+ST_8: tmp_240_5 [1/1] 0.80ns
+.preheader19:20  %tmp_240_5 = add i4 %m_1_cast, 5
+
+ST_8: tmp_93 [3/4] 5.70ns
+.preheader19:52  %tmp_93 = fmul float %S2_y_load, %C3_d_load_1
+
+ST_8: tmp_243_1 [4/4] 5.70ns
+.preheader19:71  %tmp_243_1 = fmul float %S2_y_load_1, %C3_d_load_2
+
+ST_8: S2_y_load_2 [1/2] 2.71ns
+.preheader19:77  %S2_y_load_2 = load float* %S2_y_addr_2, align 4
+
+ST_8: C3_d_load_3 [1/2] 2.71ns
+.preheader19:81  %C3_d_load_3 = load float* %C3_d_addr_6, align 8
+
+ST_8: S2_y_load_3 [1/2] 2.71ns
+.preheader19:88  %S2_y_load_3 = load float* %S2_y_addr_3, align 4
+
+ST_8: C3_d_load_4 [1/2] 2.71ns
+.preheader19:92  %C3_d_load_4 = load float* %C3_d_addr_7, align 4
+
+ST_8: tmp_241_4_trn [1/1] 0.00ns
+.preheader19:95  %tmp_241_4_trn = zext i4 %tmp_240_4 to i32
+
+ST_8: S2_y_addr12 [1/1] 1.96ns
+.preheader19:96  %S2_y_addr12 = add i32 %S2_y_addr7, %tmp_241_4_trn
+
+ST_8: tmp_172 [1/1] 0.00ns
+.preheader19:97  %tmp_172 = zext i32 %S2_y_addr12 to i64
+
+ST_8: S2_y_addr_4 [1/1] 0.00ns
+.preheader19:98  %S2_y_addr_4 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_172
+
+ST_8: S2_y_load_4 [2/2] 2.71ns
+.preheader19:99  %S2_y_load_4 = load float* %S2_y_addr_4, align 4
+
+ST_8: C3_d_addr13 [1/1] 1.96ns
+.preheader19:100  %C3_d_addr13 = add i32 %C3_d_addr7, 4
+
+ST_8: tmp_173 [1/1] 0.00ns
+.preheader19:101  %tmp_173 = zext i32 %C3_d_addr13 to i64
+
+ST_8: C3_d_addr_8 [1/1] 0.00ns
+.preheader19:102  %C3_d_addr_8 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_173
+
+ST_8: C3_d_load_5 [2/2] 2.71ns
+.preheader19:103  %C3_d_load_5 = load float* %C3_d_addr_8, align 8
+
+ST_8: tmp_241_5_trn [1/1] 0.00ns
+.preheader19:106  %tmp_241_5_trn = zext i4 %tmp_240_5 to i32
+
+ST_8: S2_y_addr13 [1/1] 1.96ns
+.preheader19:107  %S2_y_addr13 = add i32 %S2_y_addr7, %tmp_241_5_trn
+
+ST_8: tmp_174 [1/1] 0.00ns
+.preheader19:108  %tmp_174 = zext i32 %S2_y_addr13 to i64
+
+ST_8: S2_y_addr_5 [1/1] 0.00ns
+.preheader19:109  %S2_y_addr_5 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_174
+
+ST_8: S2_y_load_5 [2/2] 2.71ns
+.preheader19:110  %S2_y_load_5 = load float* %S2_y_addr_5, align 4
+
+ST_8: C3_d_addr14 [1/1] 1.96ns
+.preheader19:111  %C3_d_addr14 = add i32 %C3_d_addr7, 5
+
+ST_8: tmp_175 [1/1] 0.00ns
+.preheader19:112  %tmp_175 = zext i32 %C3_d_addr14 to i64
+
+ST_8: C3_d_addr_9 [1/1] 0.00ns
+.preheader19:113  %C3_d_addr_9 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_175
+
+ST_8: C3_d_load_6 [2/2] 2.71ns
+.preheader19:114  %C3_d_load_6 = load float* %C3_d_addr_9, align 4
+
+
+ <State 9>: 5.70ns
+ST_9: tmp_240_6 [1/1] 0.80ns
+.preheader19:21  %tmp_240_6 = add i4 %m_1_cast, 6
+
+ST_9: tmp_240_7 [1/1] 0.80ns
+.preheader19:22  %tmp_240_7 = add i4 %m_1_cast, 7
+
+ST_9: tmp_93 [2/4] 5.70ns
+.preheader19:52  %tmp_93 = fmul float %S2_y_load, %C3_d_load_1
+
+ST_9: tmp_243_1 [3/4] 5.70ns
+.preheader19:71  %tmp_243_1 = fmul float %S2_y_load_1, %C3_d_load_2
+
+ST_9: tmp_243_2 [4/4] 5.70ns
+.preheader19:82  %tmp_243_2 = fmul float %S2_y_load_2, %C3_d_load_3
+
+ST_9: S2_y_load_4 [1/2] 2.71ns
+.preheader19:99  %S2_y_load_4 = load float* %S2_y_addr_4, align 4
+
+ST_9: C3_d_load_5 [1/2] 2.71ns
+.preheader19:103  %C3_d_load_5 = load float* %C3_d_addr_8, align 8
+
+ST_9: S2_y_load_5 [1/2] 2.71ns
+.preheader19:110  %S2_y_load_5 = load float* %S2_y_addr_5, align 4
+
+ST_9: C3_d_load_6 [1/2] 2.71ns
+.preheader19:114  %C3_d_load_6 = load float* %C3_d_addr_9, align 4
+
+ST_9: tmp_241_6_trn [1/1] 0.00ns
+.preheader19:117  %tmp_241_6_trn = zext i4 %tmp_240_6 to i32
+
+ST_9: S2_y_addr14 [1/1] 1.96ns
+.preheader19:118  %S2_y_addr14 = add i32 %S2_y_addr7, %tmp_241_6_trn
+
+ST_9: tmp_176 [1/1] 0.00ns
+.preheader19:119  %tmp_176 = zext i32 %S2_y_addr14 to i64
+
+ST_9: S2_y_addr_6 [1/1] 0.00ns
+.preheader19:120  %S2_y_addr_6 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_176
+
+ST_9: S2_y_load_6 [2/2] 2.71ns
+.preheader19:121  %S2_y_load_6 = load float* %S2_y_addr_6, align 4
+
+ST_9: C3_d_addr15 [1/1] 1.96ns
+.preheader19:122  %C3_d_addr15 = add i32 %C3_d_addr7, 6
+
+ST_9: tmp_177 [1/1] 0.00ns
+.preheader19:123  %tmp_177 = zext i32 %C3_d_addr15 to i64
+
+ST_9: C3_d_addr_10 [1/1] 0.00ns
+.preheader19:124  %C3_d_addr_10 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_177
+
+ST_9: C3_d_load_7 [2/2] 2.71ns
+.preheader19:125  %C3_d_load_7 = load float* %C3_d_addr_10, align 8
+
+ST_9: tmp_241_7_trn [1/1] 0.00ns
+.preheader19:128  %tmp_241_7_trn = zext i4 %tmp_240_7 to i32
+
+ST_9: S2_y_addr15 [1/1] 1.96ns
+.preheader19:129  %S2_y_addr15 = add i32 %S2_y_addr7, %tmp_241_7_trn
+
+ST_9: tmp_178 [1/1] 0.00ns
+.preheader19:130  %tmp_178 = zext i32 %S2_y_addr15 to i64
+
+ST_9: S2_y_addr_7 [1/1] 0.00ns
+.preheader19:131  %S2_y_addr_7 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_178
+
+ST_9: S2_y_load_7 [2/2] 2.71ns
+.preheader19:132  %S2_y_load_7 = load float* %S2_y_addr_7, align 4
+
+ST_9: C3_d_addr16 [1/1] 1.96ns
+.preheader19:133  %C3_d_addr16 = add i32 %C3_d_addr7, 7
+
+ST_9: tmp_179 [1/1] 0.00ns
+.preheader19:134  %tmp_179 = zext i32 %C3_d_addr16 to i64
+
+ST_9: C3_d_addr_11 [1/1] 0.00ns
+.preheader19:135  %C3_d_addr_11 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_179
+
+ST_9: C3_d_load_8 [2/2] 2.71ns
+.preheader19:136  %C3_d_load_8 = load float* %C3_d_addr_11, align 4
+
+
+ <State 10>: 5.70ns
+ST_10: tmp_240_s [1/1] 0.00ns
+.preheader19:23  %tmp_240_s = call i4 @_ssdm_op_BitConcatenate.i4.i1.i3(i1 true, i3 %m_1_mid2)
+
+ST_10: tmp_240_9 [1/1] 0.80ns
+.preheader19:24  %tmp_240_9 = add i4 %m_1_cast, -7
+
+ST_10: tmp_142_trn_cast [1/1] 0.00ns
+.preheader19:32  %tmp_142_trn_cast = zext i3 %m_1_mid2 to i6
+
+ST_10: tmp_93 [1/4] 5.70ns
+.preheader19:52  %tmp_93 = fmul float %S2_y_load, %C3_d_load_1
+
+ST_10: tmp_137_trn_cast [1/1] 0.00ns
+.preheader19:53  %tmp_137_trn_cast = zext i3 %k_1_mid2 to i6
+
+ST_10: tmp_164 [1/1] 0.00ns
+.preheader19:54  %tmp_164 = call i5 @_ssdm_op_BitConcatenate.i5.i3.i2(i3 %k_1_mid2, i2 0)
+
+ST_10: p_shl90_cast [1/1] 0.00ns
+.preheader19:55  %p_shl90_cast = zext i5 %tmp_164 to i6
+
+ST_10: p_addr [1/1] 1.31ns
+.preheader19:56  %p_addr = add i6 %tmp_137_trn_cast, %p_shl90_cast
+
+ST_10: p_addr17 [1/1] 1.31ns
+.preheader19:57  %p_addr17 = add i6 %p_addr, %tmp_142_trn_cast
+
+ST_10: tmp_165 [1/1] 0.00ns
+.preheader19:58  %tmp_165 = zext i6 %p_addr17 to i64
+
+ST_10: tmp_addr_1 [1/1] 0.00ns
+.preheader19:59  %tmp_addr_1 = getelementptr [25 x float]* %tmp, i64 0, i64 %tmp_165
+
+ST_10: empty_57 [2/2] 2.39ns
+.preheader19:60  %empty_57 = load float* %tmp_addr_1, align 4
+
+ST_10: tmp_243_1 [2/4] 5.70ns
+.preheader19:71  %tmp_243_1 = fmul float %S2_y_load_1, %C3_d_load_2
+
+ST_10: tmp_243_2 [3/4] 5.70ns
+.preheader19:82  %tmp_243_2 = fmul float %S2_y_load_2, %C3_d_load_3
+
+ST_10: tmp_243_3 [4/4] 5.70ns
+.preheader19:93  %tmp_243_3 = fmul float %S2_y_load_3, %C3_d_load_4
+
+ST_10: S2_y_load_6 [1/2] 2.71ns
+.preheader19:121  %S2_y_load_6 = load float* %S2_y_addr_6, align 4
+
+ST_10: C3_d_load_7 [1/2] 2.71ns
+.preheader19:125  %C3_d_load_7 = load float* %C3_d_addr_10, align 8
+
+ST_10: S2_y_load_7 [1/2] 2.71ns
+.preheader19:132  %S2_y_load_7 = load float* %S2_y_addr_7, align 4
+
+ST_10: C3_d_load_8 [1/2] 2.71ns
+.preheader19:136  %C3_d_load_8 = load float* %C3_d_addr_11, align 4
+
+ST_10: tmp_241_8_trn [1/1] 0.00ns
+.preheader19:139  %tmp_241_8_trn = zext i4 %tmp_240_s to i32
+
+ST_10: S2_y_addr16 [1/1] 1.96ns
+.preheader19:140  %S2_y_addr16 = add i32 %S2_y_addr7, %tmp_241_8_trn
+
+ST_10: tmp_180 [1/1] 0.00ns
+.preheader19:141  %tmp_180 = zext i32 %S2_y_addr16 to i64
+
+ST_10: S2_y_addr_8 [1/1] 0.00ns
+.preheader19:142  %S2_y_addr_8 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_180
+
+ST_10: S2_y_load_8 [2/2] 2.71ns
+.preheader19:143  %S2_y_load_8 = load float* %S2_y_addr_8, align 4
+
+ST_10: C3_d_addr17 [1/1] 1.96ns
+.preheader19:144  %C3_d_addr17 = add i32 %C3_d_addr7, 8
+
+ST_10: tmp_181 [1/1] 0.00ns
+.preheader19:145  %tmp_181 = zext i32 %C3_d_addr17 to i64
+
+ST_10: C3_d_addr_12 [1/1] 0.00ns
+.preheader19:146  %C3_d_addr_12 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_181
+
+ST_10: C3_d_load_9 [2/2] 2.71ns
+.preheader19:147  %C3_d_load_9 = load float* %C3_d_addr_12, align 8
+
+ST_10: tmp_241_9_trn [1/1] 0.00ns
+.preheader19:150  %tmp_241_9_trn = zext i4 %tmp_240_9 to i32
+
+ST_10: S2_y_addr17 [1/1] 1.96ns
+.preheader19:151  %S2_y_addr17 = add i32 %S2_y_addr7, %tmp_241_9_trn
+
+ST_10: tmp_182 [1/1] 0.00ns
+.preheader19:152  %tmp_182 = zext i32 %S2_y_addr17 to i64
+
+ST_10: S2_y_addr_9 [1/1] 0.00ns
+.preheader19:153  %S2_y_addr_9 = getelementptr [1176 x float]* @S2_y, i64 0, i64 %tmp_182
+
+ST_10: S2_y_load_9 [2/2] 2.71ns
+.preheader19:154  %S2_y_load_9 = load float* %S2_y_addr_9, align 4
+
+ST_10: C3_d_addr18 [1/1] 1.96ns
+.preheader19:155  %C3_d_addr18 = add i32 %C3_d_addr7, 9
+
+ST_10: tmp_183 [1/1] 0.00ns
+.preheader19:156  %tmp_183 = zext i32 %C3_d_addr18 to i64
+
+ST_10: C3_d_addr_13 [1/1] 0.00ns
+.preheader19:157  %C3_d_addr_13 = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_183
+
+ST_10: C3_d_load_10 [2/2] 2.71ns
+.preheader19:158  %C3_d_load_10 = load float* %C3_d_addr_13, align 4
+
+
+ <State 11>: 9.65ns
+ST_11: empty_57 [1/2] 2.39ns
+.preheader19:60  %empty_57 = load float* %tmp_addr_1, align 4
+
+ST_11: tmp_94 [5/5] 7.26ns
+.preheader19:61  %tmp_94 = fadd float %empty_57, %tmp_93
+
+ST_11: tmp_243_1 [1/4] 5.70ns
+.preheader19:71  %tmp_243_1 = fmul float %S2_y_load_1, %C3_d_load_2
+
+ST_11: tmp_243_2 [2/4] 5.70ns
+.preheader19:82  %tmp_243_2 = fmul float %S2_y_load_2, %C3_d_load_3
+
+ST_11: tmp_243_3 [3/4] 5.70ns
+.preheader19:93  %tmp_243_3 = fmul float %S2_y_load_3, %C3_d_load_4
+
+ST_11: tmp_243_4 [4/4] 5.70ns
+.preheader19:104  %tmp_243_4 = fmul float %S2_y_load_4, %C3_d_load_5
+
+ST_11: S2_y_load_8 [1/2] 2.71ns
+.preheader19:143  %S2_y_load_8 = load float* %S2_y_addr_8, align 4
+
+ST_11: C3_d_load_9 [1/2] 2.71ns
+.preheader19:147  %C3_d_load_9 = load float* %C3_d_addr_12, align 8
+
+ST_11: S2_y_load_9 [1/2] 2.71ns
+.preheader19:154  %S2_y_load_9 = load float* %S2_y_addr_9, align 4
+
+ST_11: C3_d_load_10 [1/2] 2.71ns
+.preheader19:158  %C3_d_load_10 = load float* %C3_d_addr_13, align 4
+
+
+ <State 12>: 7.26ns
+ST_12: tmp_94 [4/5] 7.26ns
+.preheader19:61  %tmp_94 = fadd float %empty_57, %tmp_93
+
+ST_12: tmp_243_2 [1/4] 5.70ns
+.preheader19:82  %tmp_243_2 = fmul float %S2_y_load_2, %C3_d_load_3
+
+ST_12: tmp_243_3 [2/4] 5.70ns
+.preheader19:93  %tmp_243_3 = fmul float %S2_y_load_3, %C3_d_load_4
+
+ST_12: tmp_243_4 [3/4] 5.70ns
+.preheader19:104  %tmp_243_4 = fmul float %S2_y_load_4, %C3_d_load_5
+
+ST_12: tmp_243_5 [4/4] 5.70ns
+.preheader19:115  %tmp_243_5 = fmul float %S2_y_load_5, %C3_d_load_6
+
+
+ <State 13>: 7.26ns
+ST_13: tmp_94 [3/5] 7.26ns
+.preheader19:61  %tmp_94 = fadd float %empty_57, %tmp_93
+
+ST_13: tmp_243_3 [1/4] 5.70ns
+.preheader19:93  %tmp_243_3 = fmul float %S2_y_load_3, %C3_d_load_4
+
+ST_13: tmp_243_4 [2/4] 5.70ns
+.preheader19:104  %tmp_243_4 = fmul float %S2_y_load_4, %C3_d_load_5
+
+ST_13: tmp_243_5 [3/4] 5.70ns
+.preheader19:115  %tmp_243_5 = fmul float %S2_y_load_5, %C3_d_load_6
+
+ST_13: tmp_243_6 [4/4] 5.70ns
+.preheader19:126  %tmp_243_6 = fmul float %S2_y_load_6, %C3_d_load_7
+
+
+ <State 14>: 7.26ns
+ST_14: tmp_94 [2/5] 7.26ns
+.preheader19:61  %tmp_94 = fadd float %empty_57, %tmp_93
+
+ST_14: tmp_243_4 [1/4] 5.70ns
+.preheader19:104  %tmp_243_4 = fmul float %S2_y_load_4, %C3_d_load_5
+
+ST_14: tmp_243_5 [2/4] 5.70ns
+.preheader19:115  %tmp_243_5 = fmul float %S2_y_load_5, %C3_d_load_6
+
+ST_14: tmp_243_6 [3/4] 5.70ns
+.preheader19:126  %tmp_243_6 = fmul float %S2_y_load_6, %C3_d_load_7
+
+ST_14: tmp_243_7 [4/4] 5.70ns
+.preheader19:137  %tmp_243_7 = fmul float %S2_y_load_7, %C3_d_load_8
+
+
+ <State 15>: 14.51ns
+ST_15: tmp_94 [1/5] 7.26ns
+.preheader19:61  %tmp_94 = fadd float %empty_57, %tmp_93
+
+ST_15: tmp_244_1 [5/5] 7.26ns
+.preheader19:72  %tmp_244_1 = fadd float %tmp_94, %tmp_243_1
+
+ST_15: tmp_243_5 [1/4] 5.70ns
+.preheader19:115  %tmp_243_5 = fmul float %S2_y_load_5, %C3_d_load_6
+
+ST_15: tmp_243_6 [2/4] 5.70ns
+.preheader19:126  %tmp_243_6 = fmul float %S2_y_load_6, %C3_d_load_7
+
+ST_15: tmp_243_7 [3/4] 5.70ns
+.preheader19:137  %tmp_243_7 = fmul float %S2_y_load_7, %C3_d_load_8
+
+ST_15: tmp_243_8 [4/4] 5.70ns
+.preheader19:148  %tmp_243_8 = fmul float %S2_y_load_8, %C3_d_load_9
+
+
+ <State 16>: 7.26ns
+ST_16: tmp_244_1 [4/5] 7.26ns
+.preheader19:72  %tmp_244_1 = fadd float %tmp_94, %tmp_243_1
+
+ST_16: tmp_243_6 [1/4] 5.70ns
+.preheader19:126  %tmp_243_6 = fmul float %S2_y_load_6, %C3_d_load_7
+
+ST_16: tmp_243_7 [2/4] 5.70ns
+.preheader19:137  %tmp_243_7 = fmul float %S2_y_load_7, %C3_d_load_8
+
+ST_16: tmp_243_8 [3/4] 5.70ns
+.preheader19:148  %tmp_243_8 = fmul float %S2_y_load_8, %C3_d_load_9
+
+ST_16: tmp_243_9 [4/4] 5.70ns
+.preheader19:159  %tmp_243_9 = fmul float %S2_y_load_9, %C3_d_load_10
+
+
+ <State 17>: 7.26ns
+ST_17: tmp_244_1 [3/5] 7.26ns
+.preheader19:72  %tmp_244_1 = fadd float %tmp_94, %tmp_243_1
+
+ST_17: tmp_243_7 [1/4] 5.70ns
+.preheader19:137  %tmp_243_7 = fmul float %S2_y_load_7, %C3_d_load_8
+
+ST_17: tmp_243_8 [2/4] 5.70ns
+.preheader19:148  %tmp_243_8 = fmul float %S2_y_load_8, %C3_d_load_9
+
+ST_17: tmp_243_9 [3/4] 5.70ns
+.preheader19:159  %tmp_243_9 = fmul float %S2_y_load_9, %C3_d_load_10
+
+
+ <State 18>: 7.26ns
+ST_18: tmp_244_1 [2/5] 7.26ns
+.preheader19:72  %tmp_244_1 = fadd float %tmp_94, %tmp_243_1
+
+ST_18: tmp_243_8 [1/4] 5.70ns
+.preheader19:148  %tmp_243_8 = fmul float %S2_y_load_8, %C3_d_load_9
+
+ST_18: tmp_243_9 [2/4] 5.70ns
+.preheader19:159  %tmp_243_9 = fmul float %S2_y_load_9, %C3_d_load_10
+
+
+ <State 19>: 14.51ns
+ST_19: tmp_244_1 [1/5] 7.26ns
+.preheader19:72  %tmp_244_1 = fadd float %tmp_94, %tmp_243_1
+
+ST_19: tmp_244_2 [5/5] 7.26ns
+.preheader19:83  %tmp_244_2 = fadd float %tmp_244_1, %tmp_243_2
+
+ST_19: tmp_243_9 [1/4] 5.70ns
+.preheader19:159  %tmp_243_9 = fmul float %S2_y_load_9, %C3_d_load_10
+
+
+ <State 20>: 7.26ns
+ST_20: tmp_244_2 [4/5] 7.26ns
+.preheader19:83  %tmp_244_2 = fadd float %tmp_244_1, %tmp_243_2
+
+
+ <State 21>: 7.26ns
+ST_21: tmp_244_2 [3/5] 7.26ns
+.preheader19:83  %tmp_244_2 = fadd float %tmp_244_1, %tmp_243_2
+
+
+ <State 22>: 7.26ns
+ST_22: tmp_244_2 [2/5] 7.26ns
+.preheader19:83  %tmp_244_2 = fadd float %tmp_244_1, %tmp_243_2
+
+
+ <State 23>: 14.51ns
+ST_23: tmp_244_2 [1/5] 7.26ns
+.preheader19:83  %tmp_244_2 = fadd float %tmp_244_1, %tmp_243_2
+
+ST_23: tmp_244_3 [5/5] 7.26ns
+.preheader19:94  %tmp_244_3 = fadd float %tmp_244_2, %tmp_243_3
+
+
+ <State 24>: 7.26ns
+ST_24: tmp_244_3 [4/5] 7.26ns
+.preheader19:94  %tmp_244_3 = fadd float %tmp_244_2, %tmp_243_3
+
+
+ <State 25>: 7.26ns
+ST_25: tmp_244_3 [3/5] 7.26ns
+.preheader19:94  %tmp_244_3 = fadd float %tmp_244_2, %tmp_243_3
+
+
+ <State 26>: 7.26ns
+ST_26: tmp_244_3 [2/5] 7.26ns
+.preheader19:94  %tmp_244_3 = fadd float %tmp_244_2, %tmp_243_3
+
+
+ <State 27>: 14.51ns
+ST_27: tmp_244_3 [1/5] 7.26ns
+.preheader19:94  %tmp_244_3 = fadd float %tmp_244_2, %tmp_243_3
+
+ST_27: tmp_244_4 [5/5] 7.26ns
+.preheader19:105  %tmp_244_4 = fadd float %tmp_244_3, %tmp_243_4
+
+
+ <State 28>: 7.26ns
+ST_28: tmp_244_4 [4/5] 7.26ns
+.preheader19:105  %tmp_244_4 = fadd float %tmp_244_3, %tmp_243_4
+
+
+ <State 29>: 7.26ns
+ST_29: tmp_244_4 [3/5] 7.26ns
+.preheader19:105  %tmp_244_4 = fadd float %tmp_244_3, %tmp_243_4
+
+
+ <State 30>: 7.26ns
+ST_30: tmp_244_4 [2/5] 7.26ns
+.preheader19:105  %tmp_244_4 = fadd float %tmp_244_3, %tmp_243_4
+
+
+ <State 31>: 14.51ns
+ST_31: tmp_244_4 [1/5] 7.26ns
+.preheader19:105  %tmp_244_4 = fadd float %tmp_244_3, %tmp_243_4
+
+ST_31: tmp_244_5 [5/5] 7.26ns
+.preheader19:116  %tmp_244_5 = fadd float %tmp_244_4, %tmp_243_5
+
+
+ <State 32>: 7.26ns
+ST_32: tmp_244_5 [4/5] 7.26ns
+.preheader19:116  %tmp_244_5 = fadd float %tmp_244_4, %tmp_243_5
+
+
+ <State 33>: 7.26ns
+ST_33: tmp_244_5 [3/5] 7.26ns
+.preheader19:116  %tmp_244_5 = fadd float %tmp_244_4, %tmp_243_5
+
+
+ <State 34>: 7.26ns
+ST_34: tmp_244_5 [2/5] 7.26ns
+.preheader19:116  %tmp_244_5 = fadd float %tmp_244_4, %tmp_243_5
+
+
+ <State 35>: 14.51ns
+ST_35: tmp_244_5 [1/5] 7.26ns
+.preheader19:116  %tmp_244_5 = fadd float %tmp_244_4, %tmp_243_5
+
+ST_35: tmp_244_6 [5/5] 7.26ns
+.preheader19:127  %tmp_244_6 = fadd float %tmp_244_5, %tmp_243_6
+
+
+ <State 36>: 7.26ns
+ST_36: tmp_244_6 [4/5] 7.26ns
+.preheader19:127  %tmp_244_6 = fadd float %tmp_244_5, %tmp_243_6
+
+
+ <State 37>: 7.26ns
+ST_37: tmp_244_6 [3/5] 7.26ns
+.preheader19:127  %tmp_244_6 = fadd float %tmp_244_5, %tmp_243_6
+
+
+ <State 38>: 7.26ns
+ST_38: tmp_244_6 [2/5] 7.26ns
+.preheader19:127  %tmp_244_6 = fadd float %tmp_244_5, %tmp_243_6
+
+
+ <State 39>: 14.51ns
+ST_39: tmp_244_6 [1/5] 7.26ns
+.preheader19:127  %tmp_244_6 = fadd float %tmp_244_5, %tmp_243_6
+
+ST_39: tmp_244_7 [5/5] 7.26ns
+.preheader19:138  %tmp_244_7 = fadd float %tmp_244_6, %tmp_243_7
+
+
+ <State 40>: 7.26ns
+ST_40: tmp_244_7 [4/5] 7.26ns
+.preheader19:138  %tmp_244_7 = fadd float %tmp_244_6, %tmp_243_7
+
+
+ <State 41>: 7.26ns
+ST_41: tmp_244_7 [3/5] 7.26ns
+.preheader19:138  %tmp_244_7 = fadd float %tmp_244_6, %tmp_243_7
+
+
+ <State 42>: 7.26ns
+ST_42: tmp_244_7 [2/5] 7.26ns
+.preheader19:138  %tmp_244_7 = fadd float %tmp_244_6, %tmp_243_7
+
+
+ <State 43>: 14.51ns
+ST_43: tmp_244_7 [1/5] 7.26ns
+.preheader19:138  %tmp_244_7 = fadd float %tmp_244_6, %tmp_243_7
+
+ST_43: tmp_244_8 [5/5] 7.26ns
+.preheader19:149  %tmp_244_8 = fadd float %tmp_244_7, %tmp_243_8
+
+
+ <State 44>: 7.26ns
+ST_44: tmp_244_8 [4/5] 7.26ns
+.preheader19:149  %tmp_244_8 = fadd float %tmp_244_7, %tmp_243_8
+
+
+ <State 45>: 7.26ns
+ST_45: tmp_244_8 [3/5] 7.26ns
+.preheader19:149  %tmp_244_8 = fadd float %tmp_244_7, %tmp_243_8
+
+
+ <State 46>: 7.26ns
+ST_46: tmp_244_8 [2/5] 7.26ns
+.preheader19:149  %tmp_244_8 = fadd float %tmp_244_7, %tmp_243_8
+
+
+ <State 47>: 14.51ns
+ST_47: tmp_244_8 [1/5] 7.26ns
+.preheader19:149  %tmp_244_8 = fadd float %tmp_244_7, %tmp_243_8
+
+ST_47: tmp_244_9 [5/5] 7.26ns
+.preheader19:160  %tmp_244_9 = fadd float %tmp_244_8, %tmp_243_9
+
+
+ <State 48>: 7.26ns
+ST_48: tmp_244_9 [4/5] 7.26ns
+.preheader19:160  %tmp_244_9 = fadd float %tmp_244_8, %tmp_243_9
+
+
+ <State 49>: 7.26ns
+ST_49: tmp_244_9 [3/5] 7.26ns
+.preheader19:160  %tmp_244_9 = fadd float %tmp_244_8, %tmp_243_9
+
+
+ <State 50>: 7.26ns
+ST_50: tmp_244_9 [2/5] 7.26ns
+.preheader19:160  %tmp_244_9 = fadd float %tmp_244_8, %tmp_243_9
+
+
+ <State 51>: 9.65ns
+ST_51: stg_381 [1/1] 0.00ns
+.preheader19:0  call void (...)* @_ssdm_op_SpecLoopName([21 x i8]* @L_L_update_C3_label6_str)
+
+ST_51: empty_56 [1/1] 0.00ns
+.preheader19:1  %empty_56 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 250, i64 250, i64 250) nounwind
+
+ST_51: stg_383 [1/1] 0.00ns
+.preheader19:11  call void (...)* @_ssdm_op_SpecLoopName([19 x i8]* @L_update_C3_label6_str)
+
+ST_51: stg_384 [1/1] 0.00ns
+.preheader19:25  call void (...)* @_ssdm_op_SpecLoopName([17 x i8]* @p_str14) nounwind
+
+ST_51: tmp_22 [1/1] 0.00ns
+.preheader19:26  %tmp_22 = call i32 (...)* @_ssdm_op_SpecRegionBegin([17 x i8]* @p_str14) nounwind
+
+ST_51: stg_386 [1/1] 0.00ns
+.preheader19:27  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_51: tmp_244_9 [1/5] 7.26ns
+.preheader19:160  %tmp_244_9 = fadd float %tmp_244_8, %tmp_243_9
+
+ST_51: stg_388 [1/1] 2.39ns
+.preheader19:161  store float %tmp_244_9, float* %tmp_addr_1, align 4
+
+ST_51: empty_58 [1/1] 0.00ns
+.preheader19:162  %empty_58 = call i32 (...)* @_ssdm_op_SpecRegionEnd([17 x i8]* @p_str14, i32 %tmp_22) nounwind
+
+ST_51: stg_390 [1/1] 0.00ns
+.preheader19:166  br label %.preheader17
+
+
+ <State 52>: 5.40ns
+ST_52: tmp_134_trn_cast [1/1] 0.00ns
+.preheader16.preheader:0  %tmp_134_trn_cast = zext i3 %j_mid2 to i10
+
+ST_52: C3_dmapData_addr1 [1/1] 1.72ns
+.preheader16.preheader:1  %C3_dmapData_addr1 = sub i9 %p_shl79_cast, %p_shl80_cast
+
+ST_52: C3_dmapData_addr1_cast [1/1] 0.00ns
+.preheader16.preheader:2  %C3_dmapData_addr1_cast = sext i9 %C3_dmapData_addr1 to i10
+
+ST_52: C3_dmapData_addr2 [1/1] 1.84ns
+.preheader16.preheader:3  %C3_dmapData_addr2 = add i10 %C3_dmapData_addr1_cast, %tmp_134_trn_cast
+
+ST_52: C3_dmapData_addr2_cast [1/1] 0.00ns
+.preheader16.preheader:4  %C3_dmapData_addr2_cast = sext i10 %C3_dmapData_addr2 to i32
+
+ST_52: tmp_126 [1/1] 0.00ns
+.preheader16.preheader:5  %tmp_126 = call i12 @_ssdm_op_BitConcatenate.i12.i10.i2(i10 %C3_dmapData_addr2, i2 0)
+
+ST_52: p_shl38 [1/1] 0.00ns
+.preheader16.preheader:6  %p_shl38 = sext i12 %tmp_126 to i32
+
+ST_52: C3_dmapData_addr3 [1/1] 1.84ns
+.preheader16.preheader:7  %C3_dmapData_addr3 = add i32 %C3_dmapData_addr2_cast, %p_shl38
+
+ST_52: stg_399 [1/1] 1.57ns
+.preheader16.preheader:8  br label %.preheader16
+
+
+ <State 53>: 4.04ns
+ST_53: k_2 [1/1] 0.00ns
+.preheader16:0  %k_2 = phi i3 [ 0, %.preheader16.preheader ], [ %k_15, %.preheader15 ]
+
+ST_53: exitcond4 [1/1] 1.62ns
+.preheader16:1  %exitcond4 = icmp eq i3 %k_2, -3
+
+ST_53: empty_59 [1/1] 0.00ns
+.preheader16:2  %empty_59 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 5, i64 5, i64 5) nounwind
+
+ST_53: k_15 [1/1] 0.80ns
+.preheader16:3  %k_15 = add i3 %k_2, 1
+
+ST_53: stg_404 [1/1] 0.00ns
+.preheader16:4  br i1 %exitcond4, label %3, label %.preheader15.preheader
+
+ST_53: tmp_95 [1/1] 0.80ns
+.preheader15.preheader:0  %tmp_95 = sub i3 -4, %k_2
+
+ST_53: tmp_139_trn [1/1] 0.00ns
+.preheader15.preheader:1  %tmp_139_trn = zext i3 %k_2 to i32
+
+ST_53: C3_dmapData_addr4 [1/1] 1.96ns
+.preheader15.preheader:2  %C3_dmapData_addr4 = add i32 %tmp_139_trn, %C3_dmapData_addr3
+
+ST_53: tmp_131 [1/1] 0.00ns
+.preheader15.preheader:3  %tmp_131 = shl i32 %C3_dmapData_addr4, 2
+
+ST_53: C3_dmapData_addr5 [1/1] 2.08ns
+.preheader15.preheader:4  %C3_dmapData_addr5 = add i32 %tmp_131, %C3_dmapData_addr4
+
+ST_53: tmp_141_trn_cast [1/1] 0.00ns
+.preheader15.preheader:5  %tmp_141_trn_cast = zext i3 %tmp_95 to i6
+
+ST_53: tmp_186 [1/1] 0.00ns
+.preheader15.preheader:6  %tmp_186 = call i5 @_ssdm_op_BitConcatenate.i5.i3.i2(i3 %tmp_95, i2 0)
+
+ST_53: p_shl92_cast [1/1] 0.00ns
+.preheader15.preheader:7  %p_shl92_cast = zext i5 %tmp_186 to i6
+
+ST_53: p_addr19 [1/1] 1.72ns
+.preheader15.preheader:8  %p_addr19 = add i6 %p_shl92_cast, %tmp_141_trn_cast
+
+ST_53: stg_414 [1/1] 1.57ns
+.preheader15.preheader:9  br label %.preheader15
+
+ST_53: j_15 [1/1] 0.80ns
+:0  %j_15 = add i3 %j_mid2, 1
+
+ST_53: stg_416 [1/1] 0.00ns
+:1  br label %.preheader22
+
+
+ <State 54>: 4.91ns
+ST_54: m_2 [1/1] 0.00ns
+.preheader15:0  %m_2 = phi i3 [ %m_5, %2 ], [ 0, %.preheader15.preheader ]
+
+ST_54: exitcond3 [1/1] 1.62ns
+.preheader15:1  %exitcond3 = icmp eq i3 %m_2, -3
+
+ST_54: empty_60 [1/1] 0.00ns
+.preheader15:2  %empty_60 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 5, i64 5, i64 5) nounwind
+
+ST_54: m_5 [1/1] 0.80ns
+.preheader15:3  %m_5 = add i3 %m_2, 1
+
+ST_54: stg_421 [1/1] 0.00ns
+.preheader15:4  br i1 %exitcond3, label %.preheader16, label %2
+
+ST_54: tmp_143_trn [1/1] 0.00ns
+:0  %tmp_143_trn = zext i3 %m_2 to i32
+
+ST_54: C3_dmapData_addr6 [1/1] 2.08ns
+:1  %C3_dmapData_addr6 = add i32 %tmp_143_trn, %C3_dmapData_addr5
+
+ST_54: tmp_187 [1/1] 0.00ns
+:2  %tmp_187 = zext i32 %C3_dmapData_addr6 to i64
+
+ST_54: C3_dmapData_addr [1/1] 0.00ns
+:3  %C3_dmapData_addr = getelementptr [2400 x float]* @C3_dmapData, i64 0, i64 %tmp_187
+
+ST_54: C3_dmapData_load [2/2] 2.71ns
+:4  %C3_dmapData_load = load float* %C3_dmapData_addr, align 4
+
+ST_54: tmp_96 [1/1] 0.80ns
+:5  %tmp_96 = sub i3 -4, %m_2
+
+ST_54: tmp_145_trn_cast [1/1] 0.00ns
+:6  %tmp_145_trn_cast = zext i3 %tmp_96 to i6
+
+ST_54: p_addr20 [1/1] 1.72ns
+:7  %p_addr20 = add i6 %tmp_145_trn_cast, %p_addr19
+
+ST_54: tmp_188 [1/1] 0.00ns
+:8  %tmp_188 = zext i6 %p_addr20 to i64
+
+ST_54: tmp_addr_2 [1/1] 0.00ns
+:9  %tmp_addr_2 = getelementptr [25 x float]* %tmp, i64 0, i64 %tmp_188
+
+ST_54: empty_61 [2/2] 2.39ns
+:10  %empty_61 = load float* %tmp_addr_2, align 4
+
+
+ <State 55>: 2.71ns
+ST_55: C3_dmapData_load [1/2] 2.71ns
+:4  %C3_dmapData_load = load float* %C3_dmapData_addr, align 4
+
+ST_55: empty_61 [1/2] 2.39ns
+:10  %empty_61 = load float* %tmp_addr_2, align 4
+
+
+ <State 56>: 7.26ns
+ST_56: tmp_97 [5/5] 7.26ns
+:11  %tmp_97 = fadd float %C3_dmapData_load, %empty_61
+
+
+ <State 57>: 7.26ns
+ST_57: tmp_97 [4/5] 7.26ns
+:11  %tmp_97 = fadd float %C3_dmapData_load, %empty_61
+
+
+ <State 58>: 7.26ns
+ST_58: tmp_97 [3/5] 7.26ns
+:11  %tmp_97 = fadd float %C3_dmapData_load, %empty_61
+
+
+ <State 59>: 7.26ns
+ST_59: tmp_97 [2/5] 7.26ns
+:11  %tmp_97 = fadd float %C3_dmapData_load, %empty_61
+
+
+ <State 60>: 7.26ns
+ST_60: tmp_97 [1/5] 7.26ns
+:11  %tmp_97 = fadd float %C3_dmapData_load, %empty_61
+
+
+ <State 61>: 2.71ns
+ST_61: stg_440 [1/1] 2.71ns
+:12  store float %tmp_97, float* %C3_dmapData_addr, align 4
+
+ST_61: stg_441 [1/1] 0.00ns
+:13  br label %.preheader15
+
+
+ <State 62>: 1.91ns
+ST_62: i_1 [1/1] 0.00ns
+.preheader14:0  %i_1 = phi i5 [ %i_18, %5 ], [ 0, %.preheader22 ]
+
+ST_62: exitcond2 [1/1] 1.91ns
+.preheader14:1  %exitcond2 = icmp eq i5 %i_1, -16
+
+ST_62: empty_63 [1/1] 0.00ns
+.preheader14:2  %empty_63 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 16, i64 16, i64 16) nounwind
+
+ST_62: i_18 [1/1] 1.72ns
+.preheader14:3  %i_18 = add i5 %i_1, 1
+
+ST_62: stg_446 [1/1] 0.00ns
+.preheader14:4  br i1 %exitcond2, label %6, label %.preheader13.preheader
+
+ST_62: tmp_s [1/1] 0.00ns
+.preheader13.preheader:0  %tmp_s = zext i5 %i_1 to i64
+
+ST_62: tmp_154 [1/1] 0.00ns
+.preheader13.preheader:1  %tmp_154 = call i8 @_ssdm_op_BitConcatenate.i8.i5.i3(i5 %i_1, i3 0)
+
+ST_62: p_shl75_cast [1/1] 0.00ns
+.preheader13.preheader:2  %p_shl75_cast = zext i8 %tmp_154 to i9
+
+ST_62: tmp_155 [1/1] 0.00ns
+.preheader13.preheader:3  %tmp_155 = call i6 @_ssdm_op_BitConcatenate.i6.i5.i1(i5 %i_1, i1 false)
+
+ST_62: p_shl76_cast [1/1] 0.00ns
+.preheader13.preheader:4  %p_shl76_cast = zext i6 %tmp_155 to i9
+
+ST_62: C3_d_addr8 [1/1] 1.72ns
+.preheader13.preheader:5  %C3_d_addr8 = add i9 %p_shl76_cast, %p_shl75_cast
+
+ST_62: stg_453 [1/1] 1.57ns
+.preheader13.preheader:6  br label %.preheader13
+
+ST_62: stg_454 [1/1] 0.00ns
+:0  ret void
+
+
+ <State 63>: 3.68ns
+ST_63: j_1 [1/1] 0.00ns
+.preheader13:0  %j_1 = phi i4 [ 0, %.preheader13.preheader ], [ %j_14, %.preheader ]
+
+ST_63: q [1/1] 0.00ns
+.preheader13:1  %q = phi float [ 0.000000e+00, %.preheader13.preheader ], [ %q_1, %.preheader ]
+
+ST_63: exitcond1 [1/1] 1.88ns
+.preheader13:2  %exitcond1 = icmp eq i4 %j_1, -6
+
+ST_63: empty_64 [1/1] 0.00ns
+.preheader13:3  %empty_64 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_63: j_14 [1/1] 0.80ns
+.preheader13:4  %j_14 = add i4 %j_1, 1
+
+ST_63: stg_460 [1/1] 0.00ns
+.preheader13:5  br i1 %exitcond1, label %5, label %.preheader.preheader
+
+ST_63: tmp_133_trn_cast [1/1] 0.00ns
+.preheader.preheader:0  %tmp_133_trn_cast = zext i4 %j_1 to i9
+
+ST_63: C3_d_addr4 [1/1] 1.84ns
+.preheader.preheader:1  %C3_d_addr4 = add i9 %C3_d_addr8, %tmp_133_trn_cast
+
+ST_63: tmp_124 [1/1] 0.00ns
+.preheader.preheader:2  %tmp_124 = call i12 @_ssdm_op_BitConcatenate.i12.i9.i3(i9 %C3_d_addr4, i3 0)
+
+ST_63: p_shl [1/1] 0.00ns
+.preheader.preheader:3  %p_shl = zext i12 %tmp_124 to i32
+
+ST_63: tmp_125 [1/1] 0.00ns
+.preheader.preheader:4  %tmp_125 = call i10 @_ssdm_op_BitConcatenate.i10.i9.i1(i9 %C3_d_addr4, i1 false)
+
+ST_63: p_shl37 [1/1] 0.00ns
+.preheader.preheader:5  %p_shl37 = zext i10 %tmp_125 to i32
+
+ST_63: C3_d_addr5 [1/1] 1.84ns
+.preheader.preheader:6  %C3_d_addr5 = add i32 %p_shl37, %p_shl
+
+ST_63: stg_468 [1/1] 1.57ns
+.preheader.preheader:7  br label %.preheader
+
+ST_63: C3_dbias_addr [1/1] 0.00ns
+:0  %C3_dbias_addr = getelementptr [16 x float]* @C3_dbias, i64 0, i64 %tmp_s
+
+ST_63: C3_dbias_load [2/2] 2.39ns
+:1  %C3_dbias_load = load float* %C3_dbias_addr, align 4
+
+
+ <State 64>: 4.67ns
+ST_64: k_3 [1/1] 0.00ns
+.preheader:0  %k_3 = phi i4 [ %k_14, %4 ], [ 0, %.preheader.preheader ]
+
+ST_64: q_1 [1/1] 0.00ns
+.preheader:1  %q_1 = phi float [ %q_6, %4 ], [ %q, %.preheader.preheader ]
+
+ST_64: exitcond [1/1] 1.88ns
+.preheader:2  %exitcond = icmp eq i4 %k_3, -6
+
+ST_64: empty_65 [1/1] 0.00ns
+.preheader:3  %empty_65 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 10, i64 10, i64 10) nounwind
+
+ST_64: k_14 [1/1] 0.80ns
+.preheader:4  %k_14 = add i4 %k_3, 1
+
+ST_64: stg_476 [1/1] 0.00ns
+.preheader:5  br i1 %exitcond, label %.preheader13, label %4
+
+ST_64: tmp_136_trn [1/1] 0.00ns
+:0  %tmp_136_trn = zext i4 %k_3 to i32
+
+ST_64: C3_d_addr19 [1/1] 1.96ns
+:1  %C3_d_addr19 = add i32 %C3_d_addr5, %tmp_136_trn
+
+ST_64: tmp_185 [1/1] 0.00ns
+:2  %tmp_185 = zext i32 %C3_d_addr19 to i64
+
+ST_64: C3_d_addr [1/1] 0.00ns
+:3  %C3_d_addr = getelementptr [1600 x float]* @C3_d, i64 0, i64 %tmp_185
+
+ST_64: C3_d_load [2/2] 2.71ns
+:4  %C3_d_load = load float* %C3_d_addr, align 4
+
+
+ <State 65>: 2.71ns
+ST_65: C3_d_load [1/2] 2.71ns
+:4  %C3_d_load = load float* %C3_d_addr, align 4
+
+
+ <State 66>: 7.26ns
+ST_66: q_6 [5/5] 7.26ns
+:5  %q_6 = fadd float %q_1, %C3_d_load
+
+
+ <State 67>: 7.26ns
+ST_67: q_6 [4/5] 7.26ns
+:5  %q_6 = fadd float %q_1, %C3_d_load
+
+
+ <State 68>: 7.26ns
+ST_68: q_6 [3/5] 7.26ns
+:5  %q_6 = fadd float %q_1, %C3_d_load
+
+
+ <State 69>: 7.26ns
+ST_69: q_6 [2/5] 7.26ns
+:5  %q_6 = fadd float %q_1, %C3_d_load
+
+
+ <State 70>: 7.26ns
+ST_70: q_6 [1/5] 7.26ns
+:5  %q_6 = fadd float %q_1, %C3_d_load
+
+ST_70: stg_488 [1/1] 0.00ns
+:6  br label %.preheader
+
+
+ <State 71>: 2.39ns
+ST_71: C3_dbias_load [1/2] 2.39ns
+:1  %C3_dbias_load = load float* %C3_dbias_addr, align 4
+
+
+ <State 72>: 7.26ns
+ST_72: tmp_91 [5/5] 7.26ns
+:2  %tmp_91 = fadd float %C3_dbias_load, %q
+
+
+ <State 73>: 7.26ns
+ST_73: tmp_91 [4/5] 7.26ns
+:2  %tmp_91 = fadd float %C3_dbias_load, %q
+
+
+ <State 74>: 7.26ns
+ST_74: tmp_91 [3/5] 7.26ns
+:2  %tmp_91 = fadd float %C3_dbias_load, %q
+
+
+ <State 75>: 7.26ns
+ST_75: tmp_91 [2/5] 7.26ns
+:2  %tmp_91 = fadd float %C3_dbias_load, %q
+
+
+ <State 76>: 7.26ns
+ST_76: tmp_91 [1/5] 7.26ns
+:2  %tmp_91 = fadd float %C3_dbias_load, %q
+
+
+ <State 77>: 2.39ns
+ST_77: stg_495 [1/1] 2.39ns
+:3  store float %tmp_91, float* %C3_dbias_addr, align 4
+
+ST_77: stg_496 [1/1] 0.00ns
+:4  br label %.preheader14
+
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+	State 38
+	State 39
+	State 40
+	State 41
+	State 42
+	State 43
+	State 44
+	State 45
+	State 46
+	State 47
+	State 48
+	State 49
+	State 50
+	State 51
+	State 52
+	State 53
+	State 54
+	State 55
+	State 56
+	State 57
+	State 58
+	State 59
+	State 60
+	State 61
+	State 62
+	State 63
+	State 64
+	State 65
+	State 66
+	State 67
+	State 68
+	State 69
+	State 70
+	State 71
+	State 72
+	State 73
+	State 74
+	State 75
+	State 76
+	State 77
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

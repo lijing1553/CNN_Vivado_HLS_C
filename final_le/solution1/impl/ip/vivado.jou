@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Tue May 09 23:56:43 2017
+# Process ID: 9996
+# Log file: D:/vivado_hls/final_le/solution1/impl/ip/vivado.log
+# Journal file: D:/vivado_hls/final_le/solution1/impl/ip\vivado.jou
+#-----------------------------------------------------------
+source run_ippack.tcl -notrace

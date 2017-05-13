@@ -1,0 +1,418 @@
+
+
+================================================================
+== Vivado HLS Report for 'dateport'
+================================================================
+* Date:           Tue May 09 23:13:46 2017
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        Le_7
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     14.51|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+---------+-----+---------+---------+
+    |    Latency    |    Interval   | Pipeline|
+    | min |   max   | min |   max   |   Type  |
+    +-----+---------+-----+---------+---------+
+    |    2|  5647602|    3|  5647603|   none  |
+    +-----+---------+-----+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------+---------------------+---------+---------+---------+---------+---------+
+        |                                |                     |      Latency      |      Interval     | Pipeline|
+        |            Instance            |        Module       |   min   |   max   |   min   |   max   |   Type  |
+        +--------------------------------+---------------------+---------+---------+---------+---------+---------+
+        |grp_dateport_update_C1_fu_316   |dateport_update_C1   |   513644|   513644|   513644|   513644|   none  |
+        |grp_dateport_O_layer_fu_328     |dateport_O_layer     |     3703|     3703|     3703|     3703|   none  |
+        |grp_dateport_DC1_layer_fu_342   |dateport_DC1_layer   |    20179|    20179|    20179|    20179|   none  |
+        |grp_dateport_DC3_layer_fu_354   |dateport_DC3_layer   |     7009|     7009|     7009|     7009|   none  |
+        |grp_dateport_update_C3_fu_366   |dateport_update_C3   |  1044050|  1044050|  1044050|  1044050|   none  |
+        |grp_dateport_C3_conv_fu_378     |dateport_C3_conv     |  1072728|  1072728|  1072728|  1072728|   none  |
+        |grp_dateport_DS2_layer_fu_392   |dateport_DS2_layer   |  2079830|  2079830|  2079830|  2079830|   none  |
+        |grp_dateport_C1_conv_fu_402     |dateport_C1_conv     |   522507|   522507|   522507|   522507|   none  |
+        |grp_dateport_upadteall_fu_416   |dateport_upadteall   |   171289|   171289|   171289|   171289|   none  |
+        |grp_dateport_DS4_layer_fu_452   |dateport_DS4_layer   |    12605|    12605|    12605|    12605|   none  |
+        |grp_dateport_C5_conv_fu_462     |dateport_C5_conv     |    72482|    72482|    72482|    72482|   none  |
+        |grp_dateport_DC5_layer_fu_476   |dateport_DC5_layer   |     3722|     3722|     3722|     3722|   none  |
+        |grp_dateport_update_C5_fu_490   |dateport_update_C5   |   117362|   117362|   117362|   117362|   none  |
+        |grp_dateport_S2_pool_fu_502     |dateport_S2_pool     |    24877|    24877|    24877|    24877|   none  |
+        |grp_dateport_S4_pool_fu_510     |dateport_S4_pool     |     8593|     8593|     8593|     8593|   none  |
+        |grp_dateport_update_OUT_fu_518  |dateport_update_OUT  |     3412|     3412|     3412|     3412|   none  |
+        +--------------------------------+---------------------+---------+---------+---------+---------+---------+
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |  140|  140|        14|          -|          -|    10|    no    |
+        |- Loop 2  |   40|   40|         4|          -|          -|    10|    no    |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       0|    305|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |       20|     99|   20875|  32353|
+|Memory           |      154|      -|     833|    119|
+|Multiplexer      |        -|      -|       -|    828|
+|Register         |        -|      -|     433|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |      174|     99|   22141|  33605|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |       62|     45|      20|     63|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------------------+---------------------------------------+---------+-------+------+------+
+    |                  Instance                  |                 Module                | BRAM_18K| DSP48E|  FF  |  LUT |
+    +--------------------------------------------+---------------------------------------+---------+-------+------+------+
+    |dateport_AXILiteS_s_axi_U                   |dateport_AXILiteS_s_axi                |        0|      0|   124|   168|
+    |grp_dateport_C1_conv_fu_402                 |dateport_C1_conv                       |        0|      5|  1304|  1801|
+    |grp_dateport_C3_conv_fu_378                 |dateport_C3_conv                       |        4|      5|  1431|  2236|
+    |grp_dateport_C5_conv_fu_462                 |dateport_C5_conv                       |        0|      5|   682|  1299|
+    |grp_dateport_DC1_layer_fu_342               |dateport_DC1_layer                     |        0|     10|  1585|  2682|
+    |grp_dateport_DC3_layer_fu_354               |dateport_DC3_layer                     |        0|     10|  1589|  2672|
+    |grp_dateport_DC5_layer_fu_476               |dateport_DC5_layer                     |        0|      5|   641|  1231|
+    |grp_dateport_DS2_layer_fu_392               |dateport_DS2_layer                     |       16|      5|  1360|  2210|
+    |grp_dateport_DS4_layer_fu_452               |dateport_DS4_layer                     |        0|      5|  1163|  1555|
+    |grp_dateport_O_layer_fu_328                 |dateport_O_layer                       |        0|     12|  1735|  2926|
+    |grp_dateport_S2_pool_fu_502                 |dateport_S2_pool                       |        0|      5|   690|  1202|
+    |grp_dateport_S4_pool_fu_510                 |dateport_S4_pool                       |        0|      5|   694|  1196|
+    |dateport_fcmp_32ns_32ns_1_1_U125            |dateport_fcmp_32ns_32ns_1_1            |        0|      0|    66|   239|
+    |dateport_fsub_32ns_32ns_32_5_full_dsp_U123  |dateport_fsub_32ns_32ns_32_5_full_dsp  |        0|      2|   205|   390|
+    |dateport_sitofp_32ns_32_6_U124              |dateport_sitofp_32ns_32_6              |        0|      0|   340|   554|
+    |grp_dateport_upadteall_fu_416               |dateport_upadteall                     |        0|      5|  1194|  1672|
+    |grp_dateport_update_C1_fu_316               |dateport_update_C1                     |        0|      5|  2863|  3714|
+    |grp_dateport_update_C3_fu_366               |dateport_update_C3                     |        0|      5|  1847|  2603|
+    |grp_dateport_update_C5_fu_490               |dateport_update_C5                     |        0|      5|   780|  1152|
+    |grp_dateport_update_OUT_fu_518              |dateport_update_OUT                    |        0|      5|   582|   851|
+    +--------------------------------------------+---------------------------------------+---------+-------+------+------+
+    |Total                                       |                                       |       20|     99| 20875| 32353|
+    +--------------------------------------------+---------------------------------------+---------+-------+------+------+
+
+    * Memory: 
+    +----------------+---------------------------+---------+----+----+-------+-----+------+-------------+
+    |     Memory     |           Module          | BRAM_18K| FF | LUT| Words | Bits| Banks| W*Bits*Banks|
+    +----------------+---------------------------+---------+----+----+-------+-----+------+-------------+
+    |C1_bias_U       |dateport_C1_bias           |        0|  64|   3|      6|   32|     1|          192|
+    |C1_dbias_U      |dateport_C1_bias           |        0|  64|   3|      6|   32|     1|          192|
+    |C1_d_U          |dateport_C1_d              |       16|   0|   0|   4704|   32|     1|       150528|
+    |C1_dmapData_U   |dateport_C1_dmapData       |        1|   0|   0|    150|   32|     1|         4800|
+    |C1_mapData_U    |dateport_C1_mapData        |        2|   0|   0|    150|   32|     1|         4800|
+    |C1_v_U          |dateport_C1_v              |       16|   0|   0|   4704|   32|     1|       150528|
+    |C1_y_U          |dateport_C1_v              |       16|   0|   0|   4704|   32|     1|       150528|
+    |C3_bias_U       |dateport_C3_bias           |        0|  64|   8|     16|   32|     1|          512|
+    |C3_dbias_U      |dateport_C3_bias           |        0|  64|   8|     16|   32|     1|          512|
+    |C3_d_U          |dateport_C3_d              |        4|   0|   0|   1600|   32|     1|        51200|
+    |C3_dmapData_U   |dateport_C3_dmapData       |        8|   0|   0|   2400|   32|     1|        76800|
+    |C3_mapData_U    |dateport_C3_mapData        |        8|   0|   0|   2400|   32|     1|        76800|
+    |C3_y_U          |dateport_C3_y              |        4|   0|   0|   1600|   32|     1|        51200|
+    |C5_dmapData_U   |dateport_C5_dmapData       |       32|   0|   0|  12000|   32|     1|       384000|
+    |C5_mapData_U    |dateport_C5_mapData        |       32|   0|   0|  12000|   32|     1|       384000|
+    |C5_v_U          |dateport_C5_v              |        0|  64|  15|     30|   32|     1|          960|
+    |C5_bias_U       |dateport_C5_v              |        0|  64|  15|     30|   32|     1|          960|
+    |C5_y_U          |dateport_C5_v              |        0|  64|  15|     30|   32|     1|          960|
+    |C5_d_U          |dateport_C5_v              |        0|  64|  15|     30|   32|     1|          960|
+    |C5_dbias_U      |dateport_C5_v              |        0|  64|  15|     30|   32|     1|          960|
+    |output_bias_U   |dateport_O_layer_output_v  |        0|  64|   5|     10|   32|     1|          320|
+    |output_y_U      |dateport_O_layer_output_v  |        0|  64|   5|     10|   32|     1|          320|
+    |output_d_U      |dateport_O_layer_output_v  |        0|  64|   5|     10|   32|     1|          320|
+    |output_dbias_U  |dateport_O_layer_output_v  |        0|  64|   5|     10|   32|     1|          320|
+    |S2_d_U          |dateport_S2_d              |        4|   0|   0|   1176|   32|     1|        37632|
+    |S2_y_U          |dateport_S2_y              |        4|   0|   0|   1176|   32|     1|        37632|
+    |S4_d_U          |dateport_S4_d              |        2|   0|   0|    400|   32|     1|        12800|
+    |S4_y_U          |dateport_S4_y              |        1|   0|   0|    400|   32|     1|        12800|
+    |input_img_U     |dateport_input_img         |        2|   0|   0|   1024|   32|     1|        32768|
+    |output_dwei_U   |dateport_output_dwei       |        1|   0|   0|    300|   32|     1|         9600|
+    |output_wei_U    |dateport_output_wei        |        1|   0|   0|    300|   32|     1|         9600|
+    |resid_U         |dateport_resid             |        0|   1|   2|    100|    1|     1|          100|
+    +----------------+---------------------------+---------+----+----+-------+-----+------+-------------+
+    |Total           |                           |      154| 833| 119|  51522|  993|    32|      1645604|
+    +----------------+---------------------------+---------+----+----+-------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------+----------+-------+---+----+------------+------------+
+    |      Variable Name     | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------+----------+-------+---+----+------------+------------+
+    |i_fu_605_p2             |     +    |      0|  0|   4|           4|           1|
+    |j_fu_696_p2             |     +    |      0|  0|   4|           4|           1|
+    |resid_addr3_fu_593_p2   |     +    |      0|  0|  32|          32|          32|
+    |resid_addr4_fu_615_p2   |     +    |      0|  0|  32|          32|          32|
+    |tmp_12_i_fu_712_p2      |     +    |      0|  0|  16|          16|           1|
+    |tmp_20_fu_663_p2        |     +    |      0|  0|   6|           6|           4|
+    |tmp_7_fu_835_p2         |     +    |      0|  0|  32|          32|           1|
+    |tmp_i_9_fu_652_p2       |     +    |      0|  0|   6|           6|           1|
+    |h_1_fu_807_p3           |  Select  |      0|  0|  32|           1|          32|
+    |offset_1_fu_815_p3      |  Select  |      0|  0|  32|           1|          32|
+    |p_tmp_7_fu_847_p3       |  Select  |      0|  0|  32|           1|           1|
+    |tmp_11_i_fu_668_p3      |  Select  |      0|  0|   6|           1|           6|
+    |tmp_15_fu_796_p2        |    and   |      0|  0|   1|           1|           1|
+    |tmp_17_fu_802_p2        |    and   |      0|  0|   1|           1|           1|
+    |exitcond_i_fu_690_p2    |   icmp   |      0|  0|   2|           4|           4|
+    |exitcond_i_i_fu_599_p2  |   icmp   |      0|  0|   2|           4|           4|
+    |notlhs5_fu_778_p2       |   icmp   |      0|  0|   3|           8|           2|
+    |notlhs_fu_760_p2        |   icmp   |      0|  0|   3|           8|           2|
+    |notrhs6_fu_784_p2       |   icmp   |      0|  0|   8|          23|           1|
+    |notrhs_fu_766_p2        |   icmp   |      0|  0|   8|          23|           1|
+    |tmp_19_fu_657_p2        |   icmp   |      0|  0|   3|           6|           5|
+    |tmp_1_fu_553_p2         |   icmp   |      0|  0|   3|           8|           2|
+    |tmp_3_fu_571_p2         |   icmp   |      0|  0|   3|           8|           1|
+    |tmp_8_fu_841_p2         |   icmp   |      0|  0|  11|          32|          11|
+    |tmp_9_fu_559_p2         |   icmp   |      0|  0|   3|           8|           2|
+    |tmp_i3_fu_707_p2        |   icmp   |      0|  0|  11|          32|          32|
+    |tmp_i_fu_646_p2         |   icmp   |      0|  0|   3|           7|           1|
+    |tmp_s_fu_565_p2         |   icmp   |      0|  0|   3|           8|           1|
+    |ap_sig_bdd_1662         |    or    |      0|  0|   1|           1|           1|
+    |tmp_13_fu_772_p2        |    or    |      0|  0|   1|           1|           1|
+    |tmp_14_fu_790_p2        |    or    |      0|  0|   1|           1|           1|
+    +------------------------+----------+-------+---+----+------------+------------+
+    |Total                   |          |      0|  0| 305|         320|         218|
+    +------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------+----+-----------+-----+-----------+
+    |          Name         | LUT| Input Size| Bits| Total Bits|
+    +-----------------------+----+-----------+-----+-----------+
+    |C1_bias_address0       |   3|          4|    3|         12|
+    |C1_bias_ce0            |   1|          4|    1|          4|
+    |C1_bias_we0            |   1|          2|    1|          2|
+    |C1_d_address0          |  13|          3|   13|         39|
+    |C1_d_address1          |  13|          3|   13|         39|
+    |C1_d_ce0               |   1|          3|    1|          3|
+    |C1_d_ce1               |   1|          3|    1|          3|
+    |C1_d_we0               |   1|          2|    1|          2|
+    |C1_d_we1               |   1|          2|    1|          2|
+    |C1_dbias_address0      |   3|          3|    3|          9|
+    |C1_dbias_ce0           |   1|          3|    1|          3|
+    |C1_dbias_d0            |  32|          3|   32|         96|
+    |C1_dbias_we0           |   1|          3|    1|          3|
+    |C1_dmapData_address0   |   8|          3|    8|         24|
+    |C1_dmapData_ce0        |   1|          3|    1|          3|
+    |C1_dmapData_d0         |  32|          3|   32|         96|
+    |C1_dmapData_we0        |   1|          3|    1|          3|
+    |C1_mapData_address0    |   8|          3|    8|         24|
+    |C1_mapData_ce0         |   1|          3|    1|          3|
+    |C1_mapData_ce1         |   1|          2|    1|          2|
+    |C1_mapData_we0         |   1|          2|    1|          2|
+    |C1_v_address0          |  13|          3|   13|         39|
+    |C1_v_ce0               |   1|          3|    1|          3|
+    |C1_v_ce1               |   1|          2|    1|          2|
+    |C1_v_we0               |   1|          2|    1|          2|
+    |C1_y_address0          |  13|          3|   13|         39|
+    |C1_y_ce0               |   1|          3|    1|          3|
+    |C1_y_ce1               |   1|          2|    1|          2|
+    |C1_y_we0               |   1|          2|    1|          2|
+    |C3_bias_address0       |   4|          4|    4|         16|
+    |C3_bias_ce0            |   1|          4|    1|          4|
+    |C3_bias_we0            |   1|          2|    1|          2|
+    |C3_d_address0          |  11|          4|   11|         44|
+    |C3_d_address1          |  11|          3|   11|         33|
+    |C3_d_ce0               |   1|          4|    1|          4|
+    |C3_d_ce1               |   1|          3|    1|          3|
+    |C3_d_we0               |   1|          2|    1|          2|
+    |C3_d_we1               |   1|          2|    1|          2|
+    |C3_dbias_address0      |   4|          3|    4|         12|
+    |C3_dbias_ce0           |   1|          3|    1|          3|
+    |C3_dbias_d0            |  32|          3|   32|         96|
+    |C3_dbias_we0           |   1|          3|    1|          3|
+    |C3_dmapData_address0   |  12|          3|   12|         36|
+    |C3_dmapData_ce0        |   1|          3|    1|          3|
+    |C3_dmapData_d0         |  32|          3|   32|         96|
+    |C3_dmapData_we0        |   1|          3|    1|          3|
+    |C3_mapData_address0    |  12|          4|   12|         48|
+    |C3_mapData_address1    |  12|          3|   12|         36|
+    |C3_mapData_ce0         |   1|          4|    1|          4|
+    |C3_mapData_ce1         |   1|          3|    1|          3|
+    |C3_mapData_we0         |   1|          2|    1|          2|
+    |C3_y_address0          |  11|          4|   11|         44|
+    |C3_y_address1          |  11|          3|   11|         33|
+    |C3_y_ce0               |   1|          4|    1|          4|
+    |C3_y_ce1               |   1|          3|    1|          3|
+    |C3_y_we0               |   1|          2|    1|          2|
+    |C5_bias_address0       |   5|          4|    5|         20|
+    |C5_bias_ce0            |   1|          4|    1|          4|
+    |C5_bias_we0            |   1|          2|    1|          2|
+    |C5_d_address0          |   5|          4|    5|         20|
+    |C5_d_ce0               |   1|          4|    1|          4|
+    |C5_d_we0               |   1|          2|    1|          2|
+    |C5_dbias_address0      |   5|          3|    5|         15|
+    |C5_dbias_ce0           |   1|          3|    1|          3|
+    |C5_dbias_d0            |  32|          3|   32|         96|
+    |C5_dbias_we0           |   1|          3|    1|          3|
+    |C5_dmapData_address0   |  14|          3|   14|         42|
+    |C5_dmapData_ce0        |   1|          3|    1|          3|
+    |C5_dmapData_d0         |  32|          3|   32|         96|
+    |C5_dmapData_we0        |   1|          3|    1|          3|
+    |C5_mapData_address0    |  14|          4|   14|         56|
+    |C5_mapData_ce0         |   1|          4|    1|          4|
+    |C5_mapData_ce1         |   1|          2|    1|          2|
+    |C5_mapData_we0         |   1|          2|    1|          2|
+    |C5_v_address0          |   5|          3|    5|         15|
+    |C5_v_ce0               |   1|          3|    1|          3|
+    |C5_v_we0               |   1|          2|    1|          2|
+    |C5_y_address0          |   5|          4|    5|         20|
+    |C5_y_ce0               |   1|          4|    1|          4|
+    |C5_y_we0               |   1|          2|    1|          2|
+    |S2_d_address0          |  11|          3|   11|         33|
+    |S2_d_ce0               |   1|          3|    1|          3|
+    |S2_d_we0               |   1|          2|    1|          2|
+    |S2_y_address0          |  11|          4|   11|         44|
+    |S2_y_address1          |  11|          3|   11|         33|
+    |S2_y_ce0               |   1|          4|    1|          4|
+    |S2_y_ce1               |   1|          3|    1|          3|
+    |S2_y_we0               |   1|          2|    1|          2|
+    |S4_d_address0          |   9|          3|    9|         27|
+    |S4_d_ce0               |   1|          3|    1|          3|
+    |S4_d_ce1               |   1|          2|    1|          2|
+    |S4_d_we0               |   1|          2|    1|          2|
+    |S4_d_we1               |   1|          2|    1|          2|
+    |S4_y_address0          |   9|          4|    9|         36|
+    |S4_y_ce0               |   1|          4|    1|          4|
+    |S4_y_we0               |   1|          2|    1|          2|
+    |ap_NS_fsm              |  90|         49|    1|         49|
+    |h_i_reg_281            |  32|          2|   32|         64|
+    |i_i_i_reg_269          |   4|          2|    4|          8|
+    |input_img_address0     |  10|          4|   10|         40|
+    |input_img_address1     |  10|          3|   10|         30|
+    |input_img_ce0          |   1|          4|    1|          4|
+    |input_img_ce1          |   1|          3|    1|          3|
+    |offset_i_reg_304       |  32|          2|   32|         64|
+    |offset_reg_293         |   4|          2|    4|          8|
+    |output_bias_address0   |   4|          3|    4|         12|
+    |output_bias_ce0        |   1|          3|    1|          3|
+    |output_bias_we0        |   1|          2|    1|          2|
+    |output_d_address0      |   4|          4|    4|         16|
+    |output_d_ce0           |   1|          4|    1|          4|
+    |output_dbias_address0  |   4|          3|    4|         12|
+    |output_dbias_ce0       |   1|          3|    1|          3|
+    |output_dbias_d0        |  32|          3|   32|         96|
+    |output_dbias_we0       |   1|          3|    1|          3|
+    |output_dwei_address0   |   9|          3|    9|         27|
+    |output_dwei_ce0        |   1|          3|    1|          3|
+    |output_dwei_d0         |  32|          3|   32|         96|
+    |output_dwei_we0        |   1|          3|    1|          3|
+    |output_wei_address0    |   9|          4|    9|         36|
+    |output_wei_ce0         |   1|          4|    1|          4|
+    |output_wei_we0         |   1|          2|    1|          2|
+    |output_y_address0      |   4|          4|    4|         16|
+    |output_y_ce0           |   1|          3|    1|          3|
+    |output_y_we0           |   1|          2|    1|          2|
+    |righht_i               |  16|          2|   16|         32|
+    +-----------------------+----+-----------+-----+-----------+
+    |Total                  | 828|        416|  739|       2277|
+    +-----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------------------------------------------+----+----+-----+-----------+
+    |                         Name                         | FF | LUT| Bits| Const Bits|
+    +------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                             |  48|   0|   48|          0|
+    |date_0_data_reg                                       |  32|   0|   32|          0|
+    |date_0_vld_reg                                        |   0|   0|    1|          1|
+    |date_read_reg_861                                     |  32|   0|   32|          0|
+    |grp_dateport_C1_conv_fu_402_ap_start_ap_start_reg     |   1|   0|    1|          0|
+    |grp_dateport_C3_conv_fu_378_ap_start_ap_start_reg     |   1|   0|    1|          0|
+    |grp_dateport_C5_conv_fu_462_ap_start_ap_start_reg     |   1|   0|    1|          0|
+    |grp_dateport_DC1_layer_fu_342_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_DC3_layer_fu_354_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_DC5_layer_fu_476_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_DS2_layer_fu_392_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_DS4_layer_fu_452_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_O_layer_fu_328_ap_start_ap_start_reg     |   1|   0|    1|          0|
+    |grp_dateport_S2_pool_fu_502_ap_start_ap_start_reg     |   1|   0|    1|          0|
+    |grp_dateport_S4_pool_fu_510_ap_start_ap_start_reg     |   1|   0|    1|          0|
+    |grp_dateport_upadteall_fu_416_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_update_C1_fu_316_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_update_C3_fu_366_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_update_C5_fu_490_ap_start_ap_start_reg   |   1|   0|    1|          0|
+    |grp_dateport_update_OUT_fu_518_ap_start_ap_start_reg  |   1|   0|    1|          0|
+    |h_i_reg_281                                           |  32|   0|   32|          0|
+    |i_i_i_reg_269                                         |   4|   0|    4|          0|
+    |i_reg_892                                             |   4|   0|    4|          0|
+    |input_i                                               |  32|   0|   32|          0|
+    |j_reg_950                                             |   4|   0|    4|          0|
+    |led_1_data_reg                                        |  16|   0|   16|          0|
+    |led_1_vld_reg                                         |   1|   0|    1|          0|
+    |offset_cast1_reg_942                                  |   4|   0|   32|         28|
+    |offset_i_reg_304                                      |  32|   0|   32|          0|
+    |offset_reg_293                                        |   4|   0|    4|          0|
+    |reg_547                                               |  32|   0|   32|          0|
+    |renew                                                 |   6|   0|    8|          2|
+    |resid_addr3_reg_884                                   |  31|   0|   32|          1|
+    |resid_load_reg_902                                    |   1|   0|    1|          0|
+    |righht_i                                              |  16|   0|   16|          0|
+    |signal_out_1_data_reg                                 |   1|   0|    8|          7|
+    |signal_out_1_vld_reg                                  |   1|   0|    1|          0|
+    |signal_r_0_data_reg                                   |   8|   0|    8|          0|
+    |signal_r_0_vld_reg                                    |   0|   0|    1|          1|
+    |tmp_10_reg_932                                        |   6|   0|    6|          0|
+    |tmp_16_reg_963                                        |   1|   0|    1|          0|
+    |tmp_80_i_i_reg_922                                    |  32|   0|   32|          0|
+    |tmp_81_i_i_reg_927                                    |  32|   0|   32|          0|
+    |tmp_i_i_reg_912                                       |   4|   0|   64|         60|
+    |tmp_i_reg_938                                         |   1|   0|    1|          0|
+    +------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                 | 433|   0|  533|        100|
+    +------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+--------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  | Source Object|    C Type    |
++------------------------+-----+-----+------------+--------------+--------------+
+|s_axi_AXILiteS_AWVALID  |  in |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_AWREADY  | out |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_AWADDR   |  in |    6|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_WVALID   |  in |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_WREADY   | out |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_WDATA    |  in |   32|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_WSTRB    |  in |    4|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_ARVALID  |  in |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_ARREADY  | out |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_ARADDR   |  in |    6|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_RVALID   | out |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_RREADY   |  in |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_RDATA    | out |   32|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_RRESP    | out |    2|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_BVALID   | out |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_BREADY   |  in |    1|    s_axi   |   AXILiteS   |    pointer   |
+|s_axi_AXILiteS_BRESP    | out |    2|    s_axi   |   AXILiteS   |    pointer   |
+|ap_clk                  |  in |    1| ap_ctrl_hs |   dateport   | return value |
+|ap_rst_n                |  in |    1| ap_ctrl_hs |   dateport   | return value |
+|interrupt               | out |    1| ap_ctrl_hs |   dateport   | return value |
++------------------------+-----+-----+------------+--------------+--------------+
+

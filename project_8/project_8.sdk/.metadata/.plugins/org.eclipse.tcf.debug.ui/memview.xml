@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Memory>
+<Block Addr="0x1012453d" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="1"/>
+<Block Addr="0x0011048e" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x0011048e+0x00303c00" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x0011048e+0x00381e00" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x0011048e+0x00400000" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x00110480+0x00400800" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x00110480+0x00400800+0x000007ff" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x00110480+0x00303c00+0x0001d000" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+<Block Addr="0x00110480+0x00303c00+0x0001e000" Context="JTAG-jsn-Zed-210248707504-4ba00477-0.0" Size="-1"/>
+</Memory>

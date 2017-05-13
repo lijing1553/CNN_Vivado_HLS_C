@@ -1,0 +1,94 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="dateport" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="s_axilite" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="port" value="return" positionalBoolean="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="dateport" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="s_axilite" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="port" value="date" positionalBoolean="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="dateport" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="s_axilite" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="port" value="signal" positionalBoolean="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="dateport" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="s_axilite" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="port" value="led" positionalBoolean="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="dateport" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="s_axilite" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="port" value="signal_out" positionalBoolean="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="C1_conv" label="C1_conv_label2" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="C1_conv" label="C1_conv_label0" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="C1_conv" label="C1_conv_label0" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="C1_conv" label="C1_conv_label3" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="C3_conv" label="C3_conv_label4" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="C3_conv" label="C3_conv_label1" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="C5_conv" label="C5_conv_label2" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="DS4_layer" label="DS4_layer_label1" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="DS4_layer" label="DS4_layer_label3" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="DS2_layer" label="DS2_layer_label1" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="DS2_layer" label="DS2_layer_label4" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="update_C1" label="update_C1_label0" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="update_C1" label="update_C1_label5" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="update_C3" label="update_C3_label3" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="update_C3" label="update_C3_label6" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="update_C5" label="update_C5_label7" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="update_C5" label="update_C5_label8" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="upadteall" label="upadteall_label2" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

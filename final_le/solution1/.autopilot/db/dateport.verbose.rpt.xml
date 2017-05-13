@@ -1,0 +1,388 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'dateport'" level="0">
+<item name = "Date">Tue May 09 23:55:14 2017
+</item>
+<item name = "Version">2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)</item>
+<item name = "Project">final_le</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00, 14.51, 1.25</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">3, 5617000, 4, 5617001, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_dateport_update_C1_fu_316">dateport_update_C1, 513644, 513644, 513644, 513644, none</column>
+<column name="grp_dateport_O_layer_fu_328">dateport_O_layer, 3703, 3703, 3703, 3703, none</column>
+<column name="grp_dateport_DC1_layer_fu_342">dateport_DC1_layer, 20179, 20179, 20179, 20179, none</column>
+<column name="grp_dateport_DC3_layer_fu_354">dateport_DC3_layer, 7009, 7009, 7009, 7009, none</column>
+<column name="grp_dateport_update_C3_fu_366">dateport_update_C3, 1044050, 1044050, 1044050, 1044050, none</column>
+<column name="grp_dateport_C3_conv_fu_378">dateport_C3_conv, 1072728, 1072728, 1072728, 1072728, none</column>
+<column name="grp_dateport_DS2_layer_fu_392">dateport_DS2_layer, 2079830, 2079830, 2079830, 2079830, none</column>
+<column name="grp_dateport_C1_conv_fu_402">dateport_C1_conv, 522160, 522160, 522160, 522160, none</column>
+<column name="grp_dateport_upadteall_fu_416">dateport_upadteall, 146313, 146313, 146313, 146313, none</column>
+<column name="grp_dateport_update_C5_fu_452">dateport_update_C5, 112082, 112082, 112082, 112082, none</column>
+<column name="grp_dateport_DS4_layer_fu_464">dateport_DS4_layer, 12605, 12605, 12605, 12605, none</column>
+<column name="grp_dateport_C5_conv_fu_474">dateport_C5_conv, 72482, 72482, 72482, 72482, none</column>
+<column name="grp_dateport_DC5_layer_fu_488">dateport_DC5_layer, 3722, 3722, 3722, 3722, none</column>
+<column name="grp_dateport_S2_pool_fu_502">dateport_S2_pool, 24877, 24877, 24877, 24877, none</column>
+<column name="grp_dateport_S4_pool_fu_510">dateport_S4_pool, 8593, 8593, 8593, 8593, none</column>
+<column name="grp_dateport_update_OUT_fu_518">dateport_update_OUT, 3412, 3412, 3412, 3412, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">140, 140, 14, -, -, 10, no</column>
+<column name="- Loop 2">40, 40, 4, -, -, 10, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="Expression">-, -, 0, 305</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">22, 102, 20980, 32860</column>
+<column name="Memory">155, -, 833, 119</column>
+<column name="Multiplexer">-, -, -, 799</column>
+<column name="Register">-, -, 434, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
+<specialColumn name="Utilization (%)">63, 46, 20, 64</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="dateport_AXILiteS_s_axi_U">dateport_AXILiteS_s_axi, 0, 0, 124, 168</column>
+<column name="grp_dateport_C1_conv_fu_402">dateport_C1_conv, 0, 5, 1313, 1840</column>
+<column name="grp_dateport_C3_conv_fu_378">dateport_C3_conv, 4, 5, 1431, 2236</column>
+<column name="grp_dateport_C5_conv_fu_474">dateport_C5_conv, 0, 5, 682, 1299</column>
+<column name="grp_dateport_DC1_layer_fu_342">dateport_DC1_layer, 0, 10, 1585, 2682</column>
+<column name="grp_dateport_DC3_layer_fu_354">dateport_DC3_layer, 0, 10, 1589, 2672</column>
+<column name="grp_dateport_DC5_layer_fu_488">dateport_DC5_layer, 0, 5, 641, 1231</column>
+<column name="grp_dateport_DS2_layer_fu_392">dateport_DS2_layer, 16, 5, 1360, 2210</column>
+<column name="grp_dateport_DS4_layer_fu_464">dateport_DS4_layer, 0, 5, 1163, 1555</column>
+<column name="grp_dateport_O_layer_fu_328">dateport_O_layer, 0, 12, 1735, 2926</column>
+<column name="grp_dateport_S2_pool_fu_502">dateport_S2_pool, 0, 5, 690, 1202</column>
+<column name="grp_dateport_S4_pool_fu_510">dateport_S4_pool, 0, 5, 694, 1196</column>
+<column name="dateport_fcmp_32ns_32ns_1_1_U127">dateport_fcmp_32ns_32ns_1_1, 0, 0, 66, 239</column>
+<column name="dateport_fsub_32ns_32ns_32_5_full_dsp_U125">dateport_fsub_32ns_32ns_32_5_full_dsp, 0, 2, 205, 390</column>
+<column name="dateport_sitofp_32ns_32_6_U126">dateport_sitofp_32ns_32_6, 0, 0, 340, 554</column>
+<column name="grp_dateport_upadteall_fu_416">dateport_upadteall, 0, 5, 1178, 1601</column>
+<column name="grp_dateport_update_C1_fu_316">dateport_update_C1, 0, 5, 2863, 3714</column>
+<column name="grp_dateport_update_C3_fu_366">dateport_update_C3, 0, 5, 1847, 2603</column>
+<column name="grp_dateport_update_C5_fu_452">dateport_update_C5, 2, 8, 892, 1691</column>
+<column name="grp_dateport_update_OUT_fu_518">dateport_update_OUT, 0, 5, 582, 851</column>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="C1_bias_U">dateport_C1_bias, 0, 64, 3, 6, 32, 1, 192</column>
+<column name="C1_dbias_U">dateport_C1_bias, 0, 64, 3, 6, 32, 1, 192</column>
+<column name="C1_d_U">dateport_C1_d, 16, 0, 0, 4704, 32, 1, 150528</column>
+<column name="C1_dmapData_U">dateport_C1_dmapData, 1, 0, 0, 150, 32, 1, 4800</column>
+<column name="C1_mapData_U">dateport_C1_mapData, 2, 0, 0, 150, 32, 1, 4800</column>
+<column name="C1_v_U">dateport_C1_v, 16, 0, 0, 4704, 32, 1, 150528</column>
+<column name="C1_y_U">dateport_C1_v, 16, 0, 0, 4704, 32, 1, 150528</column>
+<column name="C3_bias_U">dateport_C3_bias, 0, 64, 8, 16, 32, 1, 512</column>
+<column name="C3_dbias_U">dateport_C3_bias, 0, 64, 8, 16, 32, 1, 512</column>
+<column name="C3_d_U">dateport_C3_d, 4, 0, 0, 1600, 32, 1, 51200</column>
+<column name="C3_dmapData_U">dateport_C3_dmapData, 8, 0, 0, 2400, 32, 1, 76800</column>
+<column name="C3_mapData_U">dateport_C3_mapData, 8, 0, 0, 2400, 32, 1, 76800</column>
+<column name="C3_y_U">dateport_C3_y, 4, 0, 0, 1600, 32, 1, 51200</column>
+<column name="C5_dmapData_U">dateport_C5_dmapData, 32, 0, 0, 12000, 32, 1, 384000</column>
+<column name="C5_mapData_U">dateport_C5_mapData, 32, 0, 0, 12000, 32, 1, 384000</column>
+<column name="C5_v_U">dateport_C5_v, 0, 64, 15, 30, 32, 1, 960</column>
+<column name="C5_bias_U">dateport_C5_v, 0, 64, 15, 30, 32, 1, 960</column>
+<column name="C5_y_U">dateport_C5_v, 0, 64, 15, 30, 32, 1, 960</column>
+<column name="C5_d_U">dateport_C5_v, 0, 64, 15, 30, 32, 1, 960</column>
+<column name="C5_dbias_U">dateport_C5_v, 0, 64, 15, 30, 32, 1, 960</column>
+<column name="output_bias_U">dateport_O_layer_output_v, 0, 64, 5, 10, 32, 1, 320</column>
+<column name="output_y_U">dateport_O_layer_output_v, 0, 64, 5, 10, 32, 1, 320</column>
+<column name="output_d_U">dateport_O_layer_output_v, 0, 64, 5, 10, 32, 1, 320</column>
+<column name="output_dbias_U">dateport_O_layer_output_v, 0, 64, 5, 10, 32, 1, 320</column>
+<column name="S2_d_U">dateport_S2_d, 4, 0, 0, 1176, 32, 1, 37632</column>
+<column name="S2_y_U">dateport_S2_y, 4, 0, 0, 1176, 32, 1, 37632</column>
+<column name="S4_d_U">dateport_S4_d, 2, 0, 0, 400, 32, 1, 12800</column>
+<column name="S4_y_U">dateport_S4_y, 2, 0, 0, 400, 32, 1, 12800</column>
+<column name="input_img_U">dateport_input_img, 2, 0, 0, 1024, 32, 1, 32768</column>
+<column name="output_dwei_U">dateport_output_dwei, 1, 0, 0, 300, 32, 1, 9600</column>
+<column name="output_wei_U">dateport_output_wei, 1, 0, 0, 300, 32, 1, 9600</column>
+<column name="resid_U">dateport_resid, 0, 1, 2, 100, 1, 1, 100</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="i_fu_605_p2">+, 0, 0, 4, 4, 1</column>
+<column name="j_fu_696_p2">+, 0, 0, 4, 4, 1</column>
+<column name="resid_addr3_fu_593_p2">+, 0, 0, 32, 32, 32</column>
+<column name="resid_addr4_fu_615_p2">+, 0, 0, 32, 32, 32</column>
+<column name="tmp_12_i_fu_712_p2">+, 0, 0, 16, 16, 1</column>
+<column name="tmp_20_fu_663_p2">+, 0, 0, 6, 6, 4</column>
+<column name="tmp_7_fu_835_p2">+, 0, 0, 32, 32, 1</column>
+<column name="tmp_i_9_fu_652_p2">+, 0, 0, 6, 6, 1</column>
+<column name="h_1_fu_807_p3">Select, 0, 0, 32, 1, 32</column>
+<column name="offset_1_fu_815_p3">Select, 0, 0, 32, 1, 32</column>
+<column name="p_tmp_7_fu_847_p3">Select, 0, 0, 32, 1, 1</column>
+<column name="tmp_11_i_fu_668_p3">Select, 0, 0, 6, 1, 6</column>
+<column name="tmp_15_fu_796_p2">and, 0, 0, 1, 1, 1</column>
+<column name="tmp_17_fu_802_p2">and, 0, 0, 1, 1, 1</column>
+<column name="exitcond_i_fu_690_p2">icmp, 0, 0, 2, 4, 4</column>
+<column name="exitcond_i_i_fu_599_p2">icmp, 0, 0, 2, 4, 4</column>
+<column name="notlhs5_fu_778_p2">icmp, 0, 0, 3, 8, 2</column>
+<column name="notlhs_fu_760_p2">icmp, 0, 0, 3, 8, 2</column>
+<column name="notrhs6_fu_784_p2">icmp, 0, 0, 8, 23, 1</column>
+<column name="notrhs_fu_766_p2">icmp, 0, 0, 8, 23, 1</column>
+<column name="tmp_19_fu_657_p2">icmp, 0, 0, 3, 6, 5</column>
+<column name="tmp_1_fu_553_p2">icmp, 0, 0, 3, 8, 2</column>
+<column name="tmp_3_fu_571_p2">icmp, 0, 0, 3, 8, 1</column>
+<column name="tmp_8_fu_841_p2">icmp, 0, 0, 11, 32, 11</column>
+<column name="tmp_9_fu_559_p2">icmp, 0, 0, 3, 8, 2</column>
+<column name="tmp_i3_fu_707_p2">icmp, 0, 0, 11, 32, 32</column>
+<column name="tmp_i_fu_646_p2">icmp, 0, 0, 3, 7, 1</column>
+<column name="tmp_s_fu_565_p2">icmp, 0, 0, 3, 8, 1</column>
+<column name="ap_sig_bdd_1677">or, 0, 0, 1, 1, 1</column>
+<column name="tmp_13_fu_772_p2">or, 0, 0, 1, 1, 1</column>
+<column name="tmp_14_fu_790_p2">or, 0, 0, 1, 1, 1</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="C1_bias_address0">3, 4, 3, 12</column>
+<column name="C1_bias_ce0">1, 4, 1, 4</column>
+<column name="C1_bias_we0">1, 2, 1, 2</column>
+<column name="C1_d_address0">13, 3, 13, 39</column>
+<column name="C1_d_address1">13, 3, 13, 39</column>
+<column name="C1_d_ce0">1, 3, 1, 3</column>
+<column name="C1_d_ce1">1, 3, 1, 3</column>
+<column name="C1_d_we0">1, 2, 1, 2</column>
+<column name="C1_d_we1">1, 2, 1, 2</column>
+<column name="C1_dbias_address0">3, 3, 3, 9</column>
+<column name="C1_dbias_ce0">1, 3, 1, 3</column>
+<column name="C1_dbias_d0">32, 3, 32, 96</column>
+<column name="C1_dbias_we0">1, 3, 1, 3</column>
+<column name="C1_dmapData_address0">8, 3, 8, 24</column>
+<column name="C1_dmapData_ce0">1, 3, 1, 3</column>
+<column name="C1_dmapData_d0">32, 3, 32, 96</column>
+<column name="C1_dmapData_we0">1, 3, 1, 3</column>
+<column name="C1_mapData_address0">8, 3, 8, 24</column>
+<column name="C1_mapData_ce0">1, 3, 1, 3</column>
+<column name="C1_mapData_ce1">1, 2, 1, 2</column>
+<column name="C1_mapData_we0">1, 2, 1, 2</column>
+<column name="C1_v_address0">13, 3, 13, 39</column>
+<column name="C1_v_ce0">1, 3, 1, 3</column>
+<column name="C1_v_ce1">1, 2, 1, 2</column>
+<column name="C1_v_we0">1, 2, 1, 2</column>
+<column name="C1_y_address0">13, 3, 13, 39</column>
+<column name="C1_y_ce0">1, 3, 1, 3</column>
+<column name="C1_y_ce1">1, 2, 1, 2</column>
+<column name="C1_y_we0">1, 2, 1, 2</column>
+<column name="C3_bias_address0">4, 4, 4, 16</column>
+<column name="C3_bias_ce0">1, 4, 1, 4</column>
+<column name="C3_bias_we0">1, 2, 1, 2</column>
+<column name="C3_d_address0">11, 4, 11, 44</column>
+<column name="C3_d_address1">11, 3, 11, 33</column>
+<column name="C3_d_ce0">1, 4, 1, 4</column>
+<column name="C3_d_ce1">1, 3, 1, 3</column>
+<column name="C3_d_we0">1, 2, 1, 2</column>
+<column name="C3_d_we1">1, 2, 1, 2</column>
+<column name="C3_dbias_address0">4, 3, 4, 12</column>
+<column name="C3_dbias_ce0">1, 3, 1, 3</column>
+<column name="C3_dbias_d0">32, 3, 32, 96</column>
+<column name="C3_dbias_we0">1, 3, 1, 3</column>
+<column name="C3_dmapData_address0">12, 3, 12, 36</column>
+<column name="C3_dmapData_ce0">1, 3, 1, 3</column>
+<column name="C3_dmapData_ce1">1, 2, 1, 2</column>
+<column name="C3_dmapData_we0">1, 2, 1, 2</column>
+<column name="C3_dmapData_we1">1, 2, 1, 2</column>
+<column name="C3_mapData_address0">12, 4, 12, 48</column>
+<column name="C3_mapData_address1">12, 4, 12, 48</column>
+<column name="C3_mapData_ce0">1, 4, 1, 4</column>
+<column name="C3_mapData_ce1">1, 4, 1, 4</column>
+<column name="C3_mapData_we1">1, 2, 1, 2</column>
+<column name="C3_y_address0">11, 4, 11, 44</column>
+<column name="C3_y_address1">11, 3, 11, 33</column>
+<column name="C3_y_ce0">1, 4, 1, 4</column>
+<column name="C3_y_ce1">1, 3, 1, 3</column>
+<column name="C3_y_we0">1, 2, 1, 2</column>
+<column name="C5_bias_address0">5, 4, 5, 20</column>
+<column name="C5_bias_ce0">1, 4, 1, 4</column>
+<column name="C5_bias_we0">1, 2, 1, 2</column>
+<column name="C5_d_address0">5, 4, 5, 20</column>
+<column name="C5_d_ce0">1, 4, 1, 4</column>
+<column name="C5_d_we0">1, 2, 1, 2</column>
+<column name="C5_dbias_address0">5, 3, 5, 15</column>
+<column name="C5_dbias_ce0">1, 3, 1, 3</column>
+<column name="C5_dbias_d0">32, 3, 32, 96</column>
+<column name="C5_dbias_we0">1, 3, 1, 3</column>
+<column name="C5_dmapData_address0">14, 3, 14, 42</column>
+<column name="C5_dmapData_ce0">1, 3, 1, 3</column>
+<column name="C5_dmapData_d0">32, 3, 32, 96</column>
+<column name="C5_dmapData_we0">1, 3, 1, 3</column>
+<column name="C5_mapData_address0">14, 4, 14, 56</column>
+<column name="C5_mapData_ce0">1, 4, 1, 4</column>
+<column name="C5_mapData_ce1">1, 2, 1, 2</column>
+<column name="C5_mapData_we0">1, 2, 1, 2</column>
+<column name="C5_v_address0">5, 3, 5, 15</column>
+<column name="C5_v_ce0">1, 3, 1, 3</column>
+<column name="C5_v_we0">1, 2, 1, 2</column>
+<column name="C5_y_address0">5, 4, 5, 20</column>
+<column name="C5_y_ce0">1, 4, 1, 4</column>
+<column name="C5_y_we0">1, 2, 1, 2</column>
+<column name="S2_d_address0">11, 3, 11, 33</column>
+<column name="S2_d_ce0">1, 3, 1, 3</column>
+<column name="S2_d_we0">1, 2, 1, 2</column>
+<column name="S2_y_address0">11, 4, 11, 44</column>
+<column name="S2_y_address1">11, 3, 11, 33</column>
+<column name="S2_y_ce0">1, 4, 1, 4</column>
+<column name="S2_y_ce1">1, 3, 1, 3</column>
+<column name="S2_y_we0">1, 2, 1, 2</column>
+<column name="S4_d_address0">9, 3, 9, 27</column>
+<column name="S4_d_ce0">1, 3, 1, 3</column>
+<column name="S4_d_ce1">1, 2, 1, 2</column>
+<column name="S4_d_we0">1, 2, 1, 2</column>
+<column name="S4_d_we1">1, 2, 1, 2</column>
+<column name="S4_y_address0">9, 4, 9, 36</column>
+<column name="S4_y_ce0">1, 4, 1, 4</column>
+<column name="S4_y_ce1">1, 2, 1, 2</column>
+<column name="S4_y_we0">1, 2, 1, 2</column>
+<column name="ap_NS_fsm">90, 50, 1, 50</column>
+<column name="h_i_reg_281">32, 2, 32, 64</column>
+<column name="i_i_i_reg_269">4, 2, 4, 8</column>
+<column name="input_img_address0">10, 4, 10, 40</column>
+<column name="input_img_address1">10, 3, 10, 30</column>
+<column name="input_img_ce0">1, 4, 1, 4</column>
+<column name="input_img_ce1">1, 3, 1, 3</column>
+<column name="offset_i_reg_304">32, 2, 32, 64</column>
+<column name="offset_reg_293">4, 2, 4, 8</column>
+<column name="output_bias_address0">4, 3, 4, 12</column>
+<column name="output_bias_ce0">1, 3, 1, 3</column>
+<column name="output_bias_we0">1, 2, 1, 2</column>
+<column name="output_d_address0">4, 4, 4, 16</column>
+<column name="output_d_ce0">1, 4, 1, 4</column>
+<column name="output_dbias_address0">4, 3, 4, 12</column>
+<column name="output_dbias_ce0">1, 3, 1, 3</column>
+<column name="output_dbias_d0">32, 3, 32, 96</column>
+<column name="output_dbias_we0">1, 3, 1, 3</column>
+<column name="output_dwei_address0">9, 3, 9, 27</column>
+<column name="output_dwei_ce0">1, 3, 1, 3</column>
+<column name="output_dwei_d0">32, 3, 32, 96</column>
+<column name="output_dwei_we0">1, 3, 1, 3</column>
+<column name="output_wei_address0">9, 4, 9, 36</column>
+<column name="output_wei_ce0">1, 4, 1, 4</column>
+<column name="output_wei_we0">1, 2, 1, 2</column>
+<column name="output_y_address0">4, 4, 4, 16</column>
+<column name="output_y_ce0">1, 3, 1, 3</column>
+<column name="output_y_we0">1, 2, 1, 2</column>
+<column name="righht_i">16, 2, 16, 32</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">49, 0, 49, 0</column>
+<column name="date_0_data_reg">32, 0, 32, 0</column>
+<column name="date_0_vld_reg">0, 0, 1, 1</column>
+<column name="date_read_reg_861">32, 0, 32, 0</column>
+<column name="grp_dateport_C1_conv_fu_402_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_C3_conv_fu_378_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_C5_conv_fu_474_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_DC1_layer_fu_342_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_DC3_layer_fu_354_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_DC5_layer_fu_488_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_DS2_layer_fu_392_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_DS4_layer_fu_464_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_O_layer_fu_328_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_S2_pool_fu_502_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_S4_pool_fu_510_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_upadteall_fu_416_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_update_C1_fu_316_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_update_C3_fu_366_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_update_C5_fu_452_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="grp_dateport_update_OUT_fu_518_ap_start_ap_start_reg">1, 0, 1, 0</column>
+<column name="h_i_reg_281">32, 0, 32, 0</column>
+<column name="i_i_i_reg_269">4, 0, 4, 0</column>
+<column name="i_reg_892">4, 0, 4, 0</column>
+<column name="input_i">32, 0, 32, 0</column>
+<column name="j_reg_950">4, 0, 4, 0</column>
+<column name="led_1_data_reg">16, 0, 16, 0</column>
+<column name="led_1_vld_reg">1, 0, 1, 0</column>
+<column name="offset_cast1_reg_942">4, 0, 32, 28</column>
+<column name="offset_i_reg_304">32, 0, 32, 0</column>
+<column name="offset_reg_293">4, 0, 4, 0</column>
+<column name="reg_547">32, 0, 32, 0</column>
+<column name="renew">6, 0, 8, 2</column>
+<column name="resid_addr3_reg_884">31, 0, 32, 1</column>
+<column name="resid_load_reg_902">1, 0, 1, 0</column>
+<column name="righht_i">16, 0, 16, 0</column>
+<column name="signal_out_1_data_reg">1, 0, 8, 7</column>
+<column name="signal_out_1_vld_reg">1, 0, 1, 0</column>
+<column name="signal_r_0_data_reg">8, 0, 8, 0</column>
+<column name="signal_r_0_vld_reg">0, 0, 1, 1</column>
+<column name="tmp_10_reg_932">6, 0, 6, 0</column>
+<column name="tmp_16_reg_963">1, 0, 1, 0</column>
+<column name="tmp_80_i_i_reg_922">32, 0, 32, 0</column>
+<column name="tmp_81_i_i_reg_927">32, 0, 32, 0</column>
+<column name="tmp_i_i_reg_912">4, 0, 64, 60</column>
+<column name="tmp_i_reg_938">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="s_axi_AXILiteS_AWVALID">in, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_AWREADY">out, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_AWADDR">in, 6, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_WVALID">in, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_WREADY">out, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_WDATA">in, 32, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_WSTRB">in, 4, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_ARVALID">in, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_ARREADY">out, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_ARADDR">in, 6, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_RVALID">out, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_RREADY">in, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_RDATA">out, 32, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_RRESP">out, 2, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_BVALID">out, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_BREADY">in, 1, s_axi, AXILiteS, pointer</column>
+<column name="s_axi_AXILiteS_BRESP">out, 2, s_axi, AXILiteS, pointer</column>
+<column name="ap_clk">in, 1, ap_ctrl_hs, dateport, return value</column>
+<column name="ap_rst_n">in, 1, ap_ctrl_hs, dateport, return value</column>
+<column name="interrupt">out, 1, ap_ctrl_hs, dateport, return value</column>
+</table>
+</item>
+</section>
+</profile>

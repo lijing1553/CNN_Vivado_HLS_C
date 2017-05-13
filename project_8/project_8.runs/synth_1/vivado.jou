@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Wed May 10 01:08:35 2017
+# Process ID: 8096
+# Log file: F:/Users/project_8/project_8.runs/synth_1/design_1.vds
+# Journal file: F:/Users/project_8/project_8.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1.tcl -notrace

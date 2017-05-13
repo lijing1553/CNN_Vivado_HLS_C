@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="Lnet.h" path="D:\vivado_hls\Le_7\Lnet.h"/>
+    <originFiles name="Lnet.c" path="D:\vivado_hls\Le_7\Lnet.c"/>
+  </source>
+  <testbench>
+    <originFiles name="test.c" path="D:\vivado_hls\Le_7\test.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

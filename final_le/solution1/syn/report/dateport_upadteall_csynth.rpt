@@ -1,0 +1,390 @@
+
+
+================================================================
+== Vivado HLS Report for 'dateport_upadteall'
+================================================================
+* Date:           Tue May 09 23:55:13 2017
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        final_le
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      9.35|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +--------+--------+--------+--------+---------+
+    |     Latency     |     Interval    | Pipeline|
+    |   min  |   max  |   min  |   max  |   Type  |
+    +--------+--------+--------+--------+---------+
+    |  146313|  146313|  146313|  146313|   none  |
+    +--------+--------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------+--------+--------+----------+-----------+-----------+------+----------+
+        |                         |     Latency     | Iteration|  Initiation Interval  | Trip |          |
+        |        Loop Name        |   min  |   max  |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------------+--------+--------+----------+-----------+-----------+------+----------+
+        |- Loop 1                 |    1806|    1806|       301|          -|          -|     6|    no    |
+        | + Loop 1.1              |     285|     285|        57|          -|          -|     5|    no    |
+        |  ++ Loop 1.1.1          |      55|      55|        11|          -|          -|     5|    no    |
+        |- Loop 2                 |    2832|    2832|       177|          -|          -|    16|    no    |
+        | + L_L_upadteall_label2  |     160|     160|        12|          1|          1|   150|    yes   |
+        |- Loop 3                 |  138240|  138240|      4608|          -|          -|    30|    no    |
+        | + Loop 3.1              |    4592|    4592|       287|          -|          -|    16|    no    |
+        |  ++ Loop 3.1.1          |     285|     285|        57|          -|          -|     5|    no    |
+        |   +++ Loop 3.1.1.1      |      55|      55|        11|          -|          -|     5|    no    |
+        |- Loop 4                 |    3320|    3320|       332|          -|          -|    10|    no    |
+        | + Loop 4.1              |     330|     330|        11|          -|          -|    30|    no    |
+        |- Loop 5                 |     110|     110|        11|          -|          -|    10|    no    |
+        +-------------------------+--------+--------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       0|    380|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      5|     348|    711|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|    497|
+|Register         |        -|      -|     830|     13|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      5|    1178|   1601|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      2|       1|      3|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+    |                  Instance                  |                 Module                | BRAM_18K| DSP48E|  FF | LUT |
+    +--------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+    |dateport_fmul_32ns_32ns_32_4_max_dsp_U108   |dateport_fmul_32ns_32ns_32_4_max_dsp   |        0|      3|  143|  321|
+    |dateport_fsub_32ns_32ns_32_5_full_dsp_U107  |dateport_fsub_32ns_32ns_32_5_full_dsp  |        0|      2|  205|  390|
+    +--------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+    |Total                                       |                                       |        0|      5|  348|  711|
+    +--------------------------------------------+---------------------------------------+---------+-------+-----+-----+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------------------+----------+-------+---+----+------------+------------+
+    |          Variable Name         | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------------+----------+-------+---+----+------------+------------+
+    |C1_mapData_addr1_fu_576_p2      |     +    |      0|  0|   6|           6|           6|
+    |C1_mapData_addr2_fu_598_p2      |     +    |      0|  0|   6|           6|           6|
+    |C1_mapData_addr3_fu_619_p2      |     +    |      0|  0|  32|          32|          32|
+    |C1_mapData_addr4_fu_641_p2      |     +    |      0|  0|  32|          32|          32|
+    |C3_mapData_addr15_fu_792_p2     |     +    |      0|  0|  10|          10|          10|
+    |C3_mapData_addr16_fu_817_p2     |     +    |      0|  0|   4|          32|          32|
+    |C3_mapData_addr17_fu_823_p2     |     +    |      0|  0|   4|          32|          32|
+    |C3_mapData_addr18_fu_857_p2     |     +    |      0|  0|   4|          32|          32|
+    |C3_mapData_addr19_fu_862_p2     |     +    |      0|  0|   4|          32|          32|
+    |C5_mapData_addr10_fu_972_p2     |     +    |      0|  0|  32|          32|          32|
+    |C5_mapData_addr11_fu_994_p2     |     +    |      0|  0|  32|          32|          32|
+    |C5_mapData_addr7_fu_918_p2      |     +    |      0|  0|  10|          10|          10|
+    |C5_mapData_addr8_fu_939_p2      |     +    |      0|  0|  32|          32|          32|
+    |C5_mapData_addr9_fu_961_p2      |     +    |      0|  0|  32|          32|          32|
+    |i_22_fu_550_p2                  |     +    |      0|  0|   3|           3|           1|
+    |i_23_fu_1080_p2                 |     +    |      0|  0|   4|           4|           1|
+    |i_5_fu_658_p2                   |     +    |      0|  0|   5|           5|           1|
+    |i_6_fu_880_p2                   |     +    |      0|  0|   5|           5|           1|
+    |i_7_fu_1011_p2                  |     +    |      0|  0|   4|           4|           1|
+    |indvar_flatten_next2_fu_708_p2  |     +    |      0|  0|   8|           8|           1|
+    |indvar_flatten_op_fu_835_p2     |     +    |      0|  0|   6|           1|           6|
+    |j_18_fu_588_p2                  |     +    |      0|  0|   3|           3|           1|
+    |j_19_fu_908_p2                  |     +    |      0|  0|   5|           5|           1|
+    |j_4_fu_1027_p2                  |     +    |      0|  0|   5|           5|           1|
+    |j_s_fu_746_p2                   |     +    |      0|  0|   3|           1|           3|
+    |k_19_fu_760_p2                  |     +    |      0|  0|   3|           1|           3|
+    |k_3_fu_631_p2                   |     +    |      0|  0|   3|           3|           1|
+    |k_4_fu_951_p2                   |     +    |      0|  0|   3|           3|           1|
+    |m_7_fu_829_p2                   |     +    |      0|  0|   3|           1|           3|
+    |m_8_fu_984_p2                   |     +    |      0|  0|   3|           3|           1|
+    |output_wei_addr1_fu_1057_p2     |     +    |      0|  0|   4|           9|           9|
+    |output_wei_addr2_fu_1063_p2     |     +    |      0|  0|   4|           9|           9|
+    |C3_mapData_addr14_fu_692_p2     |     -    |      0|  0|   9|           9|           9|
+    |indvar_flatten_next_fu_841_p3   |  Select  |      0|  0|   6|           1|           1|
+    |j_1_mid2_fu_752_p3              |  Select  |      0|  0|   3|           1|           3|
+    |k_1_mid2_fu_780_p3              |  Select  |      0|  0|   3|           1|           3|
+    |k_1_mid_fu_720_p3               |  Select  |      0|  0|   3|           1|           1|
+    |m_mid2_fu_772_p3                |  Select  |      0|  0|   3|           1|           1|
+    |exitcond7_mid_fu_740_p2         |    and   |      0|  0|   1|           1|           1|
+    |exitcond10_fu_652_p2            |   icmp   |      0|  0|   3|           5|           6|
+    |exitcond11_fu_625_p2            |   icmp   |      0|  0|   2|           3|           3|
+    |exitcond12_fu_582_p2            |   icmp   |      0|  0|   2|           3|           3|
+    |exitcond13_fu_544_p2            |   icmp   |      0|  0|   2|           3|           3|
+    |exitcond17_fu_734_p2            |   icmp   |      0|  0|   2|           3|           3|
+    |exitcond1_fu_1021_p2            |   icmp   |      0|  0|   2|           5|           3|
+    |exitcond2_fu_1005_p2            |   icmp   |      0|  0|   2|           4|           4|
+    |exitcond3_fu_978_p2             |   icmp   |      0|  0|   2|           3|           3|
+    |exitcond4_fu_945_p2             |   icmp   |      0|  0|   2|           3|           3|
+    |exitcond5_fu_902_p2             |   icmp   |      0|  0|   3|           5|           6|
+    |exitcond6_fu_874_p2             |   icmp   |      0|  0|   2|           5|           3|
+    |exitcond_flatten6_fu_714_p2     |   icmp   |      0|  0|   3|           6|           5|
+    |exitcond_flatten_fu_702_p2      |   icmp   |      0|  0|   3|           8|           8|
+    |exitcond_fu_1074_p2             |   icmp   |      0|  0|   2|           4|           4|
+    |tmp_212_fu_766_p2               |    or    |      0|  0|   1|           1|           1|
+    |not_exitcond_flatten_fu_728_p2  |    xor   |      0|  0|   2|           1|           2|
+    +--------------------------------+----------+-------+---+----+------------+------------+
+    |Total                           |          |      0|  0| 380|         502|         476|
+    +--------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+-----+-----------+-----+-----------+
+    |           Name          | LUT | Input Size| Bits| Total Bits|
+    +-------------------------+-----+-----------+-----+-----------+
+    |C1_dbias_address0        |    3|          3|    3|          9|
+    |C1_dmapData_address0     |    8|          3|    8|         24|
+    |C3_dbias_address0        |    4|          3|    4|         12|
+    |C5_dbias_address0        |    5|          3|    5|         15|
+    |C5_dmapData_address0     |   14|          3|   14|         42|
+    |ap_NS_fsm                |  217|         97|    1|         97|
+    |ap_reg_ppiten_pp0_it11   |    1|          2|    1|          2|
+    |grp_fu_506_p0            |   64|          9|   32|        288|
+    |grp_fu_510_p0            |   64|         10|   32|        320|
+    |grp_fu_510_p1            |   32|          5|   32|        160|
+    |i_1_reg_363              |    5|          2|    5|         10|
+    |i_2_reg_429              |    5|          2|    5|         10|
+    |i_3_reg_473              |    4|          2|    4|          8|
+    |i_4_reg_495              |    4|          2|    4|          8|
+    |i_reg_330                |    3|          2|    3|          6|
+    |indvar_flatten2_reg_374  |    8|          2|    8|         16|
+    |indvar_flatten_reg_396   |    6|          2|    6|         12|
+    |j_1_phi_fu_389_p4        |    3|          2|    3|          6|
+    |j_1_reg_385              |    3|          2|    3|          6|
+    |j_2_reg_440              |    5|          2|    5|         10|
+    |j_3_reg_484              |    5|          2|    5|         10|
+    |j_reg_341                |    3|          2|    3|          6|
+    |k_1_phi_fu_411_p4        |    3|          2|    3|          6|
+    |k_1_reg_407              |    3|          2|    3|          6|
+    |k_2_reg_451              |    3|          2|    3|          6|
+    |k_reg_352                |    3|          2|    3|          6|
+    |m_1_reg_462              |    3|          2|    3|          6|
+    |m_reg_418                |    3|          2|    3|          6|
+    |output_dbias_address0    |    4|          3|    4|         12|
+    |output_dwei_address0     |    9|          3|    9|         27|
+    +-------------------------+-----+-----------+-----+-----------+
+    |Total                    |  497|        180|  217|       1152|
+    +-------------------------+-----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------+----+----+-----+-----------+
+    |               Name              | FF | LUT| Bits| Const Bits|
+    +---------------------------------+----+----+-----+-----------+
+    |C1_bias_addr_reg_1124            |   3|   0|    3|          0|
+    |C1_bias_load_reg_1167            |  32|   0|   32|          0|
+    |C1_dbias_addr_reg_1129           |   3|   0|    3|          0|
+    |C1_dmapData_addr_reg_1147        |   8|   0|    8|          0|
+    |C1_mapData_addr1_reg_1106        |   6|   0|    6|          0|
+    |C1_mapData_addr3_reg_1119        |  32|   0|   32|          0|
+    |C1_mapData_addr_reg_1142         |   8|   0|    8|          0|
+    |C1_mapData_load_reg_1157         |  32|   0|   32|          0|
+    |C3_bias_addr_reg_1254            |   4|   0|    4|          0|
+    |C3_bias_load_reg_1269            |  32|   0|   32|          0|
+    |C3_dbias_addr_reg_1259           |   4|   0|    4|          0|
+    |C3_dmapData_addr_reg_1238        |  12|   0|   12|          0|
+    |C3_mapData_addr17_reg_1216       |  32|   0|   32|          0|
+    |C3_mapData_addr19_cast_reg_1187  |   9|   0|   10|          1|
+    |C3_mapData_addr_reg_1232         |  12|   0|   12|          0|
+    |C3_mapData_load_reg_1249         |  32|   0|   32|          0|
+    |C5_bias_addr_reg_1306            |   5|   0|    5|          0|
+    |C5_bias_load_reg_1362            |  32|   0|   32|          0|
+    |C5_dbias_addr_reg_1311           |   5|   0|    5|          0|
+    |C5_dmapData_addr_reg_1342        |  14|   0|   14|          0|
+    |C5_mapData_addr10_reg_1324       |  32|   0|   32|          0|
+    |C5_mapData_addr16_cast_reg_1288  |   5|   0|   10|          5|
+    |C5_mapData_addr8_reg_1301        |  32|   0|   32|          0|
+    |C5_mapData_addr_reg_1337         |  14|   0|   14|          0|
+    |C5_mapData_load_reg_1352         |  32|   0|   32|          0|
+    |ap_CS_fsm                        |  96|   0|   96|          0|
+    |ap_reg_ppiten_pp0_it0            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it1            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it10           |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it11           |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it2            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it3            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it4            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it5            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it6            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it7            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it8            |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it9            |   1|   0|    1|          0|
+    |exitcond_flatten_reg_1192        |   1|   0|    1|          0|
+    |i_1_reg_363                      |   5|   0|    5|          0|
+    |i_22_reg_1095                    |   3|   0|    3|          0|
+    |i_23_reg_1411                    |   4|   0|    4|          0|
+    |i_2_reg_429                      |   5|   0|    5|          0|
+    |i_3_reg_473                      |   4|   0|    4|          0|
+    |i_4_reg_495                      |   4|   0|    4|          0|
+    |i_5_reg_1176                     |   5|   0|    5|          0|
+    |i_6_reg_1277                     |   5|   0|    5|          0|
+    |i_7_reg_1370                     |   4|   0|    4|          0|
+    |i_reg_330                        |   3|   0|    3|          0|
+    |indvar_flatten2_reg_374          |   8|   0|    8|          0|
+    |indvar_flatten_reg_396           |   6|   0|    6|          0|
+    |j_18_reg_1114                    |   3|   0|    3|          0|
+    |j_19_reg_1296                    |   5|   0|    5|          0|
+    |j_1_mid2_reg_1201                |   3|   0|    3|          0|
+    |j_1_reg_385                      |   3|   0|    3|          0|
+    |j_2_reg_440                      |   5|   0|    5|          0|
+    |j_3_reg_484                      |   5|   0|    5|          0|
+    |j_4_reg_1383                     |   5|   0|    5|          0|
+    |j_reg_341                        |   3|   0|    3|          0|
+    |k_1_mid2_reg_1211                |   3|   0|    3|          0|
+    |k_1_reg_407                      |   3|   0|    3|          0|
+    |k_2_reg_451                      |   3|   0|    3|          0|
+    |k_3_reg_1137                     |   3|   0|    3|          0|
+    |k_4_reg_1319                     |   3|   0|    3|          0|
+    |k_reg_352                        |   3|   0|    3|          0|
+    |m_1_reg_462                      |   3|   0|    3|          0|
+    |m_8_reg_1332                     |   3|   0|    3|          0|
+    |m_mid2_reg_1206                  |   3|   0|    3|          0|
+    |m_reg_418                        |   3|   0|    3|          0|
+    |output_bias_addr_reg_1416        |   4|   0|    4|          0|
+    |output_bias_load_reg_1431        |  32|   0|   32|          0|
+    |output_dbias_addr_reg_1421       |   4|   0|    4|          0|
+    |output_dwei_addr_reg_1393        |   9|   0|    9|          0|
+    |output_wei_addr_reg_1388         |   9|   0|    9|          0|
+    |output_wei_load_reg_1403         |  32|   0|   32|          0|
+    |reg_526                          |  32|   0|   32|          0|
+    |reg_532                          |  32|   0|   32|          0|
+    |tmp_111_reg_1282                 |   5|   0|   64|         59|
+    |tmp_173_trn_cast_reg_1375        |   4|   0|    9|          5|
+    |tmp_reg_1100                     |   3|   0|   64|         61|
+    |tmp_s_reg_1181                   |   5|   0|   64|         59|
+    |C3_mapData_addr_reg_1232         |   0|  12|   12|          0|
+    |exitcond_flatten_reg_1192        |   0|   1|    1|          0|
+    +---------------------------------+----+----+-----+-----------+
+    |Total                            | 830|  13| 1033|        190|
+    +---------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+--------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |    Source Object   |    C Type    |
++-----------------------+-----+-----+------------+--------------------+--------------+
+|ap_clk                 |  in |    1| ap_ctrl_hs | dateport_upadteall | return value |
+|ap_rst                 |  in |    1| ap_ctrl_hs | dateport_upadteall | return value |
+|ap_start               |  in |    1| ap_ctrl_hs | dateport_upadteall | return value |
+|ap_done                | out |    1| ap_ctrl_hs | dateport_upadteall | return value |
+|ap_idle                | out |    1| ap_ctrl_hs | dateport_upadteall | return value |
+|ap_ready               | out |    1| ap_ctrl_hs | dateport_upadteall | return value |
+|C1_mapData_address0    | out |    8|  ap_memory |     C1_mapData     |     array    |
+|C1_mapData_ce0         | out |    1|  ap_memory |     C1_mapData     |     array    |
+|C1_mapData_we0         | out |    1|  ap_memory |     C1_mapData     |     array    |
+|C1_mapData_d0          | out |   32|  ap_memory |     C1_mapData     |     array    |
+|C1_mapData_q0          |  in |   32|  ap_memory |     C1_mapData     |     array    |
+|C1_dmapData_address0   | out |    8|  ap_memory |     C1_dmapData    |     array    |
+|C1_dmapData_ce0        | out |    1|  ap_memory |     C1_dmapData    |     array    |
+|C1_dmapData_we0        | out |    1|  ap_memory |     C1_dmapData    |     array    |
+|C1_dmapData_d0         | out |   32|  ap_memory |     C1_dmapData    |     array    |
+|C1_dmapData_q0         |  in |   32|  ap_memory |     C1_dmapData    |     array    |
+|C1_bias_address0       | out |    3|  ap_memory |       C1_bias      |     array    |
+|C1_bias_ce0            | out |    1|  ap_memory |       C1_bias      |     array    |
+|C1_bias_we0            | out |    1|  ap_memory |       C1_bias      |     array    |
+|C1_bias_d0             | out |   32|  ap_memory |       C1_bias      |     array    |
+|C1_bias_q0             |  in |   32|  ap_memory |       C1_bias      |     array    |
+|C1_dbias_address0      | out |    3|  ap_memory |      C1_dbias      |     array    |
+|C1_dbias_ce0           | out |    1|  ap_memory |      C1_dbias      |     array    |
+|C1_dbias_we0           | out |    1|  ap_memory |      C1_dbias      |     array    |
+|C1_dbias_d0            | out |   32|  ap_memory |      C1_dbias      |     array    |
+|C1_dbias_q0            |  in |   32|  ap_memory |      C1_dbias      |     array    |
+|C3_mapData_address0    | out |   12|  ap_memory |     C3_mapData     |     array    |
+|C3_mapData_ce0         | out |    1|  ap_memory |     C3_mapData     |     array    |
+|C3_mapData_q0          |  in |   32|  ap_memory |     C3_mapData     |     array    |
+|C3_mapData_address1    | out |   12|  ap_memory |     C3_mapData     |     array    |
+|C3_mapData_ce1         | out |    1|  ap_memory |     C3_mapData     |     array    |
+|C3_mapData_we1         | out |    1|  ap_memory |     C3_mapData     |     array    |
+|C3_mapData_d1          | out |   32|  ap_memory |     C3_mapData     |     array    |
+|C3_dmapData_address0   | out |   12|  ap_memory |     C3_dmapData    |     array    |
+|C3_dmapData_ce0        | out |    1|  ap_memory |     C3_dmapData    |     array    |
+|C3_dmapData_q0         |  in |   32|  ap_memory |     C3_dmapData    |     array    |
+|C3_dmapData_address1   | out |   12|  ap_memory |     C3_dmapData    |     array    |
+|C3_dmapData_ce1        | out |    1|  ap_memory |     C3_dmapData    |     array    |
+|C3_dmapData_we1        | out |    1|  ap_memory |     C3_dmapData    |     array    |
+|C3_dmapData_d1         | out |   32|  ap_memory |     C3_dmapData    |     array    |
+|C3_bias_address0       | out |    4|  ap_memory |       C3_bias      |     array    |
+|C3_bias_ce0            | out |    1|  ap_memory |       C3_bias      |     array    |
+|C3_bias_we0            | out |    1|  ap_memory |       C3_bias      |     array    |
+|C3_bias_d0             | out |   32|  ap_memory |       C3_bias      |     array    |
+|C3_bias_q0             |  in |   32|  ap_memory |       C3_bias      |     array    |
+|C3_dbias_address0      | out |    4|  ap_memory |      C3_dbias      |     array    |
+|C3_dbias_ce0           | out |    1|  ap_memory |      C3_dbias      |     array    |
+|C3_dbias_we0           | out |    1|  ap_memory |      C3_dbias      |     array    |
+|C3_dbias_d0            | out |   32|  ap_memory |      C3_dbias      |     array    |
+|C3_dbias_q0            |  in |   32|  ap_memory |      C3_dbias      |     array    |
+|C5_mapData_address0    | out |   14|  ap_memory |     C5_mapData     |     array    |
+|C5_mapData_ce0         | out |    1|  ap_memory |     C5_mapData     |     array    |
+|C5_mapData_we0         | out |    1|  ap_memory |     C5_mapData     |     array    |
+|C5_mapData_d0          | out |   32|  ap_memory |     C5_mapData     |     array    |
+|C5_mapData_q0          |  in |   32|  ap_memory |     C5_mapData     |     array    |
+|C5_dmapData_address0   | out |   14|  ap_memory |     C5_dmapData    |     array    |
+|C5_dmapData_ce0        | out |    1|  ap_memory |     C5_dmapData    |     array    |
+|C5_dmapData_we0        | out |    1|  ap_memory |     C5_dmapData    |     array    |
+|C5_dmapData_d0         | out |   32|  ap_memory |     C5_dmapData    |     array    |
+|C5_dmapData_q0         |  in |   32|  ap_memory |     C5_dmapData    |     array    |
+|C5_bias_address0       | out |    5|  ap_memory |       C5_bias      |     array    |
+|C5_bias_ce0            | out |    1|  ap_memory |       C5_bias      |     array    |
+|C5_bias_we0            | out |    1|  ap_memory |       C5_bias      |     array    |
+|C5_bias_d0             | out |   32|  ap_memory |       C5_bias      |     array    |
+|C5_bias_q0             |  in |   32|  ap_memory |       C5_bias      |     array    |
+|C5_dbias_address0      | out |    5|  ap_memory |      C5_dbias      |     array    |
+|C5_dbias_ce0           | out |    1|  ap_memory |      C5_dbias      |     array    |
+|C5_dbias_we0           | out |    1|  ap_memory |      C5_dbias      |     array    |
+|C5_dbias_d0            | out |   32|  ap_memory |      C5_dbias      |     array    |
+|C5_dbias_q0            |  in |   32|  ap_memory |      C5_dbias      |     array    |
+|output_wei_address0    | out |    9|  ap_memory |     output_wei     |     array    |
+|output_wei_ce0         | out |    1|  ap_memory |     output_wei     |     array    |
+|output_wei_we0         | out |    1|  ap_memory |     output_wei     |     array    |
+|output_wei_d0          | out |   32|  ap_memory |     output_wei     |     array    |
+|output_wei_q0          |  in |   32|  ap_memory |     output_wei     |     array    |
+|output_dwei_address0   | out |    9|  ap_memory |     output_dwei    |     array    |
+|output_dwei_ce0        | out |    1|  ap_memory |     output_dwei    |     array    |
+|output_dwei_we0        | out |    1|  ap_memory |     output_dwei    |     array    |
+|output_dwei_d0         | out |   32|  ap_memory |     output_dwei    |     array    |
+|output_dwei_q0         |  in |   32|  ap_memory |     output_dwei    |     array    |
+|output_bias_address0   | out |    4|  ap_memory |     output_bias    |     array    |
+|output_bias_ce0        | out |    1|  ap_memory |     output_bias    |     array    |
+|output_bias_we0        | out |    1|  ap_memory |     output_bias    |     array    |
+|output_bias_d0         | out |   32|  ap_memory |     output_bias    |     array    |
+|output_bias_q0         |  in |   32|  ap_memory |     output_bias    |     array    |
+|output_dbias_address0  | out |    4|  ap_memory |    output_dbias    |     array    |
+|output_dbias_ce0       | out |    1|  ap_memory |    output_dbias    |     array    |
+|output_dbias_we0       | out |    1|  ap_memory |    output_dbias    |     array    |
+|output_dbias_d0        | out |   32|  ap_memory |    output_dbias    |     array    |
+|output_dbias_q0        |  in |   32|  ap_memory |    output_dbias    |     array    |
++-----------------------+-----+-----+------------+--------------------+--------------+
+

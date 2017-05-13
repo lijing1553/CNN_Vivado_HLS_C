@@ -1,0 +1,199 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Wed May 10 00:05:07 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1704141756) to (Rev. 1705092356)
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Fri Apr 14 17:59:54 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703242030) to (Rev. 1704141756)
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Fri Mar 24 20:31:52 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703241133) to (Rev. 1703242030)
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Fri Mar 24 11:37:41 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703212212) to (Rev. 1703241133)
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Tue Mar 21 22:24:23 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703211100) to (Rev. 1703212212)
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Tue Mar 21 11:02:34 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703211036) to (Rev. 1703211100)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Interface Information
+------------------------
+
+Detected external interface differences while upgrading IP 'design_1_dateport_0_2'.
+
+
+-upgrade has removed interface 'led'
+
+3. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading IP 'design_1_dateport_0_2'. These changes may impact your design.
+
+
+-upgrade has removed port 'led'
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Tue Mar 21 10:39:00 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703202141) to (Rev. 1703211036)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Interface Information
+------------------------
+
+Detected external interface differences while upgrading IP 'design_1_dateport_0_2'.
+
+
+-upgrade has added interface 'led'
+
+3. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading IP 'design_1_dateport_0_2'. These changes may impact your design.
+
+
+-upgrade has added port 'led'
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
+| Date         : Mon Mar 20 21:46:15 2017
+| Host         : Acer-PC running 64-bit Service Pack 1  (build 7601)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_dateport_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_dateport_0_2 (xilinx.com:hls:dateport:1.0) from (Rev. 1703201134) to (Rev. 1703202141)
+
